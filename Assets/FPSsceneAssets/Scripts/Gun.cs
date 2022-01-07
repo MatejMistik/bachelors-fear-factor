@@ -65,7 +65,7 @@ public class Gun : MonoBehaviour
         RaycastHit hit;
         if ( Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward,out hit, range))
         {
-            Debug.Log(hit.transform.name);
+            //Debug.Log(hit.transform.name);
             EnemyAI target = hit.transform.GetComponent<EnemyAI>();
             if(target != null)
             {
@@ -78,7 +78,7 @@ public class Gun : MonoBehaviour
             }
 
             GameObject impactGo = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-            Destroy(impactGo, 2f);
+            Destroy(impactGo, 1f);
             
 
         }

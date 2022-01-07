@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float dashLength = 0.12f;
@@ -16,6 +17,7 @@ class PlayerMovement : MonoBehaviour
     [SerializeField] float sprintSpeed = 2f;
     [SerializeField] float ultraSpeedTime = 4f;
     [SerializeField] float coinPickupSpeedMultiplier = 1f;
+    
 
     private float ultraSpeedTimeRemaining;
     private float SprintSpeedMultiplier = 1f;
@@ -31,10 +33,10 @@ class PlayerMovement : MonoBehaviour
     private Vector3 velocity;
     private float superJump = 1f;
 
-
     // Update is called once per frame
     void Update()
     {
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         // Prevents from overloading of velocity.y because of Gravity Force
@@ -146,6 +148,24 @@ class PlayerMovement : MonoBehaviour
         {
             superJump = 4f;
         }
+
+        if (other.gameObject.layer == 7)
+        {
+            LifeScript.Lives += 1;
+            Destroy(other.gameObject);
+            
+        }
+
+        if (other.gameObject.layer == 11)
+        {
+            
+            LifeScript.takingDamage = true;
+            LifeScript.health-= 10;
+            Debug.Log(LifeScript.health);
+            Destroy(other.gameObject);
+        }
+
+
 
 
     }

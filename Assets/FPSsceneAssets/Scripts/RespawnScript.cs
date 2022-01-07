@@ -11,11 +11,10 @@ public class RespawnScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (PlayerModel.playerLife >= 0)
+            if (LifeScript.Lives >= 0)
             {
 
-                //PlayerModel.playerLife--;
-                //LifeCounter.lifeValue--;
+                //PlayerMovement.Lives--;
                 player.transform.position = respawnPoint.transform.position;
                 Physics.SyncTransforms();
                 
@@ -23,9 +22,14 @@ public class RespawnScript : MonoBehaviour
             // TODO - Game Over
         }
     }
-
-    public static void ResetInputAxes()
+    private void Update()
     {
-
+        if (LifeScript.health <= 0)
+        {
+            player.transform.position = respawnPoint.transform.position;
+            Physics.SyncTransforms();
+            LifeScript.health = 100;
+            Debug.Log(LifeScript.health);
+        }
     }
 }

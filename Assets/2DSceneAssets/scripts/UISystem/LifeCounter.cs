@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class LifeCounter : MonoBehaviour
 
 {
-    public static int lifeValue = 0;
+    public static int lifeValue;
     Text Lives;
 
     // Start is called before the first frame update
