@@ -34,6 +34,7 @@ public class EnemyAI : MonoBehaviour
     public GameObject projectile;
     public static bool takingDamage;
     public static bool frenzyActive;
+    public static float DistanceOfEnemy;
 
     //States
     public float sightRange, attackRange;
@@ -55,23 +56,24 @@ public class EnemyAI : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (health < 0.20 * maxHealth)
+        DistanceOfEnemy = Vector3.Distance(player.transform.position, transform.position);
+
+        if (NTL)
         {
-            NTL = true;
             NothingToLoose();
-            return;
+            
         }
         if (health > 0.95 * maxHealth)
         {
             flee = false;
             NTL = false;           
         }
-        if (health <= 0.4*maxHealth && playerInSightRange)
+        if (health <= 0.5*maxHealth && playerInSightRange && NTL !=true)
         {
             flee = true;
             RunAwayFromPlayer();
         }
-        if (health < 0.75 * maxHealth && flee != true) {
+        if (health < 0.75 * maxHealth && flee != true && NTL !=true) {
             FrenzyAttack();
             timeBetweenAttacks = 0.4f;
             projectileSpeed = 50f;
@@ -81,7 +83,7 @@ public class EnemyAI : MonoBehaviour
         {
             frenzyActive = false;
         }
-        if (health > 0.7 * maxHealth && flee != true)
+        if (health > 0.7 * maxHealth && flee != true && NTL != true)
         {
             ClassicState();
         }
@@ -108,8 +110,7 @@ public class EnemyAI : MonoBehaviour
         agent.speed = 50f;
         projectileSpeed = 80f;
         flee = false;
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+        if (!playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
     }
 

@@ -6,10 +6,14 @@ using UnityEngine.UI;
 public class EnemyFear : MonoBehaviour
 {
     // Start is called before the first frame update
-    private float maxHealth;
+    private int counterNTLProbability;
+    private float maxFear;
+    private float fear;
     public static bool needHealing = true;
-    private bool LowHp = false;
-    private bool healAfterInterrupt = false;
+    public bool CalculatingNTL;
+    [SerializeField] float SetMaxForFear;
+    private float probabilityNTL;
+    private float randomNumberforNTL;
 
     public GameObject HealhtBarUI;
     public Slider slider;
@@ -17,57 +21,68 @@ public class EnemyFear : MonoBehaviour
 
     void Start()
     {
-        maxHealth = EnemyAI.health;
+        randomNumberforNTL = Random.Range(0.0f, 1.0f);
+        maxFear = SetMaxForFear;
+        CalculatingNTL = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        slider.value = CalculateHealth();
+        slider.value = CalculateFear();
         slider.transform.LookAt(player);
 
-        if (slider.value <= (0.4f * maxHealth) / 100 && LowHp == false)
+        if (EnemyAI.flee && !CalculatingNTL)
         {
-            LowHp = true;
-            Debug.Log("InLow HP ");
-        }
-        if ((LowHp && needHealing) || (healAfterInterrupt))
-        {
-            Debug.Log("Invoking HP ");
-            needHealing = false;
-            healAfterInterrupt = false;
-            Invoke(nameof(HealEnemy), 3f);
+            WillNTLBeTurnedOn();
+            CalculatingNTL = true;
         }
 
     }
-    float CalculateHealth()
+    float CalculateFear()
     {
-        return EnemyAI.health / maxHealth;
+        return fear / maxFear;
     }
 
-    void HealEnemy()
+    void WillNTLBeTurnedOn()
     {
-        if (EnemyAI.takingDamage)
+        if (EnemyAI.NTL)
         {
-            healAfterInterrupt = true;
             return;
         }
-
-        Debug.Log("HealEnemy() is called ");
-        if (EnemyAI.health <= maxHealth && needHealing == false)
+        Debug.Log("WillNTL is called");
+        if (!EnemyAI.NTL && EnemyAI.DistanceOfEnemy <= 20 && EnemyAI.flee) 
         {
-            EnemyAI.health += 0.1f * maxHealth;
-            Invoke(nameof(HealEnemy), 0.2f);
+            counterNTLProbability++;
+            fear += 10;
+        }else
+        {
+            counterNTLProbability--;
+            fear -= 10;
+        }
+        
+        Debug.Log(" Before propability was P :" + probabilityNTL);
+        probabilityNTL = 0.1f * counterNTLProbability;
+
+
+        if ( randomNumberforNTL < probabilityNTL)
+        {
+            Debug.Log("propability was P :" + probabilityNTL);
+            CalculNTLSetToFalse();
             return;
         }
-        else
-        {
-            needHealing = true;
-            LowHp = false;
-        }
+        Invoke("WillNTLBeTurnedOn", 1f);
 
-
-
+        
     }
 
+    void CalculNTLSetToFalse()
+    {
+        CalculatingNTL = false;
+        counterNTLProbability = 0;
+        probabilityNTL = 0;
+        fear = 0;
+        randomNumberforNTL = Random.Range(0.0f, 1.0f);
+        EnemyAI.NTL = true;
+    }
 }

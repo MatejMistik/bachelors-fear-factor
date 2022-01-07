@@ -10,6 +10,8 @@ public class Enemyhealth : MonoBehaviour
     public static bool needHealing = true;
     private bool LowHp = false;
     private bool healAfterInterrupt = false;
+    public static float enemyCurrentHealth;
+    public static float NTLBasedOnHealthProbability;
 
     public GameObject HealhtBarUI;
     public Slider slider;
@@ -24,9 +26,12 @@ public class Enemyhealth : MonoBehaviour
     void Update()
     {
         slider.value = CalculateHealth();
+        enemyCurrentHealth = slider.value;
         slider.transform.LookAt(player);
+        //NTLBasedOnHealthProbability = 1/(enemyCurrentHealth); // function 1/x returns on max probability 1 and its getting higher when hp is getting lower. We need this values {1.0 , +inf}
+        
 
-        if (slider.value <= (0.4f * maxHealth)/100 && LowHp == false)
+        if (enemyCurrentHealth <= (0.5f * maxHealth)/100 && LowHp == false)
         {
             LowHp = true;
             Debug.Log("InLow HP ");
@@ -36,7 +41,7 @@ public class Enemyhealth : MonoBehaviour
             Debug.Log("Invoking HP ");
             needHealing = false;
             healAfterInterrupt = false;
-            Invoke(nameof(HealEnemy), 3f);
+            Invoke(nameof(HealEnemy), 10f);
         }
 
     }
@@ -57,7 +62,7 @@ public class Enemyhealth : MonoBehaviour
         if(EnemyAI.health <= maxHealth  && needHealing == false)
         {
             EnemyAI.health += 0.1f * maxHealth;
-            Invoke(nameof(HealEnemy), 0.2f);
+            Invoke(nameof(HealEnemy), 1f);
             return;
         }else
         {
