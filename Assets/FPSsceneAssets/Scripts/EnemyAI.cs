@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     public NavMeshAgent agent;
+    
 
     public Transform player;
 
@@ -222,7 +223,7 @@ public class EnemyAI : MonoBehaviour
        // Debug.Log("TakeDamage() takingDamage = " + takingDamage);
         health -= damage;
         Invoke(nameof(TimeTillHealAgain), 0.5f);
-        if (health <= 0) Destroy(gameObject, 0.1f); 
+        if (health <= 0) Destroy(gameObject,0.1f); 
     }
     private void TimeTillHealAgain()
     {

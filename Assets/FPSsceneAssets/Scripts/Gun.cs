@@ -5,7 +5,7 @@ using TMPro;
 public class Gun : MonoBehaviour
 {
     [SerializeField] float range = 100f;
-    [SerializeField] float damage = 10f;
+    public float damage = 60f;
     [SerializeField] float fireRate = 0.1f;
     [SerializeField] float impactForce = 60f;
     [SerializeField] int magazineSize = 5;
@@ -62,14 +62,24 @@ public class Gun : MonoBehaviour
     {
         readyToShoot = false;
         muzzleFlash.Play();
-        RaycastHit hit;
-        if ( Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward,out hit, range))
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out RaycastHit hit, range))
         {
             //Debug.Log(hit.transform.name);
             EnemyAI target = hit.transform.GetComponent<EnemyAI>();
-            if(target != null)
+            var hitBox = hit.collider.GetComponent<Hitbox>();
+
+            if (hitBox)
             {
+                hitBox.OnRaycasthit(this);
+            }
+
+            if (target != null)
+            {
+                
+
                 target.TakeDamage(damage);
+
+
             }
 
             if (hit.rigidbody != null)
@@ -79,17 +89,17 @@ public class Gun : MonoBehaviour
 
             GameObject impactGo = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(impactGo, 1f);
-            
+
 
         }
 
         bulletsLeft--;
         bulletsShot--;
 
-        Invoke("ResetShot", fireRate);
+        Invoke(nameof(ResetShot), fireRate);
 
         if (bulletsShot > 0 && bulletsLeft > 0)
-        Invoke("Shoot",0f);
+            Invoke(nameof(Shoot), 0f);
     }
 
 
@@ -100,7 +110,7 @@ public class Gun : MonoBehaviour
     private void Reload()
     {
         reloading = true;
-        Invoke("ReloadFinished", reloadTime);
+        Invoke(nameof(ReloadFinished), reloadTime);
     }
     private void ReloadFinished()
     {

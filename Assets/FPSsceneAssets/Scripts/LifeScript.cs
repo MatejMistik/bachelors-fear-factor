@@ -37,11 +37,11 @@ public class LifeScript : MonoBehaviour
         if (slider.value <= (0.45 * maxHealth) / 100 && LowHp == false)
         {
             LowHp = true;
-            Debug.Log("Player InLow HP ");
+            //Debug.Log("Player InLow HP ");
         }
         if ((LowHp && needHealing) || (healAfterInterrupt))
         {
-            Debug.Log("Player Invoking HP ");
+           // Debug.Log("Player Invoking HP ");
             needHealing = false;
             healAfterInterrupt = false;
             Invoke(nameof(HealPlayer), 3f);
@@ -58,11 +58,11 @@ public class LifeScript : MonoBehaviour
         if (takingDamage)
         {
             healAfterInterrupt = true;
-            Invoke("NotTakingDmgReadyToHeal", 0.5f);
+            Invoke(nameof(NotTakingDmgReadyToHeal), 0.5f);
             return;
         }
-        Debug.Log("Lifescrpt HP" + health);
-        Debug.Log("HealPlayer() is called ");
+        //Debug.Log("Lifescrpt HP" + health);
+        //Debug.Log("HealPlayer() is called ");
         if (health < maxHealth && needHealing == false)
         {
             health += 0.1f * maxHealth;

@@ -50,7 +50,7 @@ public class EnemyFear : MonoBehaviour
         {
             return;
         }
-        Debug.Log("WillNTL is called");
+        //Debug.Log("WillNTL is called");
         if (!EnemyAI.NTL && EnemyAI.DistanceOfEnemy <= 20 && EnemyAI.flee) 
         {
             counterNTLProbability++;
@@ -61,17 +61,17 @@ public class EnemyFear : MonoBehaviour
             fear -= 10;
         }
         
-        Debug.Log(" Before propability was P :" + probabilityNTL);
+        //Debug.Log(" Before propability was P :" + probabilityNTL);
         probabilityNTL = 0.1f * counterNTLProbability;
 
 
         if ( randomNumberforNTL < probabilityNTL)
         {
-            Debug.Log("propability was P :" + probabilityNTL);
+            //Debug.Log("propability was P :" + probabilityNTL);
             CalculNTLSetToFalse();
             return;
         }
-        Invoke("WillNTLBeTurnedOn", 1f);
+        Invoke(nameof(WillNTLBeTurnedOn), 1f);
 
         
     }

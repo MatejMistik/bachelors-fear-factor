@@ -16,6 +16,7 @@ public class Enemyhealth : MonoBehaviour
     public GameObject HealhtBarUI;
     public Slider slider;
     public Transform player;
+    
 
     void Start()
     {
@@ -34,11 +35,11 @@ public class Enemyhealth : MonoBehaviour
         if (enemyCurrentHealth <= (0.5f * maxHealth)/100 && LowHp == false)
         {
             LowHp = true;
-            Debug.Log("InLow HP ");
+            //Debug.Log("InLow HP ");
         }
         if ( (LowHp && needHealing) || (healAfterInterrupt) )
         {
-            Debug.Log("Invoking HP ");
+           //Debug.Log("Invoking HP ");
             needHealing = false;
             healAfterInterrupt = false;
             Invoke(nameof(HealEnemy), 10f);
@@ -58,7 +59,7 @@ public class Enemyhealth : MonoBehaviour
             return;
         }
         
-        Debug.Log("HealEnemy() is called ");
+        //Debug.Log("HealEnemy() is called ");
         if(EnemyAI.health <= maxHealth  && needHealing == false)
         {
             EnemyAI.health += 0.1f * maxHealth;
@@ -73,5 +74,7 @@ public class Enemyhealth : MonoBehaviour
 
 
     }
+
+
 
 }

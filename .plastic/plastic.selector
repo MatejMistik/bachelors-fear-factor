@@ -1,0 +1,4 @@
+repository "FearFactor@BUT@cloud"
+  path "/"
+    br "/main"
+    co "/main"

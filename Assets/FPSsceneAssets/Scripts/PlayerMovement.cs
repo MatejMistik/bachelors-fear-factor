@@ -68,15 +68,17 @@ class PlayerMovement : MonoBehaviour
         }
 
         Vector3 move = transform.right * horizontalInput + transform.forward * verticalInput;
-        controller.Move(move * speed * SprintSpeedMultiplier * coinPickupSpeedMultiplier * Time.deltaTime);
+        controller.Move(coinPickupSpeedMultiplier * speed * SprintSpeedMultiplier * Time.deltaTime * move);
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity) * superJump;
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity * superJump);
             superJump = 1f;
         }
 
         velocity.y += gravity * Time.deltaTime;
+        //nDebug.Log("velo" + velocity.y);
+        
 
         controller.Move(velocity * Time.deltaTime);
 
@@ -99,7 +101,7 @@ class PlayerMovement : MonoBehaviour
 
         if (dashingNow == true && dashing < dashLength)
         {
-            controller.Move(dashMove * dashSpeed * Time.deltaTime);
+            _ = controller.Move(dashSpeed * Time.deltaTime * dashMove);
             dashing += Time.deltaTime;
         }
 
@@ -110,7 +112,7 @@ class PlayerMovement : MonoBehaviour
 
         if (dashingNow == false)
         {
-            controller.Move(move * speed * Time.deltaTime);
+            controller.Move(speed * Time.deltaTime * move);
         }
 
         if (dashReset == false)
@@ -161,7 +163,7 @@ class PlayerMovement : MonoBehaviour
             
             LifeScript.takingDamage = true;
             LifeScript.health-= 10;
-            Debug.Log(LifeScript.health);
+            //Debug.Log(LifeScript.health);
             Destroy(other.gameObject);
         }
 
