@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using TMPro;
 
 public class AnimatorAI : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class AnimatorAI : MonoBehaviour
     Animator animator;
     [SerializeField] float maxDistance = 1.0f;
     private Material material;
+    public TextMeshProUGUI nodeStateText;
 
     private Transform bestCoverSpot;
 
@@ -45,6 +47,7 @@ public class AnimatorAI : MonoBehaviour
 
     void Start()
     {
+        
         currentHealth = startingHealth;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
@@ -88,6 +91,13 @@ public class AnimatorAI : MonoBehaviour
             DebugMessage("Failure state");
             agent.isStopped = true;
         }
+
+        // showing NodeState
+        nodeStateText.transform.LookAt(playerTransform);
+        nodeStateText.transform.rotation = Quaternion.LookRotation(nodeStateText.transform.position - playerTransform.position);
+
+
+
         /*
         timer -= Time.deltaTime;
         if( timer < 0f)

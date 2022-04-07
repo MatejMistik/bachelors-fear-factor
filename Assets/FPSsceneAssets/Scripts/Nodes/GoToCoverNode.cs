@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class GoToCoverNode : Node
 {
- 
     private NavMeshAgent agent;
     private AnimatorAI ai;
 
@@ -24,14 +23,17 @@ public class GoToCoverNode : Node
         float distance = Vector3.Distance(coverSpot.position, agent.transform.position);
         if (distance > 0.5f)
         {
+            ai.nodeStateText.SetText("GoToCover");
             agent.isStopped = false;
             agent.SetDestination(coverSpot.position);
             return NodeState.RUNNING;
         }
         else
         {
+            ai.nodeStateText.SetText("InCover");
             agent.isStopped = true;
             return NodeState.SUCCESS;
+            
         }
     }
 
