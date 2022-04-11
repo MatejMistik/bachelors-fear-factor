@@ -11,9 +11,6 @@ public class HealthNode : Node
         this.health = health;
     }
 
-    public override NodeState Evaluate()
-    {
-        //Debug.Log(health.newEnemycurrentHealth<= health.treshold ? NodeState.SUCCESS : NodeState.FAILURE);
-        return health.newEnemycurrentHealth <= health.treshold ? NodeState.SUCCESS : NodeState.FAILURE;
-    }
+    public override NodeState Evaluate() => health.newEnemycurrentHealth <= health.treshold ? NodeState.SUCCESS : NodeState.FAILURE;
+
 }

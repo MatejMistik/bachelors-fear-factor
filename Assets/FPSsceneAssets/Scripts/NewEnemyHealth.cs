@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class NewEnemyHealth : MonoBehaviour
 {
@@ -11,8 +12,11 @@ public class NewEnemyHealth : MonoBehaviour
     public Transform player;
     Ragdoll ragdoll;
     SkinnedMeshRenderer skinnedMeshRenderer;
-
+    public NavMeshAgent agent;
+    private AnimatorAI ai;
     
+
+
 
     // Start is called before the first frame update
     public float maxHealth;
@@ -27,6 +31,7 @@ public class NewEnemyHealth : MonoBehaviour
 
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
         ragdoll = GetComponent<Ragdoll>();
         newEnemycurrentHealth = maxHealth;
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
@@ -70,7 +75,12 @@ public class NewEnemyHealth : MonoBehaviour
     private void Die()
     {
         ragdoll.ActivateRagDoll();
-        Destroy(gameObject, 20f);
+        this.GetComponent<AnimatorAI>().enabled = false;
+        agent.isStopped = true;
+        HealhtBarUI.SetActive(false);
+        skinnedMeshRenderer.material.color = Color.white;
+        this.GetComponent<NewEnemyHealth>().enabled = false;
+
     }
 
     public void Restore()
