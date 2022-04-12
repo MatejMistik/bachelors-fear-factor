@@ -8,6 +8,7 @@ public class ShootingNode : Node
     public NavMeshAgent agent;
     private AnimatorAI ai;
     private Transform playerTransform;
+    public RayCastWeapon weapon;
 
     public ShootingNode(NavMeshAgent agent, AnimatorAI ai, Transform playerTransform)
     {
@@ -20,6 +21,8 @@ public class ShootingNode : Node
     {
         agent.isStopped = true;
         ai.DebugMessage("Shooting");
+        agent.transform.LookAt(playerTransform);
+        weapon.PrepareToShoot();
         return NodeState.RUNNING;
     }
 

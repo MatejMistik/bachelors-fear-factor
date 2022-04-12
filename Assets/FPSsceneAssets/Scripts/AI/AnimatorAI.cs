@@ -120,9 +120,8 @@ public class AnimatorAI : MonoBehaviour
     {
 
 
-#pragma warning disable IDE0090 // Use 'new(...)'
+
         IsCoverAvailable coverAvaliableNode = new IsCoverAvailable(availableCovers, playerTransform, this);
-#pragma warning restore IDE0090 // Use 'new(...)'
         GoToCoverNode goToCoverNode = new GoToCoverNode(agent, this);
         HealthNode healthNode = new HealthNode(health);
         IsCoveredNode isCoveredNode = new IsCoveredNode(playerTransform, transform);

@@ -40,7 +40,7 @@ public class NewEnemyHealth : MonoBehaviour
         foreach (var rigidbody in rigidBodies)
         {
             Hitbox hitbox = rigidbody.gameObject.AddComponent<Hitbox>();
-            hitbox.health = this;
+            hitbox.aiHealth = this;
         }
     }
 

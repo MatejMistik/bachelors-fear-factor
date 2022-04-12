@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,10 +6,16 @@ using UnityEngine;
 public class Hitbox : MonoBehaviour
 {
     public AnimatorAI ai;
-    public NewEnemyHealth health; 
-   
+    public NewEnemyHealth aiHealth;
+    
+
     public void OnRaycasthit(Gun weapon)
     {
-        health.TakeDamage(weapon.damage);
+        aiHealth.TakeDamage(weapon.damage);
+    }
+
+    public void OnRaycasthit(RayCastWeapon rayCastWeapon)
+    {
+        return;
     }
 }
