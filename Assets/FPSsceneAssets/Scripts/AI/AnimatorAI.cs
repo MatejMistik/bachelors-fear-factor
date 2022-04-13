@@ -19,6 +19,7 @@ public class AnimatorAI : MonoBehaviour
     Animator animator;
     [SerializeField] float maxDistance;
     public TextMeshProUGUI nodeStateText;
+    private RayCastWeapon weapon;
 
     private Transform bestCoverSpot;
 
@@ -42,6 +43,7 @@ public class AnimatorAI : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        weapon = GetComponent<RayCastWeapon>();
         agent = GetComponent<NavMeshAgent>();
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         health = GetComponent<NewEnemyHealth>();
@@ -128,7 +130,7 @@ public class AnimatorAI : MonoBehaviour
         ChaseNode chaseNode = new ChaseNode(playerTransform, agent, this);
         RangeNode chasingRangeNode = new RangeNode(chasingRange, playerTransform, transform);
         RangeNode shootingRangeNode = new RangeNode(shootingRange, playerTransform, transform);
-        ShootingNode shootNode = new ShootingNode(agent, this, playerTransform);
+        ShootingNode shootNode = new ShootingNode(agent, this, playerTransform,weapon);
 
 
         Sequence chaseSequence = new Sequence(new List<Node> { chasingRangeNode, chaseNode });
@@ -159,7 +161,7 @@ public class AnimatorAI : MonoBehaviour
         ChaseNode chaseNode = new(playerTransform, agent, this);
         RangeNode chasingRangeNode = new(chasingRange, playerTransform, transform);
         RangeNode shootingRangeNode = new(shootingRange, playerTransform, transform);
-        ShootingNode shootNode = new(agent, this, playerTransform);
+        ShootingNode shootNode = new(agent, this, playerTransform, weapon);
 
         Sequence healAiSequence = new(new List<Node> { isCoveredForHeal, healMeNode });
         Sequence chaseSequence = new(new List<Node> { chasingRangeNode, chaseNode });
@@ -187,7 +189,7 @@ public class AnimatorAI : MonoBehaviour
         ChaseNode chaseNode = new ChaseNode(playerTransform, agent, this);
         RangeNode chasingRangeNode = new RangeNode(chasingRange, playerTransform, transform);
         RangeNode shootingRangeNode = new RangeNode(shootingRange, playerTransform, transform);
-        ShootingNode shootNode = new ShootingNode(agent, this, playerTransform);
+        ShootingNode shootNode = new ShootingNode(agent, this, playerTransform, weapon);
 
 
         Sequence chaseSequence = new Sequence(new List<Node> { chasingRangeNode, chaseNode });

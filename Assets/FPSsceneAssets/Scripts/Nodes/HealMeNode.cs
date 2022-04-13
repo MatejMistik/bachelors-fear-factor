@@ -16,7 +16,7 @@ public class HealMeNode : Node
 
     public override NodeState Evaluate()
     {
-        Debug.Log(agent.velocity.magnitude); 
+        //Debug.Log(agent.velocity.magnitude); 
         if(health.newEnemycurrentHealth < health.maxHealth && agent.velocity.magnitude == 0)
         {
             health.Restore();

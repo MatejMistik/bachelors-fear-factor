@@ -3,7 +3,13 @@ guid: 3af5cfe1d0b267a48b3b1f848f4894fe
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - muzzleFlash: {instanceID: 0}
+  - impactEffect: {instanceID: 0}
+  - player: {instanceID: 0}
+  - projectile: {fileID: 1162799150826561015, guid: 778e2fa213da02346b579f326f6ed0d1,
+      type: 3}
+  - bulletHole: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
