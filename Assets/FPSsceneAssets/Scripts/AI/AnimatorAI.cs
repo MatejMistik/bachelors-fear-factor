@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 using TMPro;
+using SensorToolkit;
 
 public class AnimatorAI : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class AnimatorAI : MonoBehaviour
     [SerializeField] private float startingHealth;
     [SerializeField] private float lowHealthThreshold;
     [SerializeField] private float healthRestoreRate;
+    public LayerMask whatIsGround;
 
     SkinnedMeshRenderer skinnedMeshRenderer;
     [SerializeField] private Transform playerTransform;
@@ -20,6 +22,7 @@ public class AnimatorAI : MonoBehaviour
     [SerializeField] float maxDistance;
     public TextMeshProUGUI nodeStateText;
     public RayCastWeapon weapon;
+    public Sensor sensor;
 
     private Transform bestCoverSpot;
 
@@ -46,6 +49,9 @@ public class AnimatorAI : MonoBehaviour
 
     public int behaviorTreeLevelNumber;
     public bool weaponEquipped;
+    private bool walkPointSet;
+    private Vector3 walkPoint;
+    public int walkPointRange;
 
 
 
@@ -56,6 +62,7 @@ public class AnimatorAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         health = GetComponent<NewEnemyHealth>();
+        sensor = GetComponent<Sensor>();
     }
 
     void Start()
@@ -77,6 +84,7 @@ public class AnimatorAI : MonoBehaviour
             DebugMessage("Failure state");
             agent.isStopped = true;
         }
+        Debug.Log(topNode.nodeState);
 
         // showing NodeState
         nodeStateText.transform.LookAt(playerTransform);
@@ -271,15 +279,18 @@ public class AnimatorAI : MonoBehaviour
 
     private void ConstructBehaviorTreeTailGating()
     {
-        WeaponEuipped weaponEuippedNode = new(this);
-        FindWeaponsAvailableNode findWeaponNode = new(weaponPickup, agent, weaponPickup.transform, this);
+        EnemyInSigthNode enemyInSigthNode = new(sensor);
+        PatrollingNode patrollingNode = new(this);
+        RunAwayNode runAwayNode = new(this);
 
-        Sequence findWeaponSequence = new Sequence(new List<Node> { weaponEuippedNode, findWeaponNode });
+        
+         
+        Sequence TailgatingSeqeunce = new Sequence(new List<Node> { enemyInSigthNode, runAwayNode });
 
-        topNode = new Selector(new List<Node> { findWeaponSequence });
+        topNode = new Selector(new List<Node> { TailgatingSeqeunce, patrollingNode, });
     }
 
-    private void RunAwayFromPlayer()
+    public void RunAwayFromPlayer()
     {
         
         
@@ -287,6 +298,32 @@ public class AnimatorAI : MonoBehaviour
         Vector3 newPos = transform.position + dirToPlayer;
         agent.SetDestination(newPos);
 
+    }
+
+    public void Patrolling()
+    {
+        
+        if (!walkPointSet) SearchWalkPoint();
+
+        if (walkPointSet)
+            agent.SetDestination(walkPoint);
+
+        Vector3 distanceToWalkPoint = transform.position - walkPoint;
+
+        //Walkpoint reached
+        if (distanceToWalkPoint.magnitude < 1f)
+            walkPointSet = false;
+    }
+    public void SearchWalkPoint()
+    {
+        //Calculate random point in range
+        float randomZ = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
+        float randomX = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
+
+        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+
+        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+            walkPointSet = true;
     }
 
 
