@@ -2,20 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SensorToolkit;
+using UnityEngine.AI;
 
 public class PatrollingNode : Node
 {
-    AnimatorAI ai;
 
-    public PatrollingNode(AnimatorAI ai)
+    NavigationPathForAI NavigationPath;
+    NavMeshAgent agent;
+
+    public PatrollingNode(NavigationPathForAI navigationPath, NavMeshAgent agent)
     {
-        this.ai = ai;
+        NavigationPath = navigationPath;
+        this.agent = agent;
     }
 
     public override NodeState Evaluate()
     {
+        
         Debug.Log("Patrolling " + this.nodeState);
-        ai.Patrolling();
+        agent.speed = 8;
+        NavigationPath.StartPatrolling();
         return NodeState.RUNNING;
     }
 }

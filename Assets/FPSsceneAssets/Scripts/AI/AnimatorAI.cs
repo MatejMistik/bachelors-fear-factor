@@ -52,6 +52,7 @@ public class AnimatorAI : MonoBehaviour
     private bool walkPointSet;
     private Vector3 walkPoint;
     public int walkPointRange;
+    NavigationPathForAI navigationPathForAI;
 
 
 
@@ -63,6 +64,8 @@ public class AnimatorAI : MonoBehaviour
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         health = GetComponent<NewEnemyHealth>();
         sensor = GetComponent<Sensor>();
+        navigationPathForAI = GetComponent<NavigationPathForAI>();
+
     }
 
     void Start()
@@ -72,7 +75,6 @@ public class AnimatorAI : MonoBehaviour
         animator = GetComponent<Animator>();
         weaponPickup = GameObject.Find("WeaponPickup").GetComponent<WeaponPickup>();
         ConstructBehaviorTreeByNumber(behaviorTreeLevelNumber);
-
         
     }
 
@@ -280,11 +282,12 @@ public class AnimatorAI : MonoBehaviour
     private void ConstructBehaviorTreeTailGating()
     {
         EnemyInSigthNode enemyInSigthNode = new(sensor);
-        PatrollingNode patrollingNode = new(this);
-        RunAwayNode runAwayNode = new(this);
-
         
-         
+        RunAwayNode runAwayNode = new(this,agent);
+        PatrollingNode patrollingNode = new(navigationPathForAI, agent);
+
+
+
         Sequence TailgatingSeqeunce = new Sequence(new List<Node> { enemyInSigthNode, runAwayNode });
 
         topNode = new Selector(new List<Node> { TailgatingSeqeunce, patrollingNode, });
