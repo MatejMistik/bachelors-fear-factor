@@ -41,7 +41,7 @@ public class RayCastWeapon : MonoBehaviour
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         rb.AddForce(bulletHole.transform.forward * projectileSpeed, ForceMode.Impulse);
         Destroy(bullet, 2);
-       /* if (Physics.Raycast(bulletHole.transform.position, bulletHole.transform.forward, out RaycastHit hit, range))
+        if (Physics.Raycast(bulletHole.transform.position, bulletHole.transform.forward, out RaycastHit hit, range))
         {
 
             Debug.Log(range);
@@ -55,7 +55,7 @@ public class RayCastWeapon : MonoBehaviour
 
 
         }
-       */
+       
     }
 
 
@@ -82,9 +82,7 @@ public class RayCastWeapon : MonoBehaviour
         muzzleFlash.Play();
         GameObject bullet = Instantiate(projectile, bulletHole.transform.position, Quaternion.identity);
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        Debug.Log(bullet.transform.rotation);
         bullet.transform.Rotate(0, 90, 0);
-        Debug.Log(bullet.transform.rotation);
         rb.AddForce(bulletHole.transform.forward * projectileSpeed, ForceMode.Impulse);
         Destroy(bullet, 20);
         /*if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, range))
@@ -102,7 +100,7 @@ public class RayCastWeapon : MonoBehaviour
 
         }
         */
-
+        //Debug.Log("shot");
         Invoke(nameof(ResetShot), fireRate);
         if ( bulletsLeft > 1)
         {

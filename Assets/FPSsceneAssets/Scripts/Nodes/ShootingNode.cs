@@ -20,10 +20,13 @@ public class ShootingNode : Node
 
     public override NodeState Evaluate()
     {
+        if (weapon == null)
+        {
+            weapon = ai.weapon;
+        }
         agent.isStopped = true;
         ai.DebugMessage("Shooting");
         agent.transform.LookAt(playerTransform);
-        //Debug.Log(weapon);
         weapon.PrepareToShoot();
         return NodeState.RUNNING;
     }

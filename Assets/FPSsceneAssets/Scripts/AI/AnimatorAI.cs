@@ -19,19 +19,28 @@ public class AnimatorAI : MonoBehaviour
     Animator animator;
     [SerializeField] float maxDistance;
     public TextMeshProUGUI nodeStateText;
-    private RayCastWeapon weapon;
+    public RayCastWeapon weapon;
 
     private Transform bestCoverSpot;
 
     private Node topNode;
+
     public float currentHealth;
     private NewEnemyHealth health;
 
+    WeaponPickup weaponPickup;
 
 
     //[SerializeField] float maxTime = 1.0f;
     [SerializeField] float timer;
     [SerializeField] private float chasingRange;
+
+    public void EquipWeapon()
+    {
+        weapon = GetComponentInChildren<RayCastWeapon>();
+        Debug.Log(weapon);  
+    }
+
     [SerializeField] private float shootingRange;
     [SerializeField] private Cover[] availableCovers;
 
@@ -43,7 +52,7 @@ public class AnimatorAI : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        weapon = GetComponent<RayCastWeapon>();
+        
         agent = GetComponent<NavMeshAgent>();
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         health = GetComponent<NewEnemyHealth>();
@@ -51,11 +60,12 @@ public class AnimatorAI : MonoBehaviour
 
     void Start()
     {
-        
         currentHealth = startingHealth;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        weaponPickup = GameObject.Find("WeaponPickup").GetComponent<WeaponPickup>();
         ConstructBehaviorTreeByNumber(behaviorTreeLevelNumber);
+
         
     }
 
@@ -71,8 +81,8 @@ public class AnimatorAI : MonoBehaviour
         // showing NodeState
         nodeStateText.transform.LookAt(playerTransform);
         nodeStateText.transform.rotation = Quaternion.LookRotation(nodeStateText.transform.position - playerTransform.position);
-
-
+        //Debug.Log(weapon);
+        
 
         /*
          * 
@@ -97,10 +107,13 @@ public class AnimatorAI : MonoBehaviour
         // Debug.Log("AI Velocity" + agent.velocity.magnitude);
     }
 
-    private void ConstructBehaviorTreeByNumber(int levelNumber)
+    public void ConstructBehaviorTreeByNumber(int levelNumber)
     {
         switch (levelNumber)
         {
+            case 0:
+                ConstructBehaviorTreeTest();
+                break;
             case 1:
                 ConstructBehaviorTree1();
                 break;
@@ -110,14 +123,21 @@ public class AnimatorAI : MonoBehaviour
             case 3:
                 ConstructBehaviorTree3();
                 break;
+            case 4:
+                ConstructBehaviorTree4();
+                break;
+            case 5:
+                ConstructBehaviorTreeTailGating();
+                break;
             default:
                 break;
         }
     }
 
+  
     
 
-    // Classic tree with chasing, shooting, covering
+    // Classic tree with chasing, covering
     private void ConstructBehaviorTree1()
     {
 
@@ -129,13 +149,12 @@ public class AnimatorAI : MonoBehaviour
         IsCoveredNode isCoveredNode = new IsCoveredNode(playerTransform, transform);
         ChaseNode chaseNode = new ChaseNode(playerTransform, agent, this);
         RangeNode chasingRangeNode = new RangeNode(chasingRange, playerTransform, transform);
-        RangeNode shootingRangeNode = new RangeNode(shootingRange, playerTransform, transform);
-        ShootingNode shootNode = new ShootingNode(agent, this, playerTransform,weapon);
-
+        WeaponEuipped weaponEuippedNode = new WeaponEuipped(this);
+        RangeNode shootingRangeNode = new(shootingRange, playerTransform, transform);
+        ShootingNode shootNode = new(agent, this, playerTransform, weapon);
 
         Sequence chaseSequence = new Sequence(new List<Node> { chasingRangeNode, chaseNode });
-        Sequence shootSequence = new Sequence(new List<Node> { shootingRangeNode, shootNode });
-
+        Sequence shootSequence = new(new List<Node> { weaponEuippedNode ,shootingRangeNode, shootNode});
 
         Sequence goToCoverSequence = new Sequence(new List<Node> { coverAvaliableNode, goToCoverNode });
         Selector findCoverSelector = new Selector(new List<Node> { goToCoverSequence, chaseSequence });
@@ -206,11 +225,76 @@ public class AnimatorAI : MonoBehaviour
 
     }
 
+    private void ConstructBehaviorTree4()
+    {
+
+
+
+        IsCoverAvailable coverAvaliableNode = new IsCoverAvailable(availableCovers, playerTransform, this);
+        GoToCoverNode goToCoverNode = new GoToCoverNode(agent, this);
+        HealthNode healthNode = new HealthNode(health);
+        IsCoveredNode isCoveredNode = new IsCoveredNode(playerTransform, transform);
+        ChaseNode chaseNode = new ChaseNode(playerTransform, agent, this);
+        RangeNode chasingRangeNode = new RangeNode(chasingRange, playerTransform, transform);
+        
+        RangeNode shootingRangeNode = new(shootingRange, playerTransform, transform);
+        ShootingNode shootNode = new(agent, this, playerTransform, weapon);
+        WeaponEuipped weaponEuippedNode = new(this);
+        FindWeaponsAvailableNode findWeaponNode = new(weaponPickup,agent,weaponPickup.transform,this);
+
+        Sequence findWeaponSequence = new Sequence(new List<Node> { weaponEuippedNode, findWeaponNode });
+        Sequence chaseSequence = new Sequence(new List<Node> { chasingRangeNode, chaseNode });
+        Sequence shootSequence = new(new List<Node> { shootingRangeNode, shootNode });
+
+        Sequence goToCoverSequence = new Sequence(new List<Node> { coverAvaliableNode, goToCoverNode });
+        Selector findCoverSelector = new Selector(new List<Node> { goToCoverSequence, chaseSequence });
+        Selector tryToTakeCoverSelector = new Selector(new List<Node> { isCoveredNode, findCoverSelector });
+        Sequence mainCoverSequence = new Sequence(new List<Node> { healthNode, tryToTakeCoverSelector });
+
+        topNode = new Selector(new List<Node> { findWeaponSequence, mainCoverSequence, shootSequence, chaseSequence });
+
+
+    }
+
+    private void ConstructBehaviorTreeTest()
+    {
+
+        WeaponEuipped weaponEuippedNode = new(this);
+        FindWeaponsAvailableNode findWeaponNode = new(weaponPickup, agent, weaponPickup.transform, this);
+
+        Sequence findWeaponSequence = new Sequence(new List<Node> { weaponEuippedNode, findWeaponNode });
+
+        topNode = new Selector(new List<Node> { findWeaponSequence});
+
+
+    }
+
+    private void ConstructBehaviorTreeTailGating()
+    {
+        WeaponEuipped weaponEuippedNode = new(this);
+        FindWeaponsAvailableNode findWeaponNode = new(weaponPickup, agent, weaponPickup.transform, this);
+
+        Sequence findWeaponSequence = new Sequence(new List<Node> { weaponEuippedNode, findWeaponNode });
+
+        topNode = new Selector(new List<Node> { findWeaponSequence });
+    }
+
+    private void RunAwayFromPlayer()
+    {
+        
+        
+        Vector3 dirToPlayer = transform.position - playerTransform.transform.position;
+        Vector3 newPos = transform.position + dirToPlayer;
+        agent.SetDestination(newPos);
+
+    }
+
+
 
 
 
     // Update is called once per frame
-    
+
     public void DebugMessage(string message)
     {
         //Debug.Log("Node" + message);
