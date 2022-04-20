@@ -30,6 +30,7 @@ public class AnimatorAI : MonoBehaviour
 
     public float currentHealth;
     private NewEnemyHealth health;
+    FearFactorAI fearFactorAI;
 
     WeaponPickup weaponPickup;
 
@@ -59,7 +60,7 @@ public class AnimatorAI : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        
+        fearFactorAI = GetComponent<FearFactorAI>();
         agent = GetComponent<NavMeshAgent>();
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         health = GetComponent<NewEnemyHealth>();
@@ -155,7 +156,7 @@ public class AnimatorAI : MonoBehaviour
 
         IsCoverAvailable coverAvaliableNode = new IsCoverAvailable(availableCovers, playerTransform, this);
         GoToCoverNode goToCoverNode = new GoToCoverNode(agent, this);
-        HealthNode healthNode = new HealthNode(health);
+        HealthNode healthNode = new HealthNode(health,fearFactorAI);
         IsCoveredNode isCoveredNode = new IsCoveredNode(playerTransform, transform);
         ChaseNode chaseNode = new ChaseNode(playerTransform, agent, this);
         RangeNode chasingRangeNode = new RangeNode(chasingRange, playerTransform, transform);
@@ -183,10 +184,10 @@ public class AnimatorAI : MonoBehaviour
 
         IsCoverAvailable coverAvaliableNode = new(availableCovers, playerTransform, this);
         GoToCoverNode goToCoverNode = new(agent, this);
-        HealthNode healthNode = new(health);
+        HealthNode healthNode = new(health,fearFactorAI);
         IsCoveredNode isCoveredNode = new(playerTransform, transform);
         IsCoveredNode isCoveredForHeal = new(playerTransform, transform);
-        HealMeNode healMeNode = new(health, agent);
+        HealMeNode healMeNode = new(health, agent, fearFactorAI);
         ChaseNode chaseNode = new(playerTransform, agent, this);
         RangeNode chasingRangeNode = new(chasingRange, playerTransform, transform);
         RangeNode shootingRangeNode = new(shootingRange, playerTransform, transform);
@@ -213,7 +214,7 @@ public class AnimatorAI : MonoBehaviour
 
         IsCoverAvailable coverAvaliableNode = new IsCoverAvailable(availableCovers, playerTransform, this);
         GoToCoverNode goToCoverNode = new GoToCoverNode(agent, this);
-        HealthNode healthNode = new HealthNode(health);
+        HealthNode healthNode = new HealthNode(health, fearFactorAI);
         IsCoveredNode isCoveredNode = new IsCoveredNode(playerTransform, transform);
         ChaseNode chaseNode = new ChaseNode(playerTransform, agent, this);
         RangeNode chasingRangeNode = new RangeNode(chasingRange, playerTransform, transform);
@@ -242,7 +243,7 @@ public class AnimatorAI : MonoBehaviour
 
         IsCoverAvailable coverAvaliableNode = new IsCoverAvailable(availableCovers, playerTransform, this);
         GoToCoverNode goToCoverNode = new GoToCoverNode(agent, this);
-        HealthNode healthNode = new HealthNode(health);
+        HealthNode healthNode = new HealthNode(health, fearFactorAI);
         IsCoveredNode isCoveredNode = new IsCoveredNode(playerTransform, transform);
         ChaseNode chaseNode = new ChaseNode(playerTransform, agent, this);
         RangeNode chasingRangeNode = new RangeNode(chasingRange, playerTransform, transform);
@@ -281,16 +282,29 @@ public class AnimatorAI : MonoBehaviour
 
     private void ConstructBehaviorTreeTailGating()
     {
+
+        IsCoverAvailable coverAvaliableNode = new(availableCovers, playerTransform, this);
+        GoToCoverNode goToCoverNode = new(agent, this);
+        HealthNode healthNode = new(health,fearFactorAI);
+        IsCoveredNode isCoveredNode = new(playerTransform, transform);
+        IsCoveredNode isCoveredForHeal = new(playerTransform, transform);
+        HealMeNode healMeNode = new(health, agent,fearFactorAI);
+
         EnemyInSigthNode enemyInSigthNode = new(sensor);
-        
+        ObserveWhatIsTheProblemNode observeWhatIsTheProblemNode = new(agent, playerTransform, fearFactorAI);
         RunAwayNode runAwayNode = new(this,agent);
         PatrollingNode patrollingNode = new(navigationPathForAI, agent);
 
 
 
-        Sequence TailgatingSeqeunce = new Sequence(new List<Node> { enemyInSigthNode, runAwayNode });
+        Sequence healAiSequence = new(new List<Node> { isCoveredForHeal, healMeNode });
+        Sequence goToCoverSequence = new(new List<Node> { coverAvaliableNode, goToCoverNode });
+        Selector findCoverSelector = new(new List<Node> { goToCoverSequence });
+        Selector tryToTakeCoverSelector = new(new List<Node> { isCoveredNode, findCoverSelector });
+        Sequence mainCoverSequence = new(new List<Node> { healthNode, tryToTakeCoverSelector });
+        Sequence TailgatingSeqeunce = new Sequence(new List<Node> { enemyInSigthNode, observeWhatIsTheProblemNode, runAwayNode });
 
-        topNode = new Selector(new List<Node> { TailgatingSeqeunce, patrollingNode, });
+        topNode = new Selector(new List<Node> { healAiSequence, mainCoverSequence, TailgatingSeqeunce, patrollingNode  });
     }
 
     public void RunAwayFromPlayer()

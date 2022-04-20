@@ -5,12 +5,21 @@ using UnityEngine;
 public class HealthNode : Node
 {
     private NewEnemyHealth health;
+    private FearFactorAI fear;
 
-    public HealthNode(NewEnemyHealth health)
+    public HealthNode(NewEnemyHealth health, FearFactorAI fear)
     {
         this.health = health;
+        this.fear = fear;
     }
 
-    public override NodeState Evaluate() => health.newEnemycurrentHealth <= health.treshold ? NodeState.SUCCESS : NodeState.FAILURE;
+    public override NodeState Evaluate()
+    {
+        if(health.newEnemycurrentHealth <= health.treshold || fear.slider.value >= 0.6)
+        {
+            return NodeState.SUCCESS;
+        }
+        return NodeState.FAILURE;
+    }
 
 }

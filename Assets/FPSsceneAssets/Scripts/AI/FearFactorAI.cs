@@ -13,17 +13,19 @@ public class FearFactorAI : MonoBehaviour
 
     private float maxFear;
     private float fear;
+    private float fearNormalizedValue;
     public static bool needHealing = true;
 
 
     [SerializeField] float SetMaxForFear;
-
-
+    public bool canGainFear;
 
     void Start()
     {
+        canGainFear = true;
         ai = GetComponent<AnimatorAI>();
         maxFear = SetMaxForFear;
+        
     }
 
     // Update is called once per frame
@@ -36,6 +38,22 @@ public class FearFactorAI : MonoBehaviour
     float CalculateFear()
     {
         return fear / maxFear;
+    }
+
+    public void GainFearOverTime()
+    {
+        if (canGainFear)
+        {
+            fear += 10f;
+            Invoke(nameof(ResetCanGainFear), 1f);
+        }
+        canGainFear = false;
+        
+    }
+
+    private void ResetCanGainFear()
+    {
+        canGainFear = true;
     }
 
 
