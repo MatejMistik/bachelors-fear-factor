@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// Brackeys Grenade/Bomb in Unity tutorial
 public class Bomb : MonoBehaviour
 {
     public float delay = 3f;
