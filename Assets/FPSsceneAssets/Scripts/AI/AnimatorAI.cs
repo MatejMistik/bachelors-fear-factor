@@ -299,8 +299,7 @@ public class AnimatorAI : MonoBehaviour
 
         Sequence healAiSequence = new(new List<Node> { isCoveredForHeal, healMeNode });
         Sequence goToCoverSequence = new(new List<Node> { coverAvaliableNode, goToCoverNode });
-        Selector findCoverSelector = new(new List<Node> { goToCoverSequence });
-        Selector tryToTakeCoverSelector = new(new List<Node> { isCoveredNode, findCoverSelector });
+        Selector tryToTakeCoverSelector = new(new List<Node> { isCoveredNode, goToCoverSequence });
         Sequence mainCoverSequence = new(new List<Node> { healthNode, tryToTakeCoverSelector });
         Sequence TailgatingSeqeunce = new Sequence(new List<Node> { enemyInSigthNode, observeWhatIsTheProblemNode, runAwayNode });
 
