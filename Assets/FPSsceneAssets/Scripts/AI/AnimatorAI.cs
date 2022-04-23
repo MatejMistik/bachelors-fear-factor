@@ -74,7 +74,8 @@ public class AnimatorAI : MonoBehaviour
         currentHealth = startingHealth;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        weaponPickup = GameObject.Find("WeaponPickup").GetComponent<WeaponPickup>();
+        // for bomb scenario just add weapon pickup
+        //weaponPickup = GameObject.Find("WeaponPickup").GetComponent<WeaponPickup>();
         ConstructBehaviorTreeByNumber(behaviorTreeLevelNumber);
         
     }
@@ -140,13 +141,13 @@ public class AnimatorAI : MonoBehaviour
             case 5:
                 ConstructBehaviorTreeTailGating();
                 break;
+            case 6:
+                ConstructBehaviorTreeBomb();
+                break;
             default:
                 break;
         }
     }
-
-  
-    
 
     // Classic tree with chasing, covering
     private void ConstructBehaviorTree1()
@@ -304,6 +305,31 @@ public class AnimatorAI : MonoBehaviour
         Sequence TailgatingSeqeunce = new Sequence(new List<Node> { enemyInSigthNode, observeWhatIsTheProblemNode, runAwayNode });
 
         topNode = new Selector(new List<Node> { healAiSequence, mainCoverSequence, TailgatingSeqeunce, patrollingNode  });
+    }
+
+    private void ConstructBehaviorTreeBomb()
+    {
+        IsCoverAvailable coverAvaliableNode = new(availableCovers, playerTransform, this);
+        GoToCoverNode goToCoverNode = new(agent, this);
+        HealthNode healthNode = new(health, fearFactorAI);
+        IsCoveredNode isCoveredNode = new(playerTransform, transform);
+        IsCoveredNode isCoveredForHeal = new(playerTransform, transform);
+        HealMeNode healMeNode = new(health, agent, fearFactorAI);
+
+        EnemyInSigthNode enemyInSigthNode = new(sensor);
+        ObserveWhatIsTheProblemNode observeWhatIsTheProblemNode = new(agent, playerTransform, fearFactorAI);
+        RunAwayNode runAwayNode = new(this, agent);
+        PatrollingNode patrollingNode = new(navigationPathForAI, agent);
+
+
+
+        Sequence healAiSequence = new(new List<Node> { isCoveredForHeal, healMeNode });
+        Sequence goToCoverSequence = new(new List<Node> { coverAvaliableNode, goToCoverNode });
+        Selector tryToTakeCoverSelector = new(new List<Node> { isCoveredNode, goToCoverSequence });
+        Sequence mainCoverSequence = new(new List<Node> { healthNode, tryToTakeCoverSelector });
+        Sequence TailgatingSeqeunce = new Sequence(new List<Node> { enemyInSigthNode, observeWhatIsTheProblemNode, runAwayNode });
+
+        topNode = new Selector(new List<Node> { healAiSequence, mainCoverSequence, TailgatingSeqeunce, patrollingNode });
     }
 
     public void RunAwayFromPlayer()

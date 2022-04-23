@@ -17,6 +17,9 @@ public class Bomb : MonoBehaviour
     NewEnemyHealth enemyHealth;
     Rigidbody[] rigidbodies;
     BombTimer bombTimerScript;
+    private float sumOfDamage;
+    public float bombDamage;
+    public float distanceDamageMultiplier;
     
     private float explosionDamage;
 
@@ -29,7 +32,6 @@ public class Bomb : MonoBehaviour
         bombTimerScript = GameObject.Find("BombTimer").GetComponent<BombTimer>();
         bombTimerScript.StartTimer(countDown);
 
-
     }
 
     // Update is called once per frame
@@ -41,6 +43,7 @@ public class Bomb : MonoBehaviour
             Explode();
             hasExploded = true;
         }
+        
     }
 
      void Explode()
@@ -51,15 +54,19 @@ public class Bomb : MonoBehaviour
         foreach(Rigidbody rigidbody in rigidbodies)
         {
 
-        rigidbody.AddExplosionForce(explosionForce, transform.position, radius);
-        explosionDamage = 100 * Mathf.Abs(1f / (transform.position.magnitude - rigidbody.transform.position.magnitude)) / rigidbodies.Length;
-        Debug.Log("Explosion" + explosionDamage);
-        Debug.Log(rigidbody.name);
-        enemyHealth.TakeDamage(explosionDamage);
+            rigidbody.AddExplosionForce(explosionForce, transform.position, radius);
+            float distance = Vector3.Distance(transform.position, rigidbody.transform.position);
+            explosionDamage = bombDamage * Mathf.Abs(10f / distance) / rigidbodies.Length;
+            sumOfDamage += explosionDamage;
+            Debug.Log("Explosion" + explosionDamage);
+            Debug.Log(rigidbody.name);
+            Debug.Log(distance);
+            enemyHealth.TakeDamage(explosionDamage);
         
         
         }
-
+        Debug.Log(sumOfDamage);
+        Debug.Log(rigidbodies.Length);
         Destroy(gameObject);
 
         
