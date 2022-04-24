@@ -12,8 +12,7 @@ public class NewEnemyHealth : MonoBehaviour
     public Transform player;
     Ragdoll ragdoll;
     SkinnedMeshRenderer skinnedMeshRenderer;
-    public NavMeshAgent agent;
-    private AnimatorAI ai;
+    private NavMeshAgent agent;
     
 
 
