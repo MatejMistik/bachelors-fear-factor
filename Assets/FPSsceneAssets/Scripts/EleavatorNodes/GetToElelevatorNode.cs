@@ -18,7 +18,7 @@ public class GetToElelevatorNode : Node
     {
         Transform standingPosition = elevatorCheck.elevatorStandingPosition;
         float distance = Vector3.Distance(agent.transform.position, standingPosition.transform.position);
-        if(distance < 0.2f)
+        if(distance > 0.2f)
         {
             agent.SetDestination(standingPosition.transform.position);
             return NodeState.RUNNING;

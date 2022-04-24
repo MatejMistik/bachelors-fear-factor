@@ -16,9 +16,14 @@ public class IsInElevatorNode : Node
 
     public override NodeState Evaluate()
     {
+        
         Transform standingPosition = elevatorCheck.elevatorStandingPosition;
-        if(agent.transform.position == standingPosition.transform.position)
+        Debug.Log(standingPosition.transform.position);
+        Debug.Log(agent.transform.position);
+        float distance = Vector3.Distance(standingPosition.transform.position, agent.transform.position);
+        if(distance < 0.2)
         {
+            Debug.Log(this.nodeState);
             return NodeState.SUCCESS;
         }
 

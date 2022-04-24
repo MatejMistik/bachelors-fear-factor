@@ -54,6 +54,7 @@ public class AnimatorAI : MonoBehaviour
     private Vector3 walkPoint;
     public int walkPointRange;
     NavigationPathForAI navigationPathForAI;
+    ElevatorCheck elevatorCheck;
 
 
 
@@ -66,6 +67,7 @@ public class AnimatorAI : MonoBehaviour
         health = GetComponent<NewEnemyHealth>();
         sensor = GetComponent<Sensor>();
         navigationPathForAI = GetComponent<NavigationPathForAI>();
+        elevatorCheck = GetComponent<ElevatorCheck>();
 
     }
 
@@ -74,7 +76,7 @@ public class AnimatorAI : MonoBehaviour
         currentHealth = startingHealth;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>(); 
-        weaponPickup = GameObject.Find("WeaponPickup").GetComponent<WeaponPickup>();
+        //weaponPickup = GameObject.Find("WeaponPickup").GetComponent<WeaponPickup>();
         ConstructBehaviorTreeByNumber(behaviorTreeLevelNumber);
         
     }
@@ -95,24 +97,6 @@ public class AnimatorAI : MonoBehaviour
         //Debug.Log(weapon);
         
 
-        /*
-         * 
-         * chasing
-         * 
-        
-        
-        timer -= Time.deltaTime;
-        if( timer < 0f)
-        {
-            float sqDistance = (PlayerPos.position - agent.destination).sqrMagnitude;
-            if(sqDistance > maxDistance * maxDistance)
-            {
-                agent.destination = PlayerPos.position;
-                
-            }
-            timer = 1.0f;
-        }
-        */
 
         animator.SetFloat("Speed", agent.velocity.magnitude);
         // Debug.Log("AI Velocity" + agent.velocity.magnitude);
@@ -142,6 +126,9 @@ public class AnimatorAI : MonoBehaviour
                 break;
             case 6:
                 ConstructBehaviorTreeBomb();
+                break;
+            case 7:
+                ConstructBehaviorTreeElevator();
                 break;
             default:
                 break;
@@ -337,23 +324,24 @@ public class AnimatorAI : MonoBehaviour
         GoToCoverNode goToCoverNode = new(agent, this);
         HealthNode healthNode = new(health, fearFactorAI);
         IsCoveredNode isCoveredNode = new(playerTransform, transform);
-        IsCoveredNode isCoveredForHeal = new(playerTransform, transform);
-        HealMeNode healMeNode = new(health, agent, fearFactorAI);
 
         EnemyInSigthNode enemyInSigthNode = new(sensor);
         ObserveWhatIsTheProblemNode observeWhatIsTheProblemNode = new(agent, playerTransform, fearFactorAI);
         RunAwayNode runAwayNode = new(this, agent);
-        PatrollingNode patrollingNode = new(navigationPathForAI, agent);
+
+        IsInElevatorNode isInElevatorNode = new(agent, elevatorCheck);
+        IsElelevatorOpenedNode isElelevatorOpenedNode = new(elevatorCheck);
+        GetToElelevatorNode getToElelevatorNode = new(agent, elevatorCheck);
 
 
-
-        Sequence healAiSequence = new(new List<Node> { isCoveredForHeal, healMeNode });
+        Sequence goToElevatorSeqeunce = new(new List<Node> { isElelevatorOpenedNode, getToElelevatorNode});
+        Selector elevatorSelector = new(new List<Node> { isInElevatorNode, goToElevatorSeqeunce });
         Sequence goToCoverSequence = new(new List<Node> { coverAvaliableNode, goToCoverNode });
         Selector tryToTakeCoverSelector = new(new List<Node> { isCoveredNode, goToCoverSequence });
         Sequence mainCoverSequence = new(new List<Node> { healthNode, tryToTakeCoverSelector });
         Sequence TailgatingSeqeunce = new Sequence(new List<Node> { enemyInSigthNode, observeWhatIsTheProblemNode, runAwayNode });
 
-        topNode = new Selector(new List<Node> { healAiSequence, mainCoverSequence, TailgatingSeqeunce, patrollingNode });
+        topNode = new Selector(new List<Node> { elevatorSelector,  mainCoverSequence, TailgatingSeqeunce, });
     }
 
     public void RunAwayFromPlayer()
