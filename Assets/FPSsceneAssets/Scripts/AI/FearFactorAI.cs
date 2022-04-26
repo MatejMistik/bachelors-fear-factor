@@ -12,17 +12,21 @@ public class FearFactorAI : MonoBehaviour
 
 
     private float maxFear;
-    private float fear;
+    public float fear;
     private float fearNormalizedValue;
     public static bool needHealing = true;
+    public float decreaseFearTimer;
 
 
     [SerializeField] float SetMaxForFear;
     public bool canGainFear;
 
+    public bool canLoseFear { get; private set; }
+
     void Start()
     {
         canGainFear = true;
+        canLoseFear = true;
         ai = GetComponent<AnimatorAI>();
         maxFear = SetMaxForFear;
         
@@ -33,6 +37,10 @@ public class FearFactorAI : MonoBehaviour
     {
         slider.value = CalculateFear();
         slider.transform.LookAt(player);
+        if (fear > 0 && fear < 0.9)
+            decreaseFearTimer += Time.deltaTime;
+        if (decreaseFearTimer >= 5)
+            LoseFearOverTime();
 
     }
     float CalculateFear()
@@ -47,6 +55,7 @@ public class FearFactorAI : MonoBehaviour
             fear += 10f;
             Invoke(nameof(ResetCanGainFear), 1f);
         }
+        decreaseFearTimer = 0f;
         canGainFear = false;
         
     }
@@ -55,6 +64,25 @@ public class FearFactorAI : MonoBehaviour
     {
         canGainFear = true;
     }
+
+    public void LoseFearOverTime()
+    {
+        if (canGainFear)
+        {
+            fear -= 10f;
+            Invoke(nameof(ResetCanLoseFear), 1f);
+        }
+        decreaseFearTimer = 0f;
+        canLoseFear = false;
+
+    }
+
+    private void ResetCanLoseFear()
+    {
+        canLoseFear = true;
+    }
+
+
 
 
 

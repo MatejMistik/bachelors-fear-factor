@@ -22,7 +22,7 @@ public class HealMeNode : Node
         if((health.newEnemycurrentHealth  < health.maxHealth || fearFactorAI.slider.value >= 0.6f) && agent.velocity.magnitude == 0 )
         {
             health.Restore();
-            fearFactorAI.slider.value = 0;
+            fearFactorAI.fear = 0;
             return NodeState.SUCCESS;
         }
         return NodeState.FAILURE;

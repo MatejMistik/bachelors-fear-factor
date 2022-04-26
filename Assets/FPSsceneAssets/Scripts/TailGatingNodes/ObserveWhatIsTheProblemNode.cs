@@ -18,8 +18,9 @@ public class ObserveWhatIsTheProblemNode : Node
     }
 
     public override NodeState Evaluate()
-    {
+    { 
         if(fearFactorAI.slider.value > 0.6f){
+            Debug.Log("fearValue" + fearFactorAI.slider.value);
             agent.isStopped = false;
             return NodeState.SUCCESS;
         }
@@ -27,7 +28,7 @@ public class ObserveWhatIsTheProblemNode : Node
         agent.transform.LookAt(player);
         if(fearFactorAI.canGainFear)
             fearFactorAI.GainFearOverTime();
-        return NodeState.RUNNING;
+        return NodeState.FAILURE;
 
     }
 }

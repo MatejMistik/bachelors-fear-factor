@@ -15,7 +15,7 @@ public class HealthNode : Node
 
     public override NodeState Evaluate()
     {
-        if(health.newEnemycurrentHealth <= health.treshold || fear.slider.value >= 0.6)
+        if(health.newEnemycurrentHealth <= health.treshold || fear.slider.value >= 0.9)
         {
             return NodeState.SUCCESS;
         }
