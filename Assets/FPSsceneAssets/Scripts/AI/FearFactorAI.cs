@@ -37,10 +37,12 @@ public class FearFactorAI : MonoBehaviour
     {
         slider.value = CalculateFear();
         slider.transform.LookAt(player);
-        if (fear > 0 && fear < 0.9)
+        if (fear > 0 && fear < 90)
             decreaseFearTimer += Time.deltaTime;
         if (decreaseFearTimer >= 5)
             LoseFearOverTime();
+        Debug.Log(decreaseFearTimer);
+        Debug.Log(fear);
 
     }
     float CalculateFear()

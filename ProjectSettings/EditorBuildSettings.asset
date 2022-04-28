@@ -5,7 +5,28 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/FPSsceneAssets/FPSscene.unity
-    guid: 5c492b5e7a66df543af1112317a36179
+    path: Assets/FPSsceneAssets/LoadingScene/MainMenu.unity
+    guid: 145df6ba242612e48a23236f9832f58e
+  - enabled: 1
+    path: Assets/FPSsceneAssets/LoadingScene/Loading.unity
+    guid: 8588aaab6781dc246b0350b3d77dc6d2
+  - enabled: 1
+    path: Assets/FPSsceneAssets/TailGating.unity
+    guid: 2eceeaa8118ac0b42bf1d2d28f1aec6b
+  - enabled: 1
+    path: Assets/FPSsceneAssets/PhoneScene.unity
+    guid: 61fd28e77d82a24418de28e710411f52
+  - enabled: 1
+    path: Assets/FPSsceneAssets/BombScene.unity
+    guid: a8011ec7e5e786344abd6a959a3f0b3a
+  - enabled: 1
+    path: Assets/FPSsceneAssets/BushScene.unity
+    guid: 7a72a7cf40b54a844939f9512ba6a0c3
+  - enabled: 1
+    path: Assets/FPSsceneAssets/ElevatorScene.unity
+    guid: 8cdb90ee15e2450458fc93cd5ef4d012
   m_configObjects: {}
