@@ -9,6 +9,9 @@ public class FearFactorAI : MonoBehaviour
     public Transform player;
     public Slider slider;
     AnimatorAI ai;
+    public TextMeshProUGUI captions;
+    captionsForAI captionsForAI;
+    
 
 
     private float maxFear;
@@ -17,6 +20,10 @@ public class FearFactorAI : MonoBehaviour
     public static bool needHealing = true;
     public float decreaseFearTimer;
 
+    private int messagesCounter = 0;
+    private string[] stringArrObserving = new string[] { "Can you please stop following me ?", "What exactly is your problem ?", "Get Lost !" };
+    private string[] stringArrRunningAway = new string[] { "Let me be ! ", " I am calling the police !", "Get Lost !" };
+    private bool wordResponseCalled;
 
     [SerializeField] float SetMaxForFear;
     public bool canGainFear;
@@ -29,7 +36,8 @@ public class FearFactorAI : MonoBehaviour
         canLoseFear = true;
         ai = GetComponent<AnimatorAI>();
         maxFear = SetMaxForFear;
-        
+        captionsForAI = GameObject.Find("Captions").GetComponent<captionsForAI>();
+
     }
 
     // Update is called once per frame
@@ -43,6 +51,11 @@ public class FearFactorAI : MonoBehaviour
             LoseFearOverTime();
         Debug.Log(decreaseFearTimer);
         Debug.Log(fear);
+        if(fear > 30 && !wordResponseCalled)
+        {
+            WordResponse();
+            wordResponseCalled = true;
+        }
 
     }
     float CalculateFear()
@@ -84,6 +97,23 @@ public class FearFactorAI : MonoBehaviour
         canLoseFear = true;
     }
 
+    public void WordResponse()
+    {
+        captionsForAI.TurnOnCaptions();
+        if(messagesCounter >= stringArrObserving.Length)
+        {
+            messagesCounter = 0;
+        }
+        captions.SetText(stringArrObserving[messagesCounter]);
+        messagesCounter++;
+        Invoke(nameof(ResetWordResponse), 2f);
+        
+    }
+
+    private void ResetWordResponse()
+    {
+        wordResponseCalled = false;
+    }
 
 
 

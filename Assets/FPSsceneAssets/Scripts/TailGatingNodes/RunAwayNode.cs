@@ -31,7 +31,7 @@ public class RunAwayNode : Node
             if (fearFactorAI.canGainFear)
                 fearFactorAI.GainFearOverTime();
         }
-
+        ai.nodeStateText.SetText("Running Away");
         return NodeState.RUNNING;
     }
 }

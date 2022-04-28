@@ -278,19 +278,21 @@ public class AnimatorAI : MonoBehaviour
         HealMeNode healMeNode = new(health, agent,fearFactorAI);
 
         EnemyInSigthNode enemyInSigthNode = new(sensor,agent, fearFactorAI);
-        ObserveWhatIsTheProblemNode observeWhatIsTheProblemNode = new(agent, playerTransform, fearFactorAI);
+        ObserveWhatIsTheProblemNode observeWhatIsTheProblemNode = new(agent, playerTransform, fearFactorAI, this);
         RunAwayNode runAwayNode = new(this,agent,sensor,fearFactorAI);
-        PatrollingNode patrollingNode = new(navigationPathForAI, agent);
+        CanPatrolNode canPatrolNode = new(this, sensor, agent);
+        PatrollingNode patrollingNode = new(navigationPathForAI, agent,this);
 
 
 
+        Sequence patrollingSeqeunce= new(new List<Node> { canPatrolNode, patrollingNode});
         Sequence healAiSequence = new(new List<Node> { isCoveredForHeal, healMeNode });
         Sequence goToCoverSequence = new(new List<Node> { coverAvaliableNode, goToCoverNode });
         Selector tryToTakeCoverSelector = new(new List<Node> { isCoveredNode, goToCoverSequence });
         Sequence mainCoverSequence = new(new List<Node> { healthNode, tryToTakeCoverSelector });
         Sequence TailgatingSeqeunce = new Sequence(new List<Node> { enemyInSigthNode, observeWhatIsTheProblemNode, runAwayNode });
 
-        topNode = new Selector(new List<Node> { healAiSequence, mainCoverSequence, TailgatingSeqeunce, patrollingNode  });
+        topNode = new Selector(new List<Node> { healAiSequence, mainCoverSequence, TailgatingSeqeunce, patrollingSeqeunce  });
     }
 
     private void ConstructBehaviorTreeBomb()
@@ -303,9 +305,9 @@ public class AnimatorAI : MonoBehaviour
         HealMeNode healMeNode = new(health, agent, fearFactorAI);
 
         EnemyInSigthNode enemyInSigthNode = new(sensor,agent,fearFactorAI);
-        ObserveWhatIsTheProblemNode observeWhatIsTheProblemNode = new(agent, playerTransform, fearFactorAI);
+        ObserveWhatIsTheProblemNode observeWhatIsTheProblemNode = new(agent, playerTransform, fearFactorAI, this);
         RunAwayNode runAwayNode = new(this, agent, sensor, fearFactorAI);
-        PatrollingNode patrollingNode = new(navigationPathForAI, agent);
+        PatrollingNode patrollingNode = new(navigationPathForAI, agent, this);
 
 
 
@@ -326,7 +328,7 @@ public class AnimatorAI : MonoBehaviour
         IsCoveredNode isCoveredNode = new(playerTransform, transform);
 
         EnemyInSigthNode enemyInSigthNode = new(sensor, agent, fearFactorAI);
-        ObserveWhatIsTheProblemNode observeWhatIsTheProblemNode = new(agent, playerTransform, fearFactorAI);
+        ObserveWhatIsTheProblemNode observeWhatIsTheProblemNode = new(agent, playerTransform, fearFactorAI, this);
         RunAwayNode runAwayNode = new(this, agent, sensor, fearFactorAI);
 
         IsInElevatorNode isInElevatorNode = new(agent, elevatorCheck);
