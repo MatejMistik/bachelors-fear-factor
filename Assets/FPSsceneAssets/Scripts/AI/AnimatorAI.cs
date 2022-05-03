@@ -29,7 +29,7 @@ public class AnimatorAI : MonoBehaviour
     private Node topNode;
 
     public float currentHealth;
-    private NewEnemyHealth health;
+    private AiHealth health;
     FearFactorAI fearFactorAI;
 
     WeaponPickup weaponPickup;
@@ -64,7 +64,7 @@ public class AnimatorAI : MonoBehaviour
         fearFactorAI = GetComponent<FearFactorAI>();
         agent = GetComponent<NavMeshAgent>();
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
-        health = GetComponent<NewEnemyHealth>();
+        health = GetComponent<AiHealth>();
         sensor = GetComponent<Sensor>();
         navigationPathForAI = GetComponent<NavigationPathForAI>();
         elevatorCheck = GetComponent<ElevatorCheck>();
@@ -282,7 +282,7 @@ public class AnimatorAI : MonoBehaviour
 
         EnemyInSigthNode enemyInSigthNode = new(sensor,agent, fearFactorAI);
         ObserveWhatIsTheProblemNode observeWhatIsTheProblemNode = new(agent, playerTransform, fearFactorAI, this);
-        RunAwayNode runAwayNode = new(this,agent,sensor,fearFactorAI);
+        RunAwayNode runAwayNode = new(this,agent,sensor,fearFactorAI,playerTransform);
         CanPatrolNode canPatrolNode = new(this, sensor, agent);
         PatrollingNode patrollingNode = new(navigationPathForAI, agent,this,fearFactorAI);
 
@@ -309,7 +309,7 @@ public class AnimatorAI : MonoBehaviour
 
         EnemyInSigthNode enemyInSigthNode = new(sensor,agent,fearFactorAI);
         ObserveWhatIsTheProblemNode observeWhatIsTheProblemNode = new(agent, playerTransform, fearFactorAI, this);
-        RunAwayNode runAwayNode = new(this, agent, sensor, fearFactorAI);
+        RunAwayNode runAwayNode = new(this, agent, sensor, fearFactorAI,playerTransform);
         PatrollingNode patrollingNode = new(navigationPathForAI, agent, this,fearFactorAI);
 
 
@@ -332,7 +332,7 @@ public class AnimatorAI : MonoBehaviour
 
         EnemyInSigthNode enemyInSigthNode = new(sensor, agent, fearFactorAI);
         ObserveWhatIsTheProblemNode observeWhatIsTheProblemNode = new(agent, playerTransform, fearFactorAI, this);
-        RunAwayNode runAwayNode = new(this, agent, sensor, fearFactorAI);
+        RunAwayNode runAwayNode = new(this, agent, sensor, fearFactorAI, playerTransform);
 
         IsInElevatorNode isInElevatorNode = new(agent, elevatorCheck);
         IsElelevatorOpenedNode isElelevatorOpenedNode = new(elevatorCheck);
@@ -350,7 +350,7 @@ public class AnimatorAI : MonoBehaviour
 
         topNode = new Selector(new List<Node> { TailgatingSeqeunce, mainCoverSequence,  elevatorSelector });
     }
-
+    /*
     public void RunAwayFromPlayer()
     {
         
@@ -387,11 +387,8 @@ public class AnimatorAI : MonoBehaviour
             walkPointSet = true;
     }
 
+    */
 
-
-
-
-    // Update is called once per frame
 
     public void DebugMessage(string message)
     {

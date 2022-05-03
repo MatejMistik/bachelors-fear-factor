@@ -5,13 +5,13 @@ using UnityEngine;
 public class captionsForAI : MonoBehaviour
 {
     public GameObject captions;
-    private float turnOffCaptionsTimer;
+    public float turnOffCaptionsTimer;
     private bool captionsActive;
     public void TurnOnCaptions()
     {
         captionsActive = true;
         captions.SetActive(true);
-        //Invoke(nameof(TurnOffCaptions), 3f);
+        Invoke(nameof(TurnOffCaptions), turnOffCaptionsTimer);
  
     }
 

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class HealthNode : Node
 {
-    private NewEnemyHealth health;
+    private AiHealth health;
     private FearFactorAI fear;
 
-    public HealthNode(NewEnemyHealth health, FearFactorAI fear)
+    public HealthNode(AiHealth health, FearFactorAI fear)
     {
         this.health = health;
         this.fear = fear;

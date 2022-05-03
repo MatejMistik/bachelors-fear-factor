@@ -33,12 +33,14 @@ public class FearFactorAI : MonoBehaviour
     private float fearNormalizedValue;
     public static bool needHealing = true;
     public float decreaseFearTimer;
+    public float timeBetweenGainOfFear;
 
     private int messagesCounter = 0;
     private string[] stringArrObserving = new string[] { "Can you please stop following me ?", "What exactly is your problem ?", "Get Lost !" };
     private string[] stringArrRunningAway = new string[] { "Let me be ! ", " I am calling the police !", "Psycho !" };
     private bool wordResponseCalled;
     public bool observingDialogActive;
+    private float fearStateMultiplier = 0f;
 
     [SerializeField] float SetMaxForFear;
     public bool canGainFear;
@@ -64,8 +66,8 @@ public class FearFactorAI : MonoBehaviour
             decreaseFearTimer += Time.deltaTime;
         if (decreaseFearTimer >= 5)
             LoseFearOverTime();
-        Debug.Log(decreaseFearTimer);
-        Debug.Log(fear);
+        //Debug.Log(decreaseFearTimer);
+        //Debug.Log(fear);
         // activating dialog
         if(fear > 30 && !wordResponseCalled && actualState == OBSERVING)
         {
@@ -89,8 +91,8 @@ public class FearFactorAI : MonoBehaviour
     {
         if (canGainFear)
         {
-            fear += 10f;
-            Invoke(nameof(ResetCanGainFear), 1f);
+            fear += 10f * fearStateMultiplier;
+            Invoke(nameof(ResetCanGainFear), timeBetweenGainOfFear);
         }
         decreaseFearTimer = 0f;
         canGainFear = false;
@@ -143,12 +145,14 @@ public class FearFactorAI : MonoBehaviour
         {
             case FearState.Observing:
                 actualState = OBSERVING;
+                fearStateMultiplier = 1f;
                     break;
             case FearState.Calm:
                 actualState = CALM;
                 break;
             case FearState.Running:
                 actualState = RUNNING;
+                fearStateMultiplier = 2f;
                 break;
 
         }

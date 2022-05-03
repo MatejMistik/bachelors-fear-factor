@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 
-public class NewEnemyHealth : MonoBehaviour
+public class AiHealth : MonoBehaviour
 {
     public GameObject HealhtBarUI;
     public Slider slider;
@@ -78,14 +78,14 @@ public class NewEnemyHealth : MonoBehaviour
         agent.isStopped = true;
         HealhtBarUI.SetActive(false);
         skinnedMeshRenderer.material.color = Color.white;
-        this.GetComponent<NewEnemyHealth>().enabled = false;
+        this.GetComponent<AiHealth>().enabled = false;
 
     }
 
-    public void Restore()
+    public void Restore(float amount)
     {
 
-        newEnemycurrentHealth += 50;
+        newEnemycurrentHealth += amount;
     }
 
 

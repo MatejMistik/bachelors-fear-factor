@@ -5,11 +5,11 @@ using UnityEngine.AI;
 
 public class HealMeNode : Node
 {
-    private NewEnemyHealth health;
+    private AiHealth health;
     public NavMeshAgent agent;
     private FearFactorAI fearFactorAI;
 
-    public HealMeNode(NewEnemyHealth health, NavMeshAgent agent, FearFactorAI fearFactorAI)
+    public HealMeNode(AiHealth health, NavMeshAgent agent, FearFactorAI fearFactorAI)
     {
         this.health = health;
         this.agent = agent;
@@ -21,7 +21,7 @@ public class HealMeNode : Node
         //Debug.Log(agent.velocity.magnitude); 
         if((health.newEnemycurrentHealth  < health.maxHealth || fearFactorAI.slider.value >= 0.6f) && agent.velocity.magnitude == 0 )
         {
-            health.Restore();
+            health.Restore(50);
             fearFactorAI.fear = 0;
             return NodeState.SUCCESS;
         }

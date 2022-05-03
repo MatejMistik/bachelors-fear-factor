@@ -14,7 +14,7 @@ public class Bomb : MonoBehaviour
     private bool hasExploded = false;
     public float radius;
     public float explosionForce;
-    NewEnemyHealth enemyHealth;
+    AiHealth enemyHealth;
     Rigidbody[] rigidbodies;
     BombTimer bombTimerScript;
     private float sumOfDamage;
@@ -27,7 +27,7 @@ public class Bomb : MonoBehaviour
     void Start()
     {
         countDown = bombTimer;
-        enemyHealth = GameObject.Find("NewEnemy").GetComponent<NewEnemyHealth>();
+        enemyHealth = GameObject.Find("NewEnemy").GetComponent<AiHealth>();
         rigidbodies = GameObject.Find("NewEnemy").GetComponentsInChildren<Rigidbody>();
         bombTimerScript = GameObject.Find("BombTimer").GetComponent<BombTimer>();
         bombTimerScript.StartTimer(countDown);

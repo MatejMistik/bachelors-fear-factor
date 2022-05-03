@@ -6,7 +6,7 @@ using UnityEngine;
 public class Hitbox : MonoBehaviour
 {
     public AnimatorAI ai;
-    public NewEnemyHealth aiHealth;
+    public AiHealth aiHealth;
     
 
     public void OnRaycasthit(Gun weapon)
