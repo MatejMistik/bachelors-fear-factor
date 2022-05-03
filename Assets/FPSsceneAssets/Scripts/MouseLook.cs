@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Brackeys mouselook code
+
 public class MouseLook : MonoBehaviour
 {
 
-    [SerializeField] float mouseSensitivity = 100f;
+    [SerializeField] float mouseSensitivity;
     [SerializeField] Transform playerRotation;
 
     private float xRotation = 0f;

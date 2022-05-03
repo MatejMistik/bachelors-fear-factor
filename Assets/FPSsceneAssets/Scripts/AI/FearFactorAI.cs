@@ -13,11 +13,12 @@ public class FearFactorAI : MonoBehaviour
     captionsForAI captionsForAI;
     protected FearState _fearState;
     public FearState fearState { get { return _fearState; } }
-    private int numberOfState = 0;
+    private int actualState = 0;
     public const int CALM = 0;
     public const int FEARED = 1;
     public const int OBSERVING = 2;
     public const int RUNNING = 3;
+    public const int UNCONSCIOUS = 4;
 
     public enum FearState
     {
@@ -66,12 +67,12 @@ public class FearFactorAI : MonoBehaviour
         Debug.Log(decreaseFearTimer);
         Debug.Log(fear);
         // activating dialog
-        if(fear > 30 && !wordResponseCalled && numberOfState == OBSERVING)
+        if(fear > 30 && !wordResponseCalled && actualState == OBSERVING)
         {
             WordResponse(stringArrObserving);
             wordResponseCalled = true;
         }
-        if(fear > 30 && !wordResponseCalled && numberOfState == RUNNING)
+        if(fear > 30 && !wordResponseCalled && actualState == RUNNING)
         {
             WordResponse(stringArrRunningAway);
             wordResponseCalled = true;
@@ -141,13 +142,13 @@ public class FearFactorAI : MonoBehaviour
         switch (state)
         {
             case FearState.Observing:
-                numberOfState = OBSERVING;
+                actualState = OBSERVING;
                     break;
             case FearState.Calm:
-                numberOfState = CALM;
+                actualState = CALM;
                 break;
             case FearState.Running:
-                numberOfState = RUNNING;
+                actualState = RUNNING;
                 break;
 
         }

@@ -143,7 +143,6 @@ class PlayerMovement : MonoBehaviour
             coinPickupSpeedMultiplier = 5f;
             ultraSpeedTimeRemaining = ultraSpeedTime;
             Destroy(other.gameObject);
-
         }
 
         if (other.gameObject.layer == 9)
@@ -154,21 +153,8 @@ class PlayerMovement : MonoBehaviour
         if (other.gameObject.layer == 7)
         {
             LifeScript.Lives += 1;
-            Destroy(other.gameObject);
-            
+            Destroy(other.gameObject);  
         }
-
-        if (other.gameObject.layer == 11)
-        {
-            
-            LifeScript.takingDamage = true;
-            LifeScript.health-= 10;
-            //Debug.Log(LifeScript.health);
-            Destroy(other.gameObject);
-        }
-
-
-
 
     }
 

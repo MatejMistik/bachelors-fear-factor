@@ -84,4 +84,20 @@ public class LifeScript : MonoBehaviour
         takingDamage = false;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.gameObject.layer == 11)
+        {
+            takingDamage = true;
+            health -= 10;
+            //Debug.Log(LifeScript.health);
+            Destroy(other.gameObject);
+        }
+
+
+
+
+    }
+
 }
