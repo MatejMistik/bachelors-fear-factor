@@ -22,6 +22,12 @@ public class MainMenu : MonoBehaviour {
             Debug.Log("Click Play");
             Loader.Load(Loader.Scene.PhoneScene);
         };
+        transform.Find("QuitBtn").GetComponent<Button_UI>().ClickFunc = () => {
+            Debug.Log("Click Quit");
+            Application.Quit();
+        };
+
+
 
     }
 

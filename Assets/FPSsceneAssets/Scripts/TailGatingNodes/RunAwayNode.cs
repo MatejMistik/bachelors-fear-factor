@@ -22,7 +22,7 @@ public class RunAwayNode : Node
 
     public override NodeState Evaluate()
     {
-
+        fearFactorAI.WhichStateIsIn(FearFactorAI.FearState.Running);
         Debug.Log("RunAwayNode " + this.nodeState);
         agent.speed = 15;
         ai.RunAwayFromPlayer();

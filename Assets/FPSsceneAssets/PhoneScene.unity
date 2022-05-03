@@ -209,30 +209,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &781459914 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 17026099292242141, guid: 12397741ba8d17046a742ff97e7db0e1,
-    type: 3}
-  m_PrefabInstance: {fileID: 17026098729427223}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 882c6fdfc78843f4aafac5441e471e7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1104543804 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 17026099816669483, guid: 12397741ba8d17046a742ff97e7db0e1,
-    type: 3}
-  m_PrefabInstance: {fileID: 17026098729427223}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 882c6fdfc78843f4aafac5441e471e7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1259475788
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,18 +489,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1411407775 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 17026099998872925, guid: 12397741ba8d17046a742ff97e7db0e1,
-    type: 3}
-  m_PrefabInstance: {fileID: 17026098729427223}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 882c6fdfc78843f4aafac5441e471e7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1440210888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -536,7 +500,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 17026098729427224}
+      objectReference: {fileID: 0}
     - target: {fileID: 4603193385347953886, guid: af71f362dd291d84e98edaa97237e05c,
         type: 3}
       propertyPath: m_Name
@@ -672,12 +636,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &2139157200 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 17026100650398663, guid: 12397741ba8d17046a742ff97e7db0e1,
-    type: 3}
-  m_PrefabInstance: {fileID: 17026098729427223}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &17026098729427223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -715,7 +673,7 @@ PrefabInstance:
         type: 3}
       propertyPath: agent
       value: 
-      objectReference: {fileID: 17026098729427225}
+      objectReference: {fileID: 0}
     - target: {fileID: 17026099816669482, guid: 12397741ba8d17046a742ff97e7db0e1,
         type: 3}
       propertyPath: m_NavMeshData
@@ -897,51 +855,54 @@ PrefabInstance:
         type: 3}
       propertyPath: availableCovers.Array.data[0]
       value: 
-      objectReference: {fileID: 1411407775}
+      objectReference: {fileID: 0}
     - target: {fileID: 6637571690436241483, guid: 12397741ba8d17046a742ff97e7db0e1,
         type: 3}
       propertyPath: availableCovers.Array.data[1]
       value: 
-      objectReference: {fileID: 781459914}
+      objectReference: {fileID: 0}
     - target: {fileID: 6637571690436241483, guid: 12397741ba8d17046a742ff97e7db0e1,
         type: 3}
       propertyPath: availableCovers.Array.data[2]
       value: 
-      objectReference: {fileID: 1104543804}
+      objectReference: {fileID: 0}
     - target: {fileID: 6637571690436241483, guid: 12397741ba8d17046a742ff97e7db0e1,
         type: 3}
       propertyPath: availableCovers.Array.data[3]
       value: 
-      objectReference: {fileID: 1104543804}
+      objectReference: {fileID: 0}
     - target: {fileID: 6637571690436241483, guid: 12397741ba8d17046a742ff97e7db0e1,
         type: 3}
       propertyPath: availableCovers.Array.data[4]
       value: 
-      objectReference: {fileID: 1104543804}
+      objectReference: {fileID: 0}
     - target: {fileID: 6637571690436241483, guid: 12397741ba8d17046a742ff97e7db0e1,
         type: 3}
       propertyPath: availableCovers.Array.data[5]
       value: 
-      objectReference: {fileID: 1104543804}
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856284181884231160, guid: 12397741ba8d17046a742ff97e7db0e1,
+        type: 3}
+      propertyPath: slider
+      value: 
+      objectReference: {fileID: 560720561}
+    - target: {fileID: 6856284181884231160, guid: 12397741ba8d17046a742ff97e7db0e1,
+        type: 3}
+      propertyPath: LiveText
+      value: 
+      objectReference: {fileID: 1371512845}
+    - target: {fileID: 6856284182838335546, guid: 12397741ba8d17046a742ff97e7db0e1,
+        type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 142679874}
     - target: {fileID: 6998404499454441658, guid: 12397741ba8d17046a742ff97e7db0e1,
         type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
-      objectReference: {fileID: 2139157200}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12397741ba8d17046a742ff97e7db0e1, type: 3}
---- !u!4 &17026098729427224 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 17026100140178336, guid: 12397741ba8d17046a742ff97e7db0e1,
-    type: 3}
-  m_PrefabInstance: {fileID: 17026098729427223}
-  m_PrefabAsset: {fileID: 0}
---- !u!195 &17026098729427225 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 4393977142329961591, guid: 12397741ba8d17046a742ff97e7db0e1,
-    type: 3}
-  m_PrefabInstance: {fileID: 17026098729427223}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7264778840569351698
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -949,6 +910,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 720036874, guid: ef20b229d26c51f4f864aad491f9f98d, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7264778838793349239, guid: ef20b229d26c51f4f864aad491f9f98d,
         type: 3}
       propertyPath: m_AnchorMax.x

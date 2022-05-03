@@ -636,44 +636,6 @@ Transform:
   m_Father: {fileID: 700142222}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &781459914 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 17026099292242141, guid: 12397741ba8d17046a742ff97e7db0e1,
-    type: 3}
-  m_PrefabInstance: {fileID: 17026098729427223}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 882c6fdfc78843f4aafac5441e471e7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &821695610 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 123453375557249164, guid: 12397741ba8d17046a742ff97e7db0e1,
-    type: 3}
-  m_PrefabInstance: {fileID: 17026098729427223}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &821695612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 821695610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 099561d4a7b870247ba3a75a711b545e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  elevatorStandingPosition: {fileID: 305131150}
-  doorsOpenedPosition: {fileID: 762252737}
-  doorsClosedPosition: {fileID: 1170261931}
-  doors: {fileID: 907856549}
-  elevatorFloor: {fileID: 376669287}
-  doorsOpened: 0
-  moveSpeed: 5
-  doorsAreMoving: 0
 --- !u!1 &907856549
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,18 +750,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
---- !u!114 &1104543804 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 17026099816669483, guid: 12397741ba8d17046a742ff97e7db0e1,
-    type: 3}
-  m_PrefabInstance: {fileID: 17026098729427223}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 882c6fdfc78843f4aafac5441e471e7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1170261930
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,18 +1026,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1411407775 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 17026099998872925, guid: 12397741ba8d17046a742ff97e7db0e1,
-    type: 3}
-  m_PrefabInstance: {fileID: 17026098729427223}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 882c6fdfc78843f4aafac5441e471e7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1537872237
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,12 +1140,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
---- !u!4 &2139157200 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 17026100650398663, guid: 12397741ba8d17046a742ff97e7db0e1,
-    type: 3}
-  m_PrefabInstance: {fileID: 17026098729427223}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &17026098729427223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1513,32 +1445,47 @@ PrefabInstance:
         type: 3}
       propertyPath: availableCovers.Array.data[0]
       value: 
-      objectReference: {fileID: 1411407775}
+      objectReference: {fileID: 0}
     - target: {fileID: 6637571690436241483, guid: 12397741ba8d17046a742ff97e7db0e1,
         type: 3}
       propertyPath: availableCovers.Array.data[1]
       value: 
-      objectReference: {fileID: 781459914}
+      objectReference: {fileID: 0}
     - target: {fileID: 6637571690436241483, guid: 12397741ba8d17046a742ff97e7db0e1,
         type: 3}
       propertyPath: availableCovers.Array.data[2]
       value: 
-      objectReference: {fileID: 1104543804}
+      objectReference: {fileID: 0}
     - target: {fileID: 6637571690436241483, guid: 12397741ba8d17046a742ff97e7db0e1,
         type: 3}
       propertyPath: availableCovers.Array.data[3]
       value: 
-      objectReference: {fileID: 1104543804}
+      objectReference: {fileID: 0}
     - target: {fileID: 6637571690436241483, guid: 12397741ba8d17046a742ff97e7db0e1,
         type: 3}
       propertyPath: availableCovers.Array.data[4]
       value: 
-      objectReference: {fileID: 1104543804}
+      objectReference: {fileID: 0}
     - target: {fileID: 6637571690436241483, guid: 12397741ba8d17046a742ff97e7db0e1,
         type: 3}
       propertyPath: availableCovers.Array.data[5]
       value: 
-      objectReference: {fileID: 1104543804}
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856284181884231160, guid: 12397741ba8d17046a742ff97e7db0e1,
+        type: 3}
+      propertyPath: slider
+      value: 
+      objectReference: {fileID: 560720561}
+    - target: {fileID: 6856284181884231160, guid: 12397741ba8d17046a742ff97e7db0e1,
+        type: 3}
+      propertyPath: LiveText
+      value: 
+      objectReference: {fileID: 1371512845}
+    - target: {fileID: 6856284182838335546, guid: 12397741ba8d17046a742ff97e7db0e1,
+        type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 142679874}
     - target: {fileID: 6998404499454441650, guid: 12397741ba8d17046a742ff97e7db0e1,
         type: 3}
       propertyPath: m_Enabled
@@ -1553,7 +1500,7 @@ PrefabInstance:
         type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
-      objectReference: {fileID: 2139157200}
+      objectReference: {fileID: 0}
     - target: {fileID: 8371514310232234704, guid: 12397741ba8d17046a742ff97e7db0e1,
         type: 3}
       propertyPath: m_RootOrder

@@ -281,7 +281,7 @@ public class AnimatorAI : MonoBehaviour
         ObserveWhatIsTheProblemNode observeWhatIsTheProblemNode = new(agent, playerTransform, fearFactorAI, this);
         RunAwayNode runAwayNode = new(this,agent,sensor,fearFactorAI);
         CanPatrolNode canPatrolNode = new(this, sensor, agent);
-        PatrollingNode patrollingNode = new(navigationPathForAI, agent,this);
+        PatrollingNode patrollingNode = new(navigationPathForAI, agent,this,fearFactorAI);
 
 
 
@@ -307,7 +307,7 @@ public class AnimatorAI : MonoBehaviour
         EnemyInSigthNode enemyInSigthNode = new(sensor,agent,fearFactorAI);
         ObserveWhatIsTheProblemNode observeWhatIsTheProblemNode = new(agent, playerTransform, fearFactorAI, this);
         RunAwayNode runAwayNode = new(this, agent, sensor, fearFactorAI);
-        PatrollingNode patrollingNode = new(navigationPathForAI, agent, this);
+        PatrollingNode patrollingNode = new(navigationPathForAI, agent, this,fearFactorAI);
 
 
 

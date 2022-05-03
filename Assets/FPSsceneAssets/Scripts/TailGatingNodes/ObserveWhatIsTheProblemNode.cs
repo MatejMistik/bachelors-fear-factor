@@ -20,8 +20,8 @@ public class ObserveWhatIsTheProblemNode : Node
     }
 
     public override NodeState Evaluate()
-    { 
-        
+    {
+        fearFactorAI.WhichStateIsIn(FearFactorAI.FearState.Observing);
         if(fearFactorAI.slider.value > 0.6f){
             Debug.Log("fearValue" + fearFactorAI.slider.value);
             agent.isStopped = false;
@@ -32,7 +32,7 @@ public class ObserveWhatIsTheProblemNode : Node
         agent.transform.LookAt(player);
         if(fearFactorAI.canGainFear)
             fearFactorAI.GainFearOverTime();
-        ai.nodeStateText.SetText("Observing Problem");
+        ai.nodeStateText.SetText("Observing");
         return NodeState.FAILURE;
 
     }

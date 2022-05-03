@@ -10,17 +10,19 @@ public class PatrollingNode : Node
     NavigationPathForAI NavigationPath;
     NavMeshAgent agent;
     AnimatorAI ai;
+    FearFactorAI fearFactorAI;
 
-    public PatrollingNode(NavigationPathForAI navigationPath, NavMeshAgent agent, AnimatorAI ai)
+    public PatrollingNode(NavigationPathForAI navigationPath, NavMeshAgent agent, AnimatorAI ai, FearFactorAI fearFactorAI)
     {
         NavigationPath = navigationPath;
         this.agent = agent;
         this.ai = ai;
+        this.fearFactorAI = fearFactorAI;
     }
 
     public override NodeState Evaluate()
     {
-        
+        fearFactorAI.WhichStateIsIn(FearFactorAI.FearState.Calm);
         Debug.Log("Patrolling " + this.nodeState);
         ai.nodeStateText.SetText("Patrolling");
         agent.speed = 8;

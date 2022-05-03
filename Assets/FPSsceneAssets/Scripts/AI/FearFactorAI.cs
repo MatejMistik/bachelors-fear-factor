@@ -11,8 +11,21 @@ public class FearFactorAI : MonoBehaviour
     AnimatorAI ai;
     public TextMeshProUGUI captions;
     captionsForAI captionsForAI;
-    
+    protected FearState _fearState;
+    public FearState fearState { get { return _fearState; } }
+    private int numberOfState = 0;
+    public const int CALM = 0;
+    public const int FEARED = 1;
+    public const int OBSERVING = 2;
+    public const int RUNNING = 3;
 
+    public enum FearState
+    {
+        Calm,
+        Feared,
+        Observing,
+        Running
+    }
 
     private float maxFear;
     public float fear;
@@ -22,8 +35,9 @@ public class FearFactorAI : MonoBehaviour
 
     private int messagesCounter = 0;
     private string[] stringArrObserving = new string[] { "Can you please stop following me ?", "What exactly is your problem ?", "Get Lost !" };
-    private string[] stringArrRunningAway = new string[] { "Let me be ! ", " I am calling the police !", "Get Lost !" };
+    private string[] stringArrRunningAway = new string[] { "Let me be ! ", " I am calling the police !", "Psycho !" };
     private bool wordResponseCalled;
+    public bool observingDialogActive;
 
     [SerializeField] float SetMaxForFear;
     public bool canGainFear;
@@ -51,11 +65,18 @@ public class FearFactorAI : MonoBehaviour
             LoseFearOverTime();
         Debug.Log(decreaseFearTimer);
         Debug.Log(fear);
-        if(fear > 30 && !wordResponseCalled)
+        // activating dialog
+        if(fear > 30 && !wordResponseCalled && numberOfState == OBSERVING)
         {
-            WordResponse();
+            WordResponse(stringArrObserving);
             wordResponseCalled = true;
         }
+        if(fear > 30 && !wordResponseCalled && numberOfState == RUNNING)
+        {
+            WordResponse(stringArrRunningAway);
+            wordResponseCalled = true;
+        }
+
 
     }
     float CalculateFear()
@@ -97,14 +118,14 @@ public class FearFactorAI : MonoBehaviour
         canLoseFear = true;
     }
 
-    public void WordResponse()
+    public void WordResponse(string[] array)
     {
         captionsForAI.TurnOnCaptions();
-        if(messagesCounter >= stringArrObserving.Length)
+        if(messagesCounter >= array.Length)
         {
             messagesCounter = 0;
         }
-        captions.SetText(stringArrObserving[messagesCounter]);
+        captions.SetText(array[messagesCounter]);
         messagesCounter++;
         Invoke(nameof(ResetWordResponse), 2f);
         
@@ -115,6 +136,22 @@ public class FearFactorAI : MonoBehaviour
         wordResponseCalled = false;
     }
 
+    public void WhichStateIsIn(FearState state)
+    {
+        switch (state)
+        {
+            case FearState.Observing:
+                numberOfState = OBSERVING;
+                    break;
+            case FearState.Calm:
+                numberOfState = CALM;
+                break;
+            case FearState.Running:
+                numberOfState = RUNNING;
+                break;
+
+        }
+    }
 
 
 
