@@ -16,7 +16,6 @@ public class Inverter : Node
 		{
 			case NodeState.RUNNING:
 				_nodeState = NodeState.RUNNING;
-
 				break;
 			case NodeState.SUCCESS:
 				_nodeState = NodeState.FAILURE;

@@ -9,7 +9,7 @@ using SensorToolkit;
 
 public class AnimatorAI : MonoBehaviour
 {
-
+    public bool weaponPicked;
     [SerializeField] private float startingHealth;
     [SerializeField] private float lowHealthThreshold;
     [SerializeField] private float healthRestoreRate;
@@ -50,8 +50,6 @@ public class AnimatorAI : MonoBehaviour
 
     public int behaviorTreeLevelNumber;
     public bool weaponEquipped;
-    private bool walkPointSet;
-    private Vector3 walkPoint;
     public int walkPointRange;
     NavigationPathForAI navigationPathForAI;
     ElevatorCheck elevatorCheck;
@@ -264,7 +262,6 @@ public class AnimatorAI : MonoBehaviour
         Sequence mainCoverSequence = new Sequence(new List<Node> { healthNode, tryToTakeCoverSelector });
 
         topNode = new Selector(new List<Node> { findWeaponSequence, mainCoverSequence, shootSequence, chaseSequence });
-
 
     }
 

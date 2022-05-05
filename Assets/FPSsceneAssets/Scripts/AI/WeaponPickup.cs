@@ -8,6 +8,11 @@ public class WeaponPickup : MonoBehaviour
     public RayCastWeapon weaponPrefab;
     private bool weaponPicked;
     // Start is called before the first frame update
+
+    private void Start()
+    {
+        
+    }
     private void OnTriggerEnter(Collider other)
     {
         activeWeapon = other.gameObject.GetComponentInParent<ActiveWeapon>();
@@ -16,8 +21,13 @@ public class WeaponPickup : MonoBehaviour
             RayCastWeapon newWeapon = Instantiate(weaponPrefab);
             activeWeapon.Equip(newWeapon);
             weaponPicked = true;
-            enabled = false;
+            Invoke(nameof(ResetWeaponPicked), 1f);
            
         }
+    }
+
+    private void ResetWeaponPicked()
+    {
+        weaponPicked = false;
     }
 }

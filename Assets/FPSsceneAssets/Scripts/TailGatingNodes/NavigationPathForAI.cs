@@ -8,7 +8,6 @@ public class NavigationPathForAI : MonoBehaviour
     public Transform[] waypoints;
     private int waypointIndex;
     private float distance;
-    private float distanceOfNext;
     public NavMeshAgent agent;
 
      void Start()
@@ -30,9 +29,6 @@ public class NavigationPathForAI : MonoBehaviour
         {
             IncreaseIndex();
         }
-
-
-
     }
 
     public void IncreaseIndex()
@@ -42,10 +38,7 @@ public class NavigationPathForAI : MonoBehaviour
         {
             waypointIndex = 0;
         }
-        
-
         agent.transform.LookAt(waypoints[waypointIndex].position);
-        agent.SetDestination(waypoints[waypointIndex].position);
-        
+        agent.SetDestination(waypoints[waypointIndex].position); 
     }
 }

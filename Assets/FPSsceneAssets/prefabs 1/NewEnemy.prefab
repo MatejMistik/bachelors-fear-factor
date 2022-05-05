@@ -750,7 +750,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Stav
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1714,10 +1714,14 @@ MonoBehaviour:
   startingHealth: 100
   lowHealthThreshold: 50
   healthRestoreRate: 1
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
   playerTransform: {fileID: 0}
   maxDistance: 0
   nodeStateText: {fileID: 2088546333319649606}
   weapon: {fileID: 0}
+  sensor: {fileID: 0}
   currentHealth: 0
   timer: 0
   chasingRange: 30
@@ -1732,6 +1736,7 @@ MonoBehaviour:
   - {fileID: 0}
   behaviorTreeLevelNumber: 2
   weaponEquipped: 0
+  walkPointRange: 0
 --- !u!114 &2322439144882768249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1774,7 +1779,6 @@ MonoBehaviour:
   HealhtBarUI: {fileID: 2088546334747803790}
   slider: {fileID: 2088546334497696503}
   player: {fileID: 0}
-  agent: {fileID: 0}
   maxHealth: 100
   healthRestorerate: 1
   newEnemycurrentHealth: 0

@@ -21,7 +21,7 @@ namespace SensorToolkit.Example {
 
         public void Fire()
         {
-            if (IsReady && !IsEmptyClip)
+            if (IsReady && !IsEmptyClip && Input.GetKeyDown(KeyCode.Mouse0))
             {
                 var bullet = Instantiate(Bullet, Nozzle.transform.position, Nozzle.transform.rotation) as GameObject;
                 var raySensor = bullet.GetComponent<RaySensor>();

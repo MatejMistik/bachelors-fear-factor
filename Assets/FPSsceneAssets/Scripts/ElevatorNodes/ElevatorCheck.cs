@@ -11,7 +11,6 @@ public class ElevatorCheck : MonoBehaviour
     public GameObject doors;
     public GameObject elevatorFloor;
     public bool doorsOpened;
-    private float closingPointDistance;
     public float moveSpeed;
     public bool doorsAreMoving = false;
 
@@ -42,10 +41,6 @@ public class ElevatorCheck : MonoBehaviour
             }
         }
         
-
-        
-
-
     }
 
 
