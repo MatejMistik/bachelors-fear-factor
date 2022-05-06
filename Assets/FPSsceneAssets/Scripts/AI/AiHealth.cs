@@ -7,6 +7,10 @@ using UnityEngine.AI;
 
 public class AiHealth : MonoBehaviour
 {
+
+    public static bool firstkilled;
+    public static int numberOfAgentsKilled;
+
     public GameObject HealhtBarUI;
     public Slider slider;
     public Transform player;
@@ -73,13 +77,14 @@ public class AiHealth : MonoBehaviour
 
     private void Die()
     {
+        firstkilled = true;
         ragdoll.ActivateRagDoll();
         this.GetComponent<AnimatorAI>().enabled = false;
         agent.isStopped = true;
         HealhtBarUI.SetActive(false);
         skinnedMeshRenderer.material.color = Color.white;
         this.GetComponent<AiHealth>().enabled = false;
-
+        numberOfAgentsKilled++;
     }
 
     public void Restore(float amount)
