@@ -178,6 +178,8 @@ public class AiTreeConstructor : MonoBehaviour
         WasCorpseChecked wasCorpseCheckedNode = new(alliesAround);
         CheckOnCorpseNode checkOnCorpseNode = new(agent, alliesAround);
 
+        KilledNextToMeNode killedNextToMeNode = new(health, alliesAround);
+
         WeaponEuipped weaponEuippedNode = new(this);
         FindWeaponsAvailableNode findWeaponNode = new( agent, weaponPickup.transform, this);
         
@@ -185,7 +187,7 @@ public class AiTreeConstructor : MonoBehaviour
         Sequence CheckOnCorpse = new Sequence(new List<Node> { areDeadAlliesNearbyNode, wasCorpseCheckedNode, checkOnCorpseNode });
         Sequence findWeaponSequence = new Sequence(new List<Node> { weaponEuippedNode, findWeaponNode });
 
-        topNode = new Selector(new List<Node> { CheckOnCorpse, chaseSequence });
+        topNode = new Selector(new List<Node> { killedNextToMeNode ,CheckOnCorpse, chaseSequence });
 
 
     }

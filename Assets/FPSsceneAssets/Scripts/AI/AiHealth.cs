@@ -7,7 +7,7 @@ using UnityEngine.AI;
 
 public class AiHealth : MonoBehaviour
 {
-
+    AiKilled aiKilled;
     public static bool firstkilled;
     public static int numberOfAgentsKilled;
 
@@ -20,8 +20,6 @@ public class AiHealth : MonoBehaviour
     private NavMeshAgent agent;
     public bool agentIsDead = false;
     
-
-
 
     // Start is called before the first frame update
     public float maxHealth;
@@ -40,6 +38,7 @@ public class AiHealth : MonoBehaviour
         ragdoll = GetComponent<Ragdoll>();
         newEnemycurrentHealth = maxHealth;
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+        aiKilled = GetComponent<AiKilled>();
 
         var rigidBodies = GetComponentsInChildren<Rigidbody>();
         foreach (var rigidbody in rigidBodies)
@@ -88,6 +87,7 @@ public class AiHealth : MonoBehaviour
     public void Die()
     {
         //colliderForSensor.enabled = false;
+        aiKilled.aiKilled = true;
         gameObject.tag = "DeadEnemy";
         agentIsDead = true;
         firstkilled = true;
