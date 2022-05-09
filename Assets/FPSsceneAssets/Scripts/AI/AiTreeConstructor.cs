@@ -128,9 +128,40 @@ public class AiTreeConstructor : MonoBehaviour
             case 7:
                 ConstructBehaviorTreeElevator();
                 break;
+            case 8:
+                ConstructBehaviorTreeShotgun();
+                break;
             default:
                 break;
         }
+    }
+
+    private void ConstructBehaviorTreeShotgun()
+    {
+        weaponPickup = GameObject.Find("WeaponPickup").GetComponent<WeaponPickup>();
+
+        IsCoverAvailable coverAvaliableNode = new IsCoverAvailable(availableCovers, playerTransform, this);
+        GoToCoverNode goToCoverNode = new GoToCoverNode(agent, this);
+        HealthNode healthNode = new HealthNode(health, fearFactorAI);
+        IsCoveredNode isCoveredNode = new IsCoveredNode(playerTransform, transform);
+        ChaseNode chaseNode = new ChaseNode(playerTransform, agent);
+        RangeNode chasingRangeNode = new RangeNode(chasingRange, playerTransform, transform);
+
+        RangeNode shootingRangeNode = new(shootingRange, playerTransform, transform);
+        ShootingNode shootNode = new(agent, this, playerTransform, weapon);
+        WeaponEuipped weaponEuippedNode = new(this);
+        FindWeaponsAvailableNode findWeaponNode = new(agent, weaponPickup.transform, this);
+
+        Sequence findWeaponSequence = new Sequence(new List<Node> { weaponEuippedNode, findWeaponNode });
+        Sequence chaseSequence = new Sequence(new List<Node> { chasingRangeNode, chaseNode });
+        Sequence shootSequence = new(new List<Node> { shootingRangeNode, shootNode });
+
+        Sequence goToCoverSequence = new Sequence(new List<Node> { coverAvaliableNode, goToCoverNode });
+        Selector findCoverSelector = new Selector(new List<Node> { goToCoverSequence, chaseSequence });
+        Selector tryToTakeCoverSelector = new Selector(new List<Node> { isCoveredNode, findCoverSelector });
+        Sequence mainCoverSequence = new Sequence(new List<Node> { healthNode, tryToTakeCoverSelector });
+
+        topNode = new Selector(new List<Node> { findWeaponSequence, mainCoverSequence, shootSequence, chaseSequence });
     }
 
     private void ConstructBehaviorTreeTest()
@@ -138,10 +169,11 @@ public class AiTreeConstructor : MonoBehaviour
 
         weaponPickup = GameObject.Find("WeaponPickup").GetComponent<WeaponPickup>();
 
+        AreAliveAlliesNearby AreAliveAlliesNearbyNode = new(sensor);
         WeaponEuipped weaponEuippedNode = new(this);
         FindWeaponsAvailableNode findWeaponNode = new( agent, weaponPickup.transform, this);
 
-        Sequence findWeaponSequence = new Sequence(new List<Node> { weaponEuippedNode, findWeaponNode });
+        Sequence findWeaponSequence = new Sequence(new List<Node> { AreAliveAlliesNearbyNode, weaponEuippedNode, findWeaponNode });
 
         topNode = new Selector(new List<Node> { findWeaponSequence });
 

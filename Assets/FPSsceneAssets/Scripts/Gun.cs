@@ -9,7 +9,7 @@ public class Gun : MonoBehaviour
     [SerializeField] float fireRate = 0.1f;
     [SerializeField] float impactForce = 60f;
     [SerializeField] int magazineSize = 5;
-    public float spread,reloadTime, timeBetweenShots =0.1f;
+    public float spread,reloadTime;
     public int bulletsPerTap;
     public bool allowButtonHold;
     int bulletsLeft, bulletsShot;
@@ -64,8 +64,6 @@ public class Gun : MonoBehaviour
         muzzleFlash.Play();
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out RaycastHit hit, range))
         {
-            //Debug.Log(hit.transform.name);
-            EnemyAI target = hit.transform.GetComponent<EnemyAI>();
             var hitBox = hit.collider.GetComponent<Hitbox>();
 
             if (hitBox)
@@ -73,14 +71,6 @@ public class Gun : MonoBehaviour
                 hitBox.OnRaycasthit(this);
             }
 
-            if (target != null)
-            {
-                
-
-                target.TakeDamage(damage);
-
-
-            }
 
             if (hit.rigidbody != null)
             {
@@ -89,7 +79,6 @@ public class Gun : MonoBehaviour
 
             GameObject impactGo = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(impactGo, 1f);
-
 
         }
 

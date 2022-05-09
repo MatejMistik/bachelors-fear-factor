@@ -11,7 +11,7 @@ public class RayCastWeapon : MonoBehaviour
     [SerializeField] float impactForce = 60f;
     [SerializeField] int magazineSize = 30;
     [SerializeField] float projectileSpeed;
-    public float reloadTime, timeBetweenShots = 0.1f;
+    public float reloadTime;
     public int bulletsPerTap;
     int bulletsLeft;
 

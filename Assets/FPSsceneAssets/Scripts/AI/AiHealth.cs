@@ -11,12 +11,14 @@ public class AiHealth : MonoBehaviour
     public static bool firstkilled;
     public static int numberOfAgentsKilled;
 
+    //public CapsuleCollider colliderForSensor;
     public GameObject HealhtBarUI;
     public Slider slider;
     public Transform player;
     Ragdoll ragdoll;
     SkinnedMeshRenderer skinnedMeshRenderer;
     private NavMeshAgent agent;
+    public bool agentIsDead = false;
     
 
 
@@ -77,6 +79,9 @@ public class AiHealth : MonoBehaviour
 
     private void Die()
     {
+        //colliderForSensor.enabled = false;
+        gameObject.tag = "DeadEnemy";
+        agentIsDead = true;
         firstkilled = true;
         ragdoll.ActivateRagDoll();
         this.GetComponent<AiTreeConstructor>().enabled = false;
@@ -85,11 +90,11 @@ public class AiHealth : MonoBehaviour
         skinnedMeshRenderer.material.color = Color.white;
         this.GetComponent<AiHealth>().enabled = false;
         numberOfAgentsKilled++;
+        
     }
 
     public void Restore(float amount)
     {
-
         newEnemycurrentHealth += amount;
     }
 

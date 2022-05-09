@@ -6,6 +6,7 @@ public class KillsInTimeManager : MonoBehaviour
 {
 
     public float timeToGainBonus;
+
     private float timeSinceFirstKilled;
     private bool firstKilled;
     private bool bonusActivated;
@@ -23,8 +24,8 @@ public class KillsInTimeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(AiHealth.firstkilled);
-        Debug.Log(AiHealth.numberOfAgentsKilled);
+        //Debug.Log(AiHealth.firstkilled);
+        //Debug.Log(AiHealth.numberOfAgentsKilled);
        
        if(AiHealth.firstkilled)
         {
