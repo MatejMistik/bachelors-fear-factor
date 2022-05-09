@@ -1,12 +1,12 @@
 using UnityEngine;
 using SensorToolkit;
 
-public class AreAliveAlliesNearby : Node
+public class AreDeadAlliesNearby : Node
 {
     private Sensor sensor;
     private int alliesDeadCounter;
 
-    public AreAliveAlliesNearby(Sensor sensor)
+    public AreDeadAlliesNearby(Sensor sensor)
     {
         this.sensor = sensor;
     }

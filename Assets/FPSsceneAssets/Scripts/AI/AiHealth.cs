@@ -62,6 +62,14 @@ public class AiHealth : MonoBehaviour
         float intensity = (lerp * blinkIntensity) + 1.0f;
         skinnedMeshRenderer.material.color = Color.white * intensity;
 
+        /*
+        if (KillsInTimeManager.bonusActivated && AlliesAround.deadEnemies.Length !=0)
+        {
+            Debug.Log("All Killed");
+            Die();
+        }
+        */
+
     }
 
 
@@ -77,7 +85,7 @@ public class AiHealth : MonoBehaviour
         blinkTimer = blinkDuration;
     }
 
-    private void Die()
+    public void Die()
     {
         //colliderForSensor.enabled = false;
         gameObject.tag = "DeadEnemy";

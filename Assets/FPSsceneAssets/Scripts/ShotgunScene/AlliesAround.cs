@@ -7,8 +7,8 @@ public class AlliesAround : MonoBehaviour
 {
     public Sensor sensor;
     private int numberOfEnemies;
-    public GameObject[] deadEnemies { get; private set; }
-    public GameObject[] liveEnemies { get; private set; }
+    public static GameObject[] deadEnemies { get; private set; }
+    public static GameObject[] liveEnemies { get; private set; }
 
     public List<GameObject> enemiesToBeChecked = new List<GameObject>();
 

@@ -33,6 +33,7 @@ public class AiTreeConstructor : MonoBehaviour
     FearFactorAI fearFactorAI;
 
     WeaponPickup weaponPickup;
+    AlliesAround alliesAround;
 
 
     //[SerializeField] float maxTime = 1.0f;
@@ -66,6 +67,7 @@ public class AiTreeConstructor : MonoBehaviour
         sensor = GetComponent<Sensor>();
         navigationPathForAI = GetComponent<NavigationPathForAI>();
         elevatorCheck = GetComponent<ElevatorCheck>();
+        alliesAround = GetComponent<AlliesAround>();
 
     }
 
@@ -169,13 +171,21 @@ public class AiTreeConstructor : MonoBehaviour
 
         weaponPickup = GameObject.Find("WeaponPickup").GetComponent<WeaponPickup>();
 
-        AreAliveAlliesNearby AreAliveAlliesNearbyNode = new(sensor);
+        RangeNode rangeNode = new(100f, playerTransform, transform);
+        ChaseNode chaseNode = new(playerTransform, agent);
+        
+        AreDeadAlliesNearby areDeadAlliesNearbyNode = new(sensor);
+        WasCorpseChecked wasCorpseCheckedNode = new(alliesAround);
+        CheckOnCorpseNode checkOnCorpseNode = new(agent, alliesAround);
+
         WeaponEuipped weaponEuippedNode = new(this);
         FindWeaponsAvailableNode findWeaponNode = new( agent, weaponPickup.transform, this);
+        
+        Sequence chaseSequence = new Sequence(new List<Node> { rangeNode, chaseNode });
+        Sequence CheckOnCorpse = new Sequence(new List<Node> { areDeadAlliesNearbyNode, wasCorpseCheckedNode, checkOnCorpseNode });
+        Sequence findWeaponSequence = new Sequence(new List<Node> { weaponEuippedNode, findWeaponNode });
 
-        Sequence findWeaponSequence = new Sequence(new List<Node> { AreAliveAlliesNearbyNode, weaponEuippedNode, findWeaponNode });
-
-        topNode = new Selector(new List<Node> { findWeaponSequence });
+        topNode = new Selector(new List<Node> { CheckOnCorpse, chaseSequence });
 
 
     }

@@ -9,7 +9,7 @@ public class KillsInTimeManager : MonoBehaviour
 
     private float timeSinceFirstKilled;
     private bool firstKilled;
-    private bool bonusActivated;
+    public static bool bonusActivated;
     private int killsCount;
 
 
@@ -37,6 +37,7 @@ public class KillsInTimeManager : MonoBehaviour
             bonusActivated = true;
             Debug.Log("KillsManager" + bonusActivated);
         }
+
 
     }
 
