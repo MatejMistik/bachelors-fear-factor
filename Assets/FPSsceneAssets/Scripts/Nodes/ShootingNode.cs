@@ -6,11 +6,11 @@ using UnityEngine.AI;
 public class ShootingNode : Node
 {
     public NavMeshAgent agent;
-    private AnimatorAI ai;
+    private AiTreeConstructor ai;
     private Transform playerTransform;
     public RayCastWeapon weapon;
 
-    public ShootingNode(NavMeshAgent agent, AnimatorAI ai, Transform playerTransform, RayCastWeapon weapon)
+    public ShootingNode(NavMeshAgent agent, AiTreeConstructor ai, Transform playerTransform, RayCastWeapon weapon)
     {
         this.agent = agent;
         this.ai = ai;
@@ -25,7 +25,6 @@ public class ShootingNode : Node
             weapon = ai.weapon;
         }
         agent.isStopped = true;
-        ai.DebugMessage("Shooting");
         agent.transform.LookAt(playerTransform);
         weapon.PrepareToShoot();
         return NodeState.RUNNING;

@@ -7,13 +7,13 @@ using SensorToolkit;
 public class RunAwayNode : Node
 {
 
-    AnimatorAI ai;
+    AiTreeConstructor ai;
     NavMeshAgent agent;
     Sensor sensor;
     FearFactorAI fearFactorAI;
     Transform playerTransform;
 
-    public RunAwayNode(AnimatorAI ai, NavMeshAgent agent, Sensor sensor, FearFactorAI fearFactorAI, Transform playerTransform)
+    public RunAwayNode(AiTreeConstructor ai, NavMeshAgent agent, Sensor sensor, FearFactorAI fearFactorAI, Transform playerTransform)
     {
         this.ai = ai;
         this.agent = agent;
@@ -27,7 +27,7 @@ public class RunAwayNode : Node
         fearFactorAI.WhichStateIsIn(FearFactorAI.FearState.Running);
         Debug.Log("RunAwayNode " + this.nodeState);
         agent.speed = 15;
-        // RunAway Function removed from AnimatorAI
+        // RunAway Function removed from AiTreeConstructor
         Vector3 dirToPlayer = ai.transform.position - playerTransform.position;
         Vector3 newPos = ai.transform.position + dirToPlayer;
         agent.SetDestination(newPos);

@@ -79,7 +79,7 @@ public class AiHealth : MonoBehaviour
     {
         firstkilled = true;
         ragdoll.ActivateRagDoll();
-        this.GetComponent<AnimatorAI>().enabled = false;
+        this.GetComponent<AiTreeConstructor>().enabled = false;
         agent.isStopped = true;
         HealhtBarUI.SetActive(false);
         skinnedMeshRenderer.material.color = Color.white;

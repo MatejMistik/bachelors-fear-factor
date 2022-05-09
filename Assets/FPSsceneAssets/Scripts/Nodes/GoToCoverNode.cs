@@ -6,9 +6,9 @@ using UnityEngine.AI;
 public class GoToCoverNode : Node
 {
     private NavMeshAgent agent;
-    private AnimatorAI ai;
+    private AiTreeConstructor ai;
 
-    public GoToCoverNode(NavMeshAgent agent, AnimatorAI ai)
+    public GoToCoverNode(NavMeshAgent agent, AiTreeConstructor ai)
     {
         this.agent = agent;
         this.ai = ai;

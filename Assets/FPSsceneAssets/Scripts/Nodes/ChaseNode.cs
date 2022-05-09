@@ -7,20 +7,17 @@ public class ChaseNode : Node
 {
     public Transform target;
     private NavMeshAgent agent;
-    private AnimatorAI ai;
 
-    public ChaseNode(Transform target, NavMeshAgent agent, AnimatorAI ai)
+    public ChaseNode(Transform target, NavMeshAgent agent)
     {
         this.target = target;
         this.agent = agent;
-        this.ai = ai;
     }
 
     public override NodeState Evaluate()
     {
-        ai.DebugMessage("chasing");
         float distance = Vector3.Distance(target.position, agent.transform.position);
-        if(distance > 0.2f)
+        if(distance > 0.5f)
         {
             agent.isStopped = false;
             agent.SetDestination(target.position);

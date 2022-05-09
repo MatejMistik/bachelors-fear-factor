@@ -7,11 +7,11 @@ public class ActiveWeapon : MonoBehaviour
 
     RayCastWeapon weapon;
     public Transform weaponParent;
-    AnimatorAI ai;
+    AiTreeConstructor ai;
     // Start is called before the first frame update
     void Start()
     {
-        ai = GetComponent<AnimatorAI>();
+        ai = GetComponent<AiTreeConstructor>();
         RayCastWeapon existingWeapon = GetComponentInChildren<RayCastWeapon>();
         if (existingWeapon)
         {

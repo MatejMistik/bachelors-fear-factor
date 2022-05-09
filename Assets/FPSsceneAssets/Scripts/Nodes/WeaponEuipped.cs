@@ -5,9 +5,9 @@ using UnityEngine;
 public class WeaponEuipped : Node
 {
 
-    private AnimatorAI ai;
+    private AiTreeConstructor ai;
 
-    public WeaponEuipped(AnimatorAI ai)
+    public WeaponEuipped(AiTreeConstructor ai)
     {
         this.ai = ai;
     }

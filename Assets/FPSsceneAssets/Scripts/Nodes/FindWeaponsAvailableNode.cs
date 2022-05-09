@@ -7,9 +7,9 @@ public class FindWeaponsAvailableNode : Node
 {
     private NavMeshAgent agent;
     private Transform WeaponLocation;
-    private AnimatorAI ai;
+    private AiTreeConstructor ai;
 
-    public FindWeaponsAvailableNode(NavMeshAgent agent, Transform weaponLocation, AnimatorAI ai)
+    public FindWeaponsAvailableNode(NavMeshAgent agent, Transform weaponLocation, AiTreeConstructor ai)
     {
         this.agent = agent;
         WeaponLocation = weaponLocation;

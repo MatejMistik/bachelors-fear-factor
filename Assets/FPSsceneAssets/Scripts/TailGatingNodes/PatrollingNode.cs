@@ -9,10 +9,10 @@ public class PatrollingNode : Node
 
     NavigationPathForAI NavigationPath;
     NavMeshAgent agent;
-    AnimatorAI ai;
+    AiTreeConstructor ai;
     FearFactorAI fearFactorAI;
 
-    public PatrollingNode(NavigationPathForAI navigationPath, NavMeshAgent agent, AnimatorAI ai, FearFactorAI fearFactorAI)
+    public PatrollingNode(NavigationPathForAI navigationPath, NavMeshAgent agent, AiTreeConstructor ai, FearFactorAI fearFactorAI)
     {
         NavigationPath = navigationPath;
         this.agent = agent;

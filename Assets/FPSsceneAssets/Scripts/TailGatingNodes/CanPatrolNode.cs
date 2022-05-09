@@ -6,11 +6,11 @@ using UnityEngine.AI;
 
 public class CanPatrolNode : Node
 {
-    AnimatorAI ai;
+    AiTreeConstructor ai;
     Sensor sensor;
     NavMeshAgent agent;
 
-    public CanPatrolNode(AnimatorAI ai, Sensor sensor, NavMeshAgent agent)
+    public CanPatrolNode(AiTreeConstructor ai, Sensor sensor, NavMeshAgent agent)
     {
         this.ai = ai;
         this.sensor = sensor;

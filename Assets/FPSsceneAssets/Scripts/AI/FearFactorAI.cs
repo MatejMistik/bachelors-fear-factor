@@ -8,7 +8,7 @@ public class FearFactorAI : MonoBehaviour
 {
     public Transform player;
     public Slider slider;
-    AnimatorAI ai;
+    AiTreeConstructor ai;
     public TextMeshProUGUI captions;
     captionsForAI captionsForAI;
     protected FearState _fearState;
@@ -51,7 +51,7 @@ public class FearFactorAI : MonoBehaviour
     {
         canGainFear = true;
         canLoseFear = true;
-        ai = GetComponent<AnimatorAI>();
+        ai = GetComponent<AiTreeConstructor>();
         maxFear = SetMaxForFear;
         captionsForAI = GameObject.Find("Captions").GetComponent<captionsForAI>();
 

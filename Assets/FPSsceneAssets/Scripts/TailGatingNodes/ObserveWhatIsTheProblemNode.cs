@@ -9,9 +9,9 @@ public class ObserveWhatIsTheProblemNode : Node
     NavMeshAgent agent;
     Transform player;
     FearFactorAI fearFactorAI;
-    AnimatorAI ai;
+    AiTreeConstructor ai;
 
-    public ObserveWhatIsTheProblemNode(NavMeshAgent agent, Transform player, FearFactorAI fearFactorAI, AnimatorAI ai)
+    public ObserveWhatIsTheProblemNode(NavMeshAgent agent, Transform player, FearFactorAI fearFactorAI, AiTreeConstructor ai)
     {
         this.agent = agent;
         this.player = player;

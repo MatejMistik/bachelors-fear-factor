@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Hitbox : MonoBehaviour
 {
-    public AnimatorAI ai;
+    public AiTreeConstructor ai;
     public AiHealth aiHealth;
     
 

@@ -7,9 +7,9 @@ public class IsCoverAvailable : Node
 {
     private Cover[] avaliableCovers;
     private Transform target;
-    private AnimatorAI ai;
+    private AiTreeConstructor ai;
 
-    public IsCoverAvailable(Cover[] avaliableCovers, Transform target, AnimatorAI ai)
+    public IsCoverAvailable(Cover[] avaliableCovers, Transform target, AiTreeConstructor ai)
     {
         this.avaliableCovers = avaliableCovers;
         this.target = target;
