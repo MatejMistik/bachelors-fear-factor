@@ -1,1 +1,85 @@
-<mxfile host="app.diagrams.net" modified="2022-05-08T20:00:22.654Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36" etag="43UYd6W6ZMYxLQDcMwqE" version="18.0.2" type="github"><diagram id="aNkTvLlGlRAXNMfGRCiO" name="Page-1">3ZpZc+I4EIB/DY9RSWqdj1ly7NbsVFJD1e5kXrZcWAFvDE45JsD8+pWwfGEgHopw7ItBLVmyuz+1uht60J8s7tPgdfw1CU3cozhc9OCmRynhHNsPJ1nmEoV1LhilUegHVYJB9NN4ob9vNItC89YYmCVJnEWvTeEwmU7NMGvIgjRN5s1hz0ncXPU1GJmWYDAM4rb07yjMxl5KhK46fjfRaOyXVlTmHZOgGOzf5G0chMm8JoLbHvTTJMnyb5NF38ROeYVe8vvutvSWD5aaadblhi8MT5Zf/mFPg/Fz/ylL7/9cfr3ys7wH8cy/8MC8vJvpMAr8U2fLQhVpMpuGxs1GevDbfBxlZvAaDF3v3BrfysbZJPbdz1Ec95M4SVf3wt3djRbCyZNp5q1MdNH2a2x4peL5TJqZRU3kX/HeJBOTpUs7xPda4BDGBGNBlQasaD6Bp6+gcV4zJeeISWtPRQhQLDnLh4xrRtUYSaEpYH/1tg88W6PyKSr12y/eAr9gDdqyRssIZhpeO6xtaxgHb2/RsKn3ykjYtqwe0+V310C8aD7V+24WjdbSt3ZbyY5eRNn34k77fTUnUqroq6Z1jWWt8WjSyCrLpF621eQmXNuYWZCOTLZDewBeW8ksHZqPoG8TVIOi4KQOQSFLTRxk0Xvz4Tah4Fd4TCL7ajVAJZJYaQ2SYKGJbgBKGEEcaqip5vz5u/kp65t9bRVCJKKYK6YxFwKDlI1lqO0mClMuGFldaXOZXNetZVZQlxrbn3N9cZwjymuo78b8kEizi0BaARIUawagBaWCfQrSTAJimhMuKVCJWXOVExNdhCsHRHof9D7kec99ckCkCemIdM7+qZimQiCiNedaMsWoFLyBm8UYaaaZkkS66xptXZmmmCBGtFCcA+OaNKMVsPuKWwdObFS5uh4X6XZs+JC924CO4hsbj5nLjA+tm3LhnrLK9UdwF5Wfa7x4+ICx9Dqyu9f5nNN3m627nYUdPBGFjT7sVB5HCIkUMCm1ksydmjtPUcX28zhSWscliqAQuDqnU7SwSI3nx9T8G0YuwTc/XRnhcj2P1bjNTCvXQTpp/kw9Dxw+3vmkEP7z/QhsjoVO5ke0O+HWnIfFQu7nMLQmSAIj3Mf33bA9ksOAdozyI/BBygW7CqWsCYUCTJQSUhdu8UJdxQ6n/uLt1OtD75pMLtNahHZLRc/VPqxln4GJzUvmdtEl2gM0Q5zyUr+XctDOktt7g789/fE8un749hf0b0N1lgX6lik2GGyrdRgwmzlvs87Z5l8bjXP49GvPIKhK2w5VK9pc3dknjCr8Sz2O2o76qaImsEcuVZ4oh1fTpx+o3mO5R1gQYqfKaz5d4D9Wvad9Dpyc5oOVPrvQu8v/flzW5Bu3zMnKlzbXhCLFdz8CNUC7ItiahNASNdgP5yvGkGQWW+HLFmRtHcqQ3THVYcuPS7Q8P6J/oax2aqLFWRENXCClSQnbWkGeuZRJycpD70c01RQRUia7a5mXBRjZHaMt89xdj4wzb+H8ECaTl2l02dkuEBcRVhFdsyKf/6EDl/EcnEtEuHPT/L9+NOHE1SM4LSsSZ2kh26z+TZVvuuo/aXD7Hw==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2022-05-10T14:51:19.068Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36" etag="URUmwq9c-K1C6EZUVgP6" version="18.0.2" type="github">
+  <diagram id="aNkTvLlGlRAXNMfGRCiO" name="Page-1">
+    <mxGraphModel dx="1550" dy="867" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="K40myK_4YShfCYtrGLyM-1" value="Sekvencia" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFD966;fontSize=19;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="550.0010062893082" y="50" width="155.47169811320754" height="90.76923076923079" as="geometry" />
+        </mxCell>
+        <mxCell id="K40myK_4YShfCYtrGLyM-2" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=19;fontStyle=1;exitX=0;exitY=0.881;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="K40myK_4YShfCYtrGLyM-1" target="K40myK_4YShfCYtrGLyM-33" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="557.7089937106919" y="141.53923076923078" as="sourcePoint" />
+            <mxPoint x="117.20584905660377" y="217.18025641025642" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="K40myK_4YShfCYtrGLyM-9" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=19;fontStyle=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" parent="1" source="K40myK_4YShfCYtrGLyM-1" target="K40myK_4YShfCYtrGLyM-34" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="583.6209433962264" y="141.53923076923078" as="sourcePoint" />
+            <mxPoint x="473.4951572327044" y="217.18025641025642" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="K40myK_4YShfCYtrGLyM-10" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;fontSize=19;fontStyle=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="K40myK_4YShfCYtrGLyM-34" target="K40myK_4YShfCYtrGLyM-11" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="292.19955974842765" y="250.76948717948721" as="sourcePoint" />
+            <mxPoint x="227.4196855345912" y="326.4105128205128" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="K40myK_4YShfCYtrGLyM-11" value="Otvor Dvere" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFD966;fontSize=19;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="290.00182389937106" y="270.00051282051277" width="155.47169811320754" height="90.76923076923079" as="geometry" />
+        </mxCell>
+        <mxCell id="K40myK_4YShfCYtrGLyM-22" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=19;fontStyle=1" parent="1" source="K40myK_4YShfCYtrGLyM-1" target="K40myK_4YShfCYtrGLyM-23" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="667.8347798742141" y="141.53923076923084" as="sourcePoint" />
+            <mxPoint x="777.9605660377358" y="217.18025641025642" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="K40myK_4YShfCYtrGLyM-23" value="Prejdi cez dvere" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFD966;fontSize=19;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="670.9447169811322" y="160.0002564102564" width="155.47169811320754" height="90.76923076923079" as="geometry" />
+        </mxCell>
+        <mxCell id="K40myK_4YShfCYtrGLyM-30" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=19;fontStyle=1;" parent="1" source="K40myK_4YShfCYtrGLyM-1" target="K40myK_4YShfCYtrGLyM-31" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="699.47" y="140.77" as="sourcePoint" />
+            <mxPoint x="991.7341509433961" y="217.18025641025642" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="K40myK_4YShfCYtrGLyM-31" value="Zatvor dvere" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFD966;fontSize=19;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="879.9983018867923" y="160.0002564102564" width="155.47169811320754" height="90.76923076923079" as="geometry" />
+        </mxCell>
+        <mxCell id="K40myK_4YShfCYtrGLyM-33" value="Prejdi k dverám" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFD966;fontSize=19;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="200" y="160.0002564102564" width="155.47169811320754" height="90.76923076923079" as="geometry" />
+        </mxCell>
+        <mxCell id="K40myK_4YShfCYtrGLyM-34" value="Selektor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFD966;fontSize=19;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="420.5254716981131" y="160.0002564102564" width="155.47169811320754" height="90.76923076923079" as="geometry" />
+        </mxCell>
+        <mxCell id="uoEGe0RYIfgAORV3CEd8-1" value="Sekvencia" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFD966;fontSize=19;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="515.4754716981131" y="270.00051282051277" width="155.47169811320754" height="90.76923076923079" as="geometry" />
+        </mxCell>
+        <mxCell id="uoEGe0RYIfgAORV3CEd8-2" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontSize=19;fontStyle=1" parent="1" source="K40myK_4YShfCYtrGLyM-34" target="uoEGe0RYIfgAORV3CEd8-1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="415.28132075471694" y="250.76948717948721" as="sourcePoint" />
+            <mxPoint x="480.0611949685534" y="326.4105128205128" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="K40myK_4YShfCYtrGLyM-14" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;fontSize=19;fontStyle=1" parent="1" source="uoEGe0RYIfgAORV3CEd8-1" target="K40myK_4YShfCYtrGLyM-15" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="100.56603773584905" y="-214.1020512820513" as="sourcePoint" />
+            <mxPoint x="35.786163522012586" y="-138.46102564102563" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="K40myK_4YShfCYtrGLyM-17" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.75;exitY=1;exitDx=0;exitDy=0;fontSize=19;fontStyle=1" parent="1" source="uoEGe0RYIfgAORV3CEd8-1" target="K40myK_4YShfCYtrGLyM-16" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="437.4213836477986" y="375.8979487179487" as="sourcePoint" />
+            <mxPoint x="372.64150943396226" y="451.53897435897443" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="K40myK_4YShfCYtrGLyM-15" value="Odomkni dvere" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFD966;fontSize=19;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="410.48169811320764" y="390.00076923076927" width="155.47169811320754" height="90.76923076923079" as="geometry" />
+        </mxCell>
+        <mxCell id="K40myK_4YShfCYtrGLyM-16" value="Otvor Dvere" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFD966;fontSize=19;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="620.4752830188679" y="390.00076923076927" width="155.47169811320754" height="90.76923076923079" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
