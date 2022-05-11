@@ -3,6 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+/*
+***************************************************************************************
+*	Title: AI in Unity Turorial. Behavior Trees.
+*	Author: GameDevChef
+*   Date: 22.05., 2022
+*	Code version: 1.0
+*	Availability: https://github.com/GameDevChef/BehaviourTrees
+*
+***************************************************************************************/
+
 public class GoToCoverNode : Node
 {
     private NavMeshAgent agent;

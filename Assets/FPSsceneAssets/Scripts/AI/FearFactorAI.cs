@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class FearFactorAI : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class FearFactorAI : MonoBehaviour
     AiTreeConstructor ai;
     public TextMeshProUGUI captions;
     captionsForAI captionsForAI;
+    AiHealth aiHealth;
     protected FearState _fearState;
     public FearState fearState { get { return _fearState; } }
     private int actualState = 0;
@@ -18,19 +20,24 @@ public class FearFactorAI : MonoBehaviour
     public const int FEARED = 1;
     public const int OBSERVING = 2;
     public const int RUNNING = 3;
-    public const int UNCONSCIOUS = 4;
+    public const int SEENDEADBODY = 4;
+    public const int UNCONSCIOUS = 5;
 
     public enum FearState
     {
         Calm,
         Feared,
         Observing,
-        Running
+        Running,
+        SeenDeadBody,
+        Unconscious,
     }
 
     private float maxFear;
     public float fear;
     private float fearNormalizedValue;
+
+
     public static bool needHealing = true;
     public float decreaseFearTimer;
     public float timeBetweenGainOfFear;
@@ -38,6 +45,7 @@ public class FearFactorAI : MonoBehaviour
     private int messagesCounter = 0;
     private string[] stringArrObserving = new string[] { "Can you please stop following me ?", "What exactly is your problem ?", "Get Lost !" };
     private string[] stringArrRunningAway = new string[] { "Let me be ! ", " I am calling the police !", "Psycho !" };
+    private string[] stringArrSeenDeadBody = new string[] { "I am gonna faint" };
     private bool wordResponseCalled;
     public bool observingDialogActive;
     private float fearStateMultiplier = 0f;
@@ -54,7 +62,7 @@ public class FearFactorAI : MonoBehaviour
         ai = GetComponent<AiTreeConstructor>();
         maxFear = SetMaxForFear;
         captionsForAI = GameObject.Find("Captions").GetComponent<captionsForAI>();
-
+        aiHealth = GetComponent<AiHealth>();
     }
 
     // Update is called once per frame
@@ -73,12 +81,29 @@ public class FearFactorAI : MonoBehaviour
         {
             WordResponse(stringArrObserving);
             wordResponseCalled = true;
+            return;
         }
         if(fear > 30 && !wordResponseCalled && actualState == RUNNING)
         {
             WordResponse(stringArrRunningAway);
             wordResponseCalled = true;
+            return;
         }
+        Debug.Log(actualState);
+        Debug.Log(fear);
+        Debug.Log(actualState == SEENDEADBODY && fear > 99);
+        if(actualState == SEENDEADBODY && !wordResponseCalled)
+        {
+            WordResponse(stringArrSeenDeadBody );
+            wordResponseCalled = true;
+        }
+        if(actualState == SEENDEADBODY && fear > 99)
+        {
+            this.enabled = false;
+            aiHealth.Die();
+        }
+
+       
 
 
     }
@@ -123,6 +148,7 @@ public class FearFactorAI : MonoBehaviour
 
     public void WordResponse(string[] array)
     {
+        
         captionsForAI.TurnOnCaptions();
         if(messagesCounter >= array.Length)
         {
@@ -154,8 +180,17 @@ public class FearFactorAI : MonoBehaviour
                 actualState = RUNNING;
                 fearStateMultiplier = 2f;
                 break;
+            case FearState.SeenDeadBody:
+                actualState = SEENDEADBODY;
+                fearStateMultiplier = 2.5f;
+                break;
 
         }
+    }
+
+    public void LookedAtDeathBody()
+    {
+        actualState = SEENDEADBODY;
     }
 
 

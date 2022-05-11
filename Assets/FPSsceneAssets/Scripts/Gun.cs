@@ -2,6 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+
+/*
+***************************************************************************************
+*	Title: Shooting with Raycasts - Unity Tutorial
+*	Author: Brackeys
+*   Date: 19. 4. 2017
+*	Code version: 1.0
+*	Availability: https://www.youtube.com/watch?v=THnivyG0Mvo&ab_channel=Brackeys
+*
+***************************************************************************************/
 public class Gun : MonoBehaviour
 {
     [SerializeField] float range = 100f;

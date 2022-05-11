@@ -6,7 +6,7 @@ using UnityEngine;
 public class RayCastWeapon : MonoBehaviour
 { 
     [SerializeField] float range = 30f;
-        public float damage = 60f;
+    public float damage = 60f;
     [SerializeField] float fireRate = 0.1f;
     [SerializeField] float impactForce = 60f;
     [SerializeField] int magazineSize = 30;
@@ -41,10 +41,18 @@ public class RayCastWeapon : MonoBehaviour
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         rb.AddForce(bulletHole.transform.forward * projectileSpeed, ForceMode.Impulse);
         Destroy(bullet, 2);
-        if (Physics.Raycast(bulletHole.transform.position, bulletHole.transform.forward, out RaycastHit hit, range))
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, range))
         {
+            Debug.Log(hit);
+            var hitBox = hit.collider.GetComponent<PlayerHitbox>();
+
+            if (hitBox)
+            {
+                hitBox.OnRaycasthit(this);
+            }
 
             Debug.Log(range);
+
             if (hit.rigidbody != null)
             {
                 hit.rigidbody.AddForce(-hit.normal * impactForce);

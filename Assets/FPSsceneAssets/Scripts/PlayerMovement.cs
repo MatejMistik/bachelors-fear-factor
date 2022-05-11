@@ -2,6 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+
+/*
+***************************************************************************************
+*	Title: FIRST PERSON MOVEMENT in Unity - FPS Controller
+*	Author: Brackeys
+*   Date: 27. 10., 2019
+*	Code version: 1.0
+*	Availability: https://www.youtube.com/watch?v=_QajrabyTJc&t=1055s&ab_channel=Brackeys
+*
+***************************************************************************************/
+
 class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float dashLength = 0.12f;
@@ -90,6 +101,15 @@ class PlayerMovement : MonoBehaviour
         }
 
 
+        /*
+        ***************************************************************************************
+        *	Title: How do I script the player character to dash?
+        *	Author: Kerihobo
+        *   Date: Nov 05, 2014
+        *	Code version: 1.0
+        *	Availability: https://answers.unity.com/questions/824891/how-do-i-script-the-player-character-to-dash.html
+        *
+        ***************************************************************************************/
         // Dashing taken from NET , MINE implented, but need some tweaking still. This one is hardly optimized for multiple dashes.
         if (Input.GetKeyDown(KeyCode.LeftControl) == true && dashing < dashLength && dashingTime < dashResetTime && dashReset == true && canDash == true)
         {

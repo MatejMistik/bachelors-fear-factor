@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Brackeys mouselook code
+/*
+***************************************************************************************
+*	Title: FIRST PERSON MOVEMENT in Unity - FPS Controller
+*	Author: Brackeys
+*   Date: 27. 10., 2019
+*	Code version: 1.0
+*	Availability: https://www.youtube.com/watch?v=_QajrabyTJc&t=1055s&ab_channel=Brackeys
+*
+***************************************************************************************/
 
 public class MouseLook : MonoBehaviour
 {

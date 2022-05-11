@@ -20,6 +20,7 @@ public class CheckOnCorpseNode : Node
         Debug.Log(distance);
         if(distance < 2f)
         {
+            agent.isStopped = true;
             AiCorpseCheck aiCorpse = alliesAround.enemiesToBeChecked[0].GetComponent<AiCorpseCheck>();
             aiCorpse.corpseWasChecked = true;
             Debug.Log(alliesAround.enemiesToBeChecked[0] + "Aicorpse checked" + aiCorpse.corpseWasChecked);

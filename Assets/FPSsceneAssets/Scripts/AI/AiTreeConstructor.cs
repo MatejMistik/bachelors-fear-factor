@@ -7,6 +7,16 @@ using UnityEngine.UI;
 using TMPro;
 using SensorToolkit;
 
+/*
+***************************************************************************************
+*	Title: AI in Unity Turorial. Behavior Trees.
+*	Author: GameDevChef
+*   Date: 22.05., 2022
+*	Code version: 1.0
+*	Availability: https://github.com/GameDevChef/BehaviourTrees
+*
+***************************************************************************************/
+
 public class AiTreeConstructor : MonoBehaviour
 {
     public bool weaponPicked;
@@ -178,7 +188,7 @@ public class AiTreeConstructor : MonoBehaviour
         WasCorpseChecked wasCorpseCheckedNode = new(alliesAround);
         CheckOnCorpseNode checkOnCorpseNode = new(agent, alliesAround);
 
-        KilledNextToMeNode killedNextToMeNode = new(health, alliesAround);
+        KilledNextToMeNode killedNextToMeNode = new(alliesAround, fearFactorAI, agent,this);
 
         WeaponEuipped weaponEuippedNode = new(this);
         FindWeaponsAvailableNode findWeaponNode = new( agent, weaponPickup.transform, this);
@@ -382,46 +392,7 @@ public class AiTreeConstructor : MonoBehaviour
 
         topNode = new Selector(new List<Node> { TailgatingSeqeunce, mainCoverSequence,  elevatorSelector });
     }
-    /*
-    public void RunAwayFromPlayer()
-    {
-        
-        
-        Vector3 dirToPlayer = transform.position - playerTransform.transform.position;
-        Vector3 newPos = transform.position + dirToPlayer;
-        agent.SetDestination(newPos);
-
-    }
-
-    public void Patrolling()
-    {
-        
-        if (!walkPointSet) SearchWalkPoint();
-
-        if (walkPointSet)
-            agent.SetDestination(walkPoint);
-
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
-        //Walkpoint reached
-        if (distanceToWalkPoint.magnitude < 1f)
-            walkPointSet = false;
-    }
-    public void SearchWalkPoint()
-    {
-        //Calculate random point in range
-        float randomZ = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
-        float randomX = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
-
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
-            walkPointSet = true;
-    }
-
-    */
-
-
+    
     public void DebugMessage(string message)
     {
         //Debug.Log("Node" + message);

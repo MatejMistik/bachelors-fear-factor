@@ -84,6 +84,7 @@ public class LifeScript : MonoBehaviour
         takingDamage = false;
     }
 
+    /*
     private void OnTriggerEnter(Collider other)
     {
 
@@ -95,9 +96,12 @@ public class LifeScript : MonoBehaviour
             Destroy(other.gameObject);
         }
 
+    }
+    */
 
-
-
+    public void TakeDamage(float amount)
+    {
+        health -= amount;
     }
 
 }

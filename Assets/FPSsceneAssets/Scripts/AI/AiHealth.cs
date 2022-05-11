@@ -8,7 +8,7 @@ using UnityEngine.AI;
 public class AiHealth : MonoBehaviour
 {
     AiKilled aiKilled;
-    public static bool firstkilled;
+    public static bool firstKilled;
     public static int numberOfAgentsKilled;
 
     //public CapsuleCollider colliderForSensor;
@@ -84,13 +84,21 @@ public class AiHealth : MonoBehaviour
         blinkTimer = blinkDuration;
     }
 
+
     public void Die()
     {
         //colliderForSensor.enabled = false;
-        aiKilled.aiKilled = true;
+        if (aiKilled)
+        {
+            aiKilled.aiKilled = true;
+        }
+        else { 
+            Debug.Log(aiKilled + "Not attached to Enemy GameObject"); 
+        }
+
         gameObject.tag = "DeadEnemy";
         agentIsDead = true;
-        firstkilled = true;
+        firstKilled = true;
         ragdoll.ActivateRagDoll();
         this.GetComponent<AiTreeConstructor>().enabled = false;
         agent.isStopped = true;
