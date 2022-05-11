@@ -23,7 +23,7 @@ public class RayCastWeapon : MonoBehaviour
     public GameObject projectile;
     public Transform bulletHole;
 
-
+    public int iterations = 10;
 
     private void Awake()
     {
@@ -32,15 +32,45 @@ public class RayCastWeapon : MonoBehaviour
     }
 
 
-    public void ShootTest()
+    public void AimAtTarget(Vector3 targetPosition)
+    {
+        Vector3 aimDirection = bulletHole.forward;
+        Vector3 targetDirection = targetPosition - bulletHole.position;
+        Quaternion aimTowards = Quaternion.FromToRotation(aimDirection, targetDirection);
+
+    }
+
+
+    public void PrepareToShoot()
     {
         
+        if (bulletsLeft < 1 && !reloading) Reload();
+        //Shoot
+        if (readyToShoot && !reloading && bulletsLeft > 0)
+        {
+
+            bulletsLeft -= bulletsPerTap;
+            Shoot();
+        }
+    }
+
+
+    void Shoot()
+    {
         transform.LookAt(player);
+
+        Vector3 targetPosition = player.position;
+        for (int i = 0; i < iterations; i++)
+        {
+            AimAtTarget(targetPosition);
+        }
+        readyToShoot = false;
         muzzleFlash.Play();
         GameObject bullet = Instantiate(projectile, bulletHole.transform.position, Quaternion.identity);
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        bullet.transform.Rotate(0, 90, 0);
         rb.AddForce(bulletHole.transform.forward * projectileSpeed, ForceMode.Impulse);
-        Destroy(bullet, 2);
+        Destroy(bullet, 20);
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, range))
         {
             Debug.Log(hit);
@@ -63,51 +93,7 @@ public class RayCastWeapon : MonoBehaviour
 
 
         }
-       
-    }
-
-
-    public void PrepareToShoot()
-    {
-
-        if (bulletsLeft < 1 && !reloading) Reload();
-        //Shoot
-        if (readyToShoot && !reloading && bulletsLeft > 0)
-        {
-
-            bulletsLeft -= bulletsPerTap;
-            Shoot();
-        }
-    }
-
-
-    void Shoot()
-    {
-
-
-        transform.LookAt(player);
-        readyToShoot = false;
-        muzzleFlash.Play();
-        GameObject bullet = Instantiate(projectile, bulletHole.transform.position, Quaternion.identity);
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        bullet.transform.Rotate(0, 90, 0);
-        rb.AddForce(bulletHole.transform.forward * projectileSpeed, ForceMode.Impulse);
-        Destroy(bullet, 20);
-        /*if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, range))
-        {
-       
-
-            if (hit.rigidbody != null)
-            {
-                hit.rigidbody.AddForce(-hit.normal * impactForce);
-            }
-
-            GameObject impactGo = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-            Destroy(impactGo, 1f);
-
-
-        }
-        */
+        
         //Debug.Log("shot");
         Invoke(nameof(ResetShot), fireRate);
         if ( bulletsLeft > 1)
