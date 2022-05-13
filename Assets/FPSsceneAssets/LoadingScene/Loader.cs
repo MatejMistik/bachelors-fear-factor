@@ -4,10 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/***************************************************************************************
+    *	Title: Scene Manager in Unity (Unity Tutorial)
+    *	Author: Code Monkey
+    *   Date: 5. 4. 2019
+    *	Code version: 1.0
+    *	Availability: https://www.youtube.com/watch?v=3I5d2rUJ0pE&ab_channel=CodeMonkey
+    *
+    ***************************************************************************************/
+
 public static class Loader {
 
     private class LoadingMonoBehaviour : MonoBehaviour { }
-
+    
     public enum Scene {
         GameScene,
         Loading,
@@ -17,6 +26,8 @@ public static class Loader {
         ElevatorScene,
         PhoneScene,
         TailGating,
+        AiConstraints,
+        ShotgunScene,
     }
 
     private static Action onLoaderCallback;

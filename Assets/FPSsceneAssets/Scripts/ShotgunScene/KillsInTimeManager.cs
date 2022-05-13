@@ -7,17 +7,14 @@ public class KillsInTimeManager : MonoBehaviour
 
     public float timeToGainBonus;
 
-    private float timeSincefirstKilled;
-    private bool firstKilled;
+
     public static bool bonusActivated;
-    private int killsCount;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        firstKilled = false;
-        killsCount = 0;
         bonusActivated = false;
     }
 
@@ -39,12 +36,6 @@ public class KillsInTimeManager : MonoBehaviour
         }
 
 
-    }
-
-    public void FirstWasKilled()
-    {
-        firstKilled = true;
-        killsCount++;
     }
 
 }

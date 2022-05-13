@@ -19,7 +19,7 @@ public class RayCastWeapon : MonoBehaviour
 
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
-    public Transform player;
+    public Transform playerTransform;
     public GameObject projectile;
     public Transform bulletHole;
 
@@ -29,6 +29,15 @@ public class RayCastWeapon : MonoBehaviour
     {
         bulletsLeft = magazineSize;
         readyToShoot = true;
+        
+    }
+
+    private void Start()
+    {
+        if (GameObject.FindWithTag("Player") != null)
+        {
+            playerTransform = GameObject.FindWithTag("Player").transform;
+        }
     }
 
 
@@ -57,20 +66,24 @@ public class RayCastWeapon : MonoBehaviour
 
     void Shoot()
     {
-        transform.LookAt(player);
+        transform.LookAt(playerTransform);
 
-        Vector3 targetPosition = player.position;
+        Vector3 targetPosition = playerTransform.position;
         for (int i = 0; i < iterations; i++)
         {
             AimAtTarget(targetPosition);
         }
         readyToShoot = false;
         muzzleFlash.Play();
+
+        // projectiles option
+        /*
         GameObject bullet = Instantiate(projectile, bulletHole.transform.position, Quaternion.identity);
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         bullet.transform.Rotate(0, 90, 0);
         rb.AddForce(bulletHole.transform.forward * projectileSpeed, ForceMode.Impulse);
         Destroy(bullet, 20);
+        */
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, range))
         {
             Debug.Log(hit);
@@ -79,8 +92,11 @@ public class RayCastWeapon : MonoBehaviour
             if (hitBox)
             {
                 hitBox.OnRaycasthit(this);
+                hit.rigidbody.AddForce(-hit.normal * impactForce);
             }
 
+            //projectiles option
+            /*
             Debug.Log(range);
 
             if (hit.rigidbody != null)
@@ -90,7 +106,7 @@ public class RayCastWeapon : MonoBehaviour
 
             GameObject impactGo = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(impactGo, 1f);
-
+            */
 
         }
         

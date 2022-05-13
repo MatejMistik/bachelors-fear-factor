@@ -765,6 +765,11 @@ PrefabInstance:
       propertyPath: LiveText
       value: 
       objectReference: {fileID: 1371512845}
+    - target: {fileID: 6856284182682704859, guid: 12397741ba8d17046a742ff97e7db0e1,
+        type: 3}
+      propertyPath: slider
+      value: 
+      objectReference: {fileID: 17026098729427225}
     - target: {fileID: 6856284182838335546, guid: 12397741ba8d17046a742ff97e7db0e1,
         type: 3}
       propertyPath: text
@@ -803,6 +808,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 17026098729427223}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &17026098729427225 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 156236203946257380, guid: 12397741ba8d17046a742ff97e7db0e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 17026098729427223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7264778840569351698
 PrefabInstance:
   m_ObjectHideFlags: 0

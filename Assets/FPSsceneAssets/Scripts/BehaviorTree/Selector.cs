@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
-***************************************************************************************
+
+/***************************************************************************************
 *	Title: AI in Unity Turorial. Behavior Trees.
 *	Author: GameDevChef
 *   Date: 22.05., 2022

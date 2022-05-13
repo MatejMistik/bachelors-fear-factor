@@ -7,6 +7,8 @@ using System;
 
 public class FearFactorAI : MonoBehaviour
 {
+    public AudioSource audioSource;
+
     public Transform player;
     public Slider slider;
     AiTreeConstructor ai;
@@ -52,6 +54,8 @@ public class FearFactorAI : MonoBehaviour
 
     [SerializeField] float SetMaxForFear;
     public bool canGainFear;
+    private bool audioSourceOn = true;
+    private float audioTimer;
 
     public bool canLoseFear { get; private set; }
 
@@ -63,6 +67,11 @@ public class FearFactorAI : MonoBehaviour
         maxFear = SetMaxForFear;
         captionsForAI = GameObject.Find("Captions").GetComponent<captionsForAI>();
         aiHealth = GetComponent<AiHealth>();
+        if (audioSource) {
+            audioSource = GetComponent<AudioSource>();
+            audioTimer = audioSource.clip.length;
+        }
+        
     }
 
     // Update is called once per frame
@@ -89,9 +98,9 @@ public class FearFactorAI : MonoBehaviour
             wordResponseCalled = true;
             return;
         }
-        Debug.Log(actualState);
-        Debug.Log(fear);
-        Debug.Log(actualState == SEENDEADBODY && fear > 99);
+        //Debug.Log(actualState);
+       // Debug.Log(fear);
+       // Debug.Log(actualState == SEENDEADBODY && fear > 99);
         if(actualState == SEENDEADBODY && !wordResponseCalled)
         {
             WordResponse(stringArrSeenDeadBody );
@@ -99,9 +108,24 @@ public class FearFactorAI : MonoBehaviour
         }
         if(actualState == SEENDEADBODY && fear > 99)
         {
-            this.enabled = false;
-            aiHealth.Die();
+            if (audioSource && audioSourceOn)
+            {
+                audioSourceOn = false;
+                audioSource.Play();
+                
+            }
+            
+            if(audioTimer <= 0)
+            {
+                this.enabled = false;
+                aiHealth.Die();
+            }
+            
+            
         }
+        if(!audioSourceOn)
+        audioTimer -= Time.deltaTime;
+        
 
        
 
@@ -156,7 +180,7 @@ public class FearFactorAI : MonoBehaviour
         }
         captions.SetText(array[messagesCounter]);
         messagesCounter++;
-        Invoke(nameof(ResetWordResponse), 2f);
+        //Invoke(nameof(ResetWordResponse), 2f);
         
     }
 

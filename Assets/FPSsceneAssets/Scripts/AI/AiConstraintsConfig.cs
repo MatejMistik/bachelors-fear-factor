@@ -4,29 +4,69 @@ using UnityEngine;
 
 public class AiConstraintsConfig : MonoBehaviour
 {
+    public static string sceneString;
 
-    public float strength;
-    public float height;
+    //must be same as in the Loader script
+    public enum Scene
+    {
+        GameScene,
+        Loading,
+        MainMenu,
+        BombScene,
+        BushScene,
+        ElevatorScene,
+        PhoneScene,
+        TailGating,
+        AiConstraints,
+        ShotgunScene,
+    }
 
-    
-    public string[] childhoodTrauma { get; set; }
-    
+    public static void TakeState(Scene scene)
+    {
+        sceneString = scene.ToString();
+    }
+
+    public static string[] behaviorTreeType = {"Tree2", "Tree3" };
+    public static string chosenBehaviorTree;
+
+
+
+    public static float minStrenght, maxStrenght, strenght;
+    public static float strengthClamped, strenghtNormalized;
+    public static float minHeight, maxHeight, height = 1.7643f;
+    public static float heightClamped, heightNormalized ;
+    public static float speed;
+    public static float mass = 1.2678f;
+
+    public static string[] childhoodTrauma = { "SeenShooting", "BeenInShooting", "SeenDeadBody" };
+    public static string chosenTrauma;
+
     // depends even if the situation is recognized by the supsect being watched
     public string[] Personality { get; set; }
-    public string[] sex;
+    public static string[] sex = { "male", "female" };
 
-    public bool weapon;
+    public static bool weapon;
     // clothes, smell, face expression, eyes color
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        strengthClamped = Mathf.Clamp(strenght, minStrenght, maxStrenght);
+        strenghtNormalized = (strengthClamped - minStrenght) / (maxStrenght - minStrenght);
+        heightClamped = Mathf.Clamp(height, minHeight, maxHeight);
+        heightNormalized = (heightClamped - minHeight ) / ( maxHeight - minHeight ); 
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("sceneString" + sceneString);
+    }
+
+    // vypoËÌta treshold od 0 po 100, ktor˝ bude rozhodovaù o tom ako sa dan· AI zachov·.
+    void CalculateTreshold()
+    {
         
     }
+
 }

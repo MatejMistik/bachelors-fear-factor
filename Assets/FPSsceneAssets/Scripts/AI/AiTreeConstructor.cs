@@ -29,7 +29,6 @@ public class AiTreeConstructor : MonoBehaviour
     [SerializeField] private Transform playerTransform;
     private NavMeshAgent agent;
     Animator animator;
-    [SerializeField] float maxDistance;
     public TextMeshProUGUI nodeStateText;
     public RayCastWeapon weapon;
     public Sensor sensor;
@@ -143,6 +142,9 @@ public class AiTreeConstructor : MonoBehaviour
             case 8:
                 ConstructBehaviorTreeShotgun();
                 break;
+            case 9:
+                ConstructBehaviorTreeBladeRunner();
+                break;
             default:
                 break;
         }
@@ -176,10 +178,30 @@ public class AiTreeConstructor : MonoBehaviour
         topNode = new Selector(new List<Node> { findWeaponSequence, mainCoverSequence, shootSequence, chaseSequence });
     }
 
+    private void ConstructBehaviorTreeBladeRunner()
+    {
+
+        RangeNode rangeNode = new(100f, playerTransform, transform);
+        ChaseNode chaseNode = new(playerTransform, agent);
+
+        AreDeadAlliesNearby areDeadAlliesNearbyNode = new(sensor);
+        WasCorpseChecked wasCorpseCheckedNode = new(alliesAround);
+        CheckOnCorpseNode checkOnCorpseNode = new(agent, alliesAround);
+
+        KilledNextToMeNode killedNextToMeNode = new(alliesAround, fearFactorAI, agent, this);
+
+
+        Sequence chaseSequence = new Sequence(new List<Node> { rangeNode, chaseNode });
+        Sequence CheckOnCorpse = new Sequence(new List<Node> { areDeadAlliesNearbyNode, wasCorpseCheckedNode, checkOnCorpseNode });
+
+        topNode = new Selector(new List<Node> { killedNextToMeNode, CheckOnCorpse, chaseSequence });
+
+
+    }
+
     private void ConstructBehaviorTreeTest()
     {
 
-        weaponPickup = GameObject.Find("WeaponPickup").GetComponent<WeaponPickup>();
 
         RangeNode rangeNode = new(100f, playerTransform, transform);
         ChaseNode chaseNode = new(playerTransform, agent);
@@ -189,13 +211,10 @@ public class AiTreeConstructor : MonoBehaviour
         CheckOnCorpseNode checkOnCorpseNode = new(agent, alliesAround);
 
         KilledNextToMeNode killedNextToMeNode = new(alliesAround, fearFactorAI, agent,this);
-
-        WeaponEuipped weaponEuippedNode = new(this);
-        FindWeaponsAvailableNode findWeaponNode = new( agent, weaponPickup.transform, this);
         
         Sequence chaseSequence = new Sequence(new List<Node> { rangeNode, chaseNode });
         Sequence CheckOnCorpse = new Sequence(new List<Node> { areDeadAlliesNearbyNode, wasCorpseCheckedNode, checkOnCorpseNode });
-        Sequence findWeaponSequence = new Sequence(new List<Node> { weaponEuippedNode, findWeaponNode });
+
 
         topNode = new Selector(new List<Node> { killedNextToMeNode ,CheckOnCorpse, chaseSequence });
 

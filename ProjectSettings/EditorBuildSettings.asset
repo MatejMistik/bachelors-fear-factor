@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/FPSsceneAssets/LoadingScene/Loading.unity
     guid: 8588aaab6781dc246b0350b3d77dc6d2
   - enabled: 1
+    path: Assets/FPSsceneAssets/AiConstraints.unity
+    guid: 78adcec1b5550154c8b4604f42bd14a2
+  - enabled: 1
     path: Assets/FPSsceneAssets/TailGating.unity
     guid: 2eceeaa8118ac0b42bf1d2d28f1aec6b
   - enabled: 1
@@ -26,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/FPSsceneAssets/BushScene.unity
     guid: 7a72a7cf40b54a844939f9512ba6a0c3
+  - enabled: 1
+    path: Assets/FPSsceneAssets/ShotgunScene.unity
+    guid: cf5d351b561c5c24c83b4ab0d1e365fa
   - enabled: 1
     path: Assets/FPSsceneAssets/ElevatorScene.unity
     guid: 8cdb90ee15e2450458fc93cd5ef4d012

@@ -6,7 +6,6 @@ public class captionsForAI : MonoBehaviour
 {
     public GameObject captions;
     public float turnOffCaptionsTimer;
-    private bool captionsActive;
     public void TurnOnCaptions()
     {
         captionsActive = true;

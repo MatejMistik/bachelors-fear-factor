@@ -313,10 +313,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3af5cfe1d0b267a48b3b1f848f4894fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 30
-  damage: 60
-  fireRate: 0.1
-  impactForce: 60
+  range: 50
+  damage: 10
+  fireRate: 0.3
+  impactForce: 2000
   magazineSize: 30
   projectileSpeed: 12
   reloadTime: 2
@@ -324,10 +324,11 @@ MonoBehaviour:
   muzzleFlash: {fileID: 6162544529969971059}
   impactEffect: {fileID: 1337198075554910, guid: 25c7aa9ad705fe143a4d71c1c8deb7d4,
     type: 3}
-  player: {fileID: 0}
+  playerTransform: {fileID: 0}
   projectile: {fileID: 1162799150826561015, guid: 778e2fa213da02346b579f326f6ed0d1,
     type: 3}
   bulletHole: {fileID: 6162544529214127755}
+  iterations: 10
 --- !u!1 &6161413343563842348
 GameObject:
   m_ObjectHideFlags: 0
