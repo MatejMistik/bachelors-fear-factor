@@ -15,6 +15,8 @@ public class PlayButtonConstraints : MonoBehaviour
 
 	void TaskOnClick()
 	{
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
 		Debug.Log(AiConstraintsConfig.sceneString);
 		Loader.Scene enumValue = (Loader.Scene)System.Enum.Parse(typeof(Loader.Scene), AiConstraintsConfig.sceneString);
 		Loader.Load(enumValue);

@@ -1425,7 +1425,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   playerTransform: {fileID: 6852815100912118809}
-  maxDistance: 0
   nodeStateText: {fileID: 7195873476509854403}
   weapon: {fileID: 0}
   sensor: {fileID: 4483678620869816075}
@@ -2856,6 +2855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5615c69838a4d174c83964ad2af7563f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   player: {fileID: 6852815100912118809}
   slider: {fileID: 7195873476148864229}
   captions: {fileID: 7264778840569351699}
@@ -5591,6 +5591,8 @@ MonoBehaviour:
   treshold: 50
   blinkDuration: 2
   blinkIntensity: 10
+  healthRestored: 0
+  timeToResetHealing: 0
 --- !u!114 &6852815101112826574
 MonoBehaviour:
   m_ObjectHideFlags: 0

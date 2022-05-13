@@ -41,14 +41,14 @@ public class FearFactorAI : MonoBehaviour
 
 
     public static bool needHealing = true;
-    public float decreaseFearTimer;
+    [HideInInspector] public float decreaseFearTimer;
     public float timeBetweenGainOfFear;
 
     private int messagesCounter = 0;
     private string[] stringArrObserving = new string[] { "Can you please stop following me ?", "What exactly is your problem ?", "Get Lost !" };
     private string[] stringArrRunningAway = new string[] { "Let me be ! ", " I am calling the police !", "Psycho !" };
     private string[] stringArrSeenDeadBody = new string[] { "I am gonna faint" };
-    private bool wordResponseCalled;
+    private bool wordResponseCalled = false;
     public bool observingDialogActive;
     private float fearStateMultiplier = 0f;
 
@@ -86,17 +86,18 @@ public class FearFactorAI : MonoBehaviour
         //Debug.Log(decreaseFearTimer);
         //Debug.Log(fear);
         // activating dialog
+        //Debug.Log(wordResponseCalled);
+        //Debug.Log(fear);
+        //Debug.Log(actualState);
         if(fear > 30 && !wordResponseCalled && actualState == OBSERVING)
         {
             WordResponse(stringArrObserving);
             wordResponseCalled = true;
-            return;
         }
         if(fear > 30 && !wordResponseCalled && actualState == RUNNING)
         {
             WordResponse(stringArrRunningAway);
             wordResponseCalled = true;
-            return;
         }
         //Debug.Log(actualState);
        // Debug.Log(fear);
@@ -172,7 +173,7 @@ public class FearFactorAI : MonoBehaviour
 
     public void WordResponse(string[] array)
     {
-        
+        Debug.Log("captions called");
         captionsForAI.TurnOnCaptions();
         if(messagesCounter >= array.Length)
         {
@@ -180,7 +181,7 @@ public class FearFactorAI : MonoBehaviour
         }
         captions.SetText(array[messagesCounter]);
         messagesCounter++;
-        //Invoke(nameof(ResetWordResponse), 2f);
+        Invoke(nameof(ResetWordResponse), 2f);
         
     }
 

@@ -8,7 +8,6 @@ public class captionsForAI : MonoBehaviour
     public float turnOffCaptionsTimer;
     public void TurnOnCaptions()
     {
-        captionsActive = true;
         captions.SetActive(true);
         Invoke(nameof(TurnOffCaptions), turnOffCaptionsTimer);
  
@@ -17,7 +16,6 @@ public class captionsForAI : MonoBehaviour
     public void TurnOffCaptions()
     {
         captions.SetActive(false);
-        captionsActive = false;
     }
 
 }

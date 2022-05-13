@@ -31,6 +31,9 @@ public class AiHealth : MonoBehaviour
     public float blinkDuration;
     public float blinkIntensity;
     float blinkTimer;
+    public bool healthRestored;
+
+    [SerializeField] float timeToResetHealing ;
 
     void Start()
     {
@@ -112,6 +115,17 @@ public class AiHealth : MonoBehaviour
     public void Restore(float amount)
     {
         newEnemycurrentHealth += amount;
+        if(newEnemycurrentHealth == maxHealth)
+        {
+            healthRestored = true;
+            Invoke(nameof(HealthRestoredReset),timeToResetHealing);
+        }
+        
+    }
+
+    private void HealthRestoredReset()
+    {
+        healthRestored = false;
     }
 
 

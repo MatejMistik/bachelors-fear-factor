@@ -19,7 +19,7 @@ public class HealMeNode : Node
     public override NodeState Evaluate()
     {
         //Debug.Log(agent.velocity.magnitude); 
-        if((health.newEnemycurrentHealth  < health.maxHealth || fearFactorAI.slider.value >= 0.6f) && agent.velocity.magnitude == 0 )
+        if((health.newEnemycurrentHealth  < health.maxHealth || fearFactorAI.slider.value >= 0.6f) && agent.velocity.magnitude == 0 && !health.healthRestored)
         {
             health.Restore(50);
             fearFactorAI.fear = 0;

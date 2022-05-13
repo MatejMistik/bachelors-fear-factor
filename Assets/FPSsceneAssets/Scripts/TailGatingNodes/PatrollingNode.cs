@@ -23,7 +23,7 @@ public class PatrollingNode : Node
     public override NodeState Evaluate()
     {
         fearFactorAI.WhichStateIsIn(FearFactorAI.FearState.Calm);
-        Debug.Log("Patrolling " + this.nodeState);
+        //Debug.Log("Patrolling " + this.nodeState);
         ai.nodeStateText.SetText("Patrolling");
         agent.speed = 8;
         NavigationPath.StartPatrolling();

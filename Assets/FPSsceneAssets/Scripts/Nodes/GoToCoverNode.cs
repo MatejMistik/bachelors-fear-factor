@@ -31,7 +31,6 @@ public class GoToCoverNode : Node
             return NodeState.FAILURE;
         ai.DebugMessage("GoToCoverNode");
         float distance = Vector3.Distance(coverSpot.position, agent.transform.position);
-        Debug.Log(distance);
         if (distance > 3.5f)
         {
             ai.nodeStateText.SetText("GoToCover");
