@@ -9,10 +9,10 @@ public class PauseScript : MonoBehaviour
 
     public static bool gameIsPaused = false;
     private GameObject pauseMenuUI;
+    private GameObject infoPanel;
     private Button resumeButton;
     private Button mainMenuButton;
     private Button quitButton;
-    private GameObject infoText;
 
 
     void Start()
@@ -20,10 +20,10 @@ public class PauseScript : MonoBehaviour
         resumeButton = transform.Find("PauseMenu/ResumeButton").GetComponent<Button>();
         mainMenuButton = transform.Find("PauseMenu/MainMenuButton").GetComponent<Button>();
         quitButton = transform.Find("PauseMenu/QuitButton").GetComponent<Button>();
-        infoText = GameObject.Find("infoText");
+        infoPanel = GameObject.Find("InfoPanel");
         pauseMenuUI = GameObject.Find("PauseMenu");
         pauseMenuUI.SetActive(false);
-        infoText.SetActive(false);
+        infoPanel.SetActive(false);
         resumeButton.onClick.AddListener(delegate { TaskOnClickResume(); });
         quitButton.onClick.AddListener(delegate { TaskOnClickQuit(); });
         mainMenuButton.onClick.AddListener(delegate { TaskOnClickMenu(); });
@@ -70,11 +70,11 @@ public class PauseScript : MonoBehaviour
         {
             if (gameIsPaused)
             {
-                infoText.SetActive(false);
+                infoPanel.SetActive(false);
                 Resume();
             }   else
             {
-                infoText.SetActive(true);
+                infoPanel.SetActive(true);
                 Pause();
             }
         }

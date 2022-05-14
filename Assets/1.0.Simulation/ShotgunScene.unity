@@ -2775,11 +2775,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 720036874, guid: ef20b229d26c51f4f864aad491f9f98d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 720036874, guid: ef20b229d26c51f4f864aad491f9f98d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -274
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 720036875, guid: ef20b229d26c51f4f864aad491f9f98d, type: 3}
       propertyPath: turnOffCaptionsTimer
@@ -2923,22 +2923,22 @@ PrefabInstance:
     - target: {fileID: 7264778840009008290, guid: ef20b229d26c51f4f864aad491f9f98d,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.71567
+      value: 1.0294877
       objectReference: {fileID: 0}
     - target: {fileID: 7264778840009008290, guid: ef20b229d26c51f4f864aad491f9f98d,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.84785944
+      value: 0.79486823
       objectReference: {fileID: 0}
     - target: {fileID: 7264778840009008290, guid: ef20b229d26c51f4f864aad491f9f98d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 360
+      value: -55.899994
       objectReference: {fileID: 0}
     - target: {fileID: 7264778840009008290, guid: ef20b229d26c51f4f864aad491f9f98d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -278
+      value: 10.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef20b229d26c51f4f864aad491f9f98d, type: 3}

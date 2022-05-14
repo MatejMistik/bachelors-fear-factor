@@ -350,7 +350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 720036874, guid: ef20b229d26c51f4f864aad491f9f98d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -289
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 720036875, guid: ef20b229d26c51f4f864aad491f9f98d, type: 3}
       propertyPath: turnOffCaptionsTimer
@@ -483,12 +483,32 @@ PrefabInstance:
     - target: {fileID: 7264778840009008290, guid: ef20b229d26c51f4f864aad491f9f98d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 557
+      value: -55.900024
       objectReference: {fileID: 0}
     - target: {fileID: 7264778840009008290, guid: ef20b229d26c51f4f864aad491f9f98d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -313
+      value: 10.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264778840695116112, guid: ef20b229d26c51f4f864aad491f9f98d,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264778840695116112, guid: ef20b229d26c51f4f864aad491f9f98d,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264778840695116112, guid: ef20b229d26c51f4f864aad491f9f98d,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.0929898
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264778840695116112, guid: ef20b229d26c51f4f864aad491f9f98d,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278255384
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef20b229d26c51f4f864aad491f9f98d, type: 3}
@@ -499,6 +519,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 883384306, guid: e43cee33034a29b4e90c22684c7d8314, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1210.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 883384306, guid: e43cee33034a29b4e90c22684c7d8314, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 678.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 883384306, guid: e43cee33034a29b4e90c22684c7d8314, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.0066071
+      objectReference: {fileID: 0}
+    - target: {fileID: 883384306, guid: e43cee33034a29b4e90c22684c7d8314, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.00050163
+      objectReference: {fileID: 0}
+    - target: {fileID: 883384307, guid: e43cee33034a29b4e90c22684c7d8314, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 883384307, guid: e43cee33034a29b4e90c22684c7d8314, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 680678089513813699, guid: e43cee33034a29b4e90c22684c7d8314,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.47058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 3651954732324190258, guid: e43cee33034a29b4e90c22684c7d8314,
+        type: 3}
+      propertyPath: m_Name
+      value: InfoPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7180286852657021538, guid: e43cee33034a29b4e90c22684c7d8314,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676809306369698275, guid: e43cee33034a29b4e90c22684c7d8314,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.47058824
+      objectReference: {fileID: 0}
     - target: {fileID: 7676809308263423250, guid: e43cee33034a29b4e90c22684c7d8314,
         type: 3}
       propertyPath: m_Name

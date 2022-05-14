@@ -8301,27 +8301,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 720036874, guid: ef20b229d26c51f4f864aad491f9f98d, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 720036874, guid: ef20b229d26c51f4f864aad491f9f98d, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -6
-      objectReference: {fileID: 0}
-    - target: {fileID: 720036874, guid: ef20b229d26c51f4f864aad491f9f98d, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -513
-      objectReference: {fileID: 0}
-    - target: {fileID: 720036875, guid: ef20b229d26c51f4f864aad491f9f98d, type: 3}
-      propertyPath: turnOffCaptionsTimer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7264778838793349238, guid: ef20b229d26c51f4f864aad491f9f98d,
-        type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 7264778838793349239, guid: ef20b229d26c51f4f864aad491f9f98d,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -8331,11 +8310,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7264778838990747498, guid: ef20b229d26c51f4f864aad491f9f98d,
-        type: 3}
-      propertyPath: m_Layer
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7264778839081453365, guid: ef20b229d26c51f4f864aad491f9f98d,
         type: 3}
@@ -8446,66 +8420,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7264778839081453371, guid: ef20b229d26c51f4f864aad491f9f98d,
-        type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7264778839081453371, guid: ef20b229d26c51f4f864aad491f9f98d,
-        type: 3}
-      propertyPath: m_MatchWidthOrHeight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7264778839081453371, guid: ef20b229d26c51f4f864aad491f9f98d,
-        type: 3}
-      propertyPath: m_ReferenceResolution.x
-      value: 1920
-      objectReference: {fileID: 0}
-    - target: {fileID: 7264778839081453371, guid: ef20b229d26c51f4f864aad491f9f98d,
-        type: 3}
-      propertyPath: m_ReferenceResolution.y
-      value: 1080
-      objectReference: {fileID: 0}
-    - target: {fileID: 7264778839339389321, guid: ef20b229d26c51f4f864aad491f9f98d,
-        type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7264778839797660802, guid: ef20b229d26c51f4f864aad491f9f98d,
-        type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7264778840009008290, guid: ef20b229d26c51f4f864aad491f9f98d,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.2910931
-      objectReference: {fileID: 0}
-    - target: {fileID: 7264778840009008290, guid: ef20b229d26c51f4f864aad491f9f98d,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.63803965
-      objectReference: {fileID: 0}
-    - target: {fileID: 7264778840009008290, guid: ef20b229d26c51f4f864aad491f9f98d,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.75253
-      objectReference: {fileID: 0}
-    - target: {fileID: 7264778840009008290, guid: ef20b229d26c51f4f864aad491f9f98d,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 733.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7264778840009008290, guid: ef20b229d26c51f4f864aad491f9f98d,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -508
-      objectReference: {fileID: 0}
-    - target: {fileID: 7264778840009008317, guid: ef20b229d26c51f4f864aad491f9f98d,
-        type: 3}
-      propertyPath: m_Layer
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef20b229d26c51f4f864aad491f9f98d, type: 3}
