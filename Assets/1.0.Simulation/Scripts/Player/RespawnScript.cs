@@ -19,7 +19,7 @@ public class RespawnScript : MonoBehaviour
                 Physics.SyncTransforms();
                 
             }
-            // TODO - Game Over
+            
         }
     }
     private void Update()

@@ -4,6 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+/***************************************************************************************
+    *	Title: GRENADE / BOMB in Unity (Tutorial)
+    *	Author: Brackeys
+    *   Date: 1. 11. 2017
+    *	Code version: 1.0
+    *	Availability: https://www.youtube.com/watch?v=BYL6JtUdEY0&t=508s&ab_channel=Brackeys
+    *	Function Explode() logic's is partially taken from the video.
+    *
+    ***************************************************************************************/
+
 // Brackeys Grenade/Bomb in Unity tutorial
 public class Bomb : MonoBehaviour
 {
@@ -68,7 +78,6 @@ public class Bomb : MonoBehaviour
         Debug.Log(sumOfDamage);
         Debug.Log(rigidbodies.Length);
         Destroy(gameObject);
-
-        
+    
     }
 }

@@ -25,9 +25,9 @@ public class ObserveWhatIsTheProblemNode : Node
         if(fearFactorAI.slider.value > 0.6f){
             Debug.Log("fearValue" + fearFactorAI.slider.value);
             agent.isStopped = false;
+            ai.runningAway = true;
             return NodeState.SUCCESS;
         }
-        
         agent.isStopped = true;
         agent.transform.LookAt(player);
         if(fearFactorAI.canGainFear)

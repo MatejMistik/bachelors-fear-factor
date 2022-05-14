@@ -3,6 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+/************************************************************************************************************
+    *	Title: FULL 3D ENEMY AI in 6 MINUTES! || Unity Tutorial
+    *	Author: Dave / GameDevelopment
+    *   Date: 11. 8. 2020
+    *	Code version: 1.0
+    *	Availability: https://www.youtube.com/watch?v=UjkSFoLxesw&t=275s&ab_channel=Dave%2FGameDevelopment
+    *
+************************************************************************************************************/
+
+
 public class EnemyAI : MonoBehaviour
 {
     public NavMeshAgent agent;

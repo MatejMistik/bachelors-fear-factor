@@ -2,21 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponEuipped : Node
+public class PlayerHasWeaponNode : Node
 {
-
-    private AiTreeConstructor ai;
-
-    public WeaponEuipped(AiTreeConstructor ai)
-    {
-        this.ai = ai;
-    }
-
     public override NodeState Evaluate()
     {
-        if (!ai.weaponEquipped)
+        if (Gun.equippedByPlayer)
         {
-            Debug.Log("no weapon");
+            Debug.Log("equipped");
             return NodeState.SUCCESS;
         }
         return NodeState.FAILURE;

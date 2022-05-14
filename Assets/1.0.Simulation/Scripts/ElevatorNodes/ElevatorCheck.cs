@@ -9,7 +9,6 @@ public class ElevatorCheck : MonoBehaviour
     public Transform doorsOpenedPosition;
     public Transform doorsClosedPosition;
     public GameObject doors;
-    public GameObject elevatorFloor;
     public bool doorsOpened;
     public float moveSpeed;
     public bool doorsAreMoving = false;

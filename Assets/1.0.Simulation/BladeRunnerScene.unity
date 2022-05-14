@@ -2115,6 +2115,7 @@ MonoBehaviour:
   behaviorTreeLevelNumber: 4
   weaponEquipped: 0
   walkPointRange: 10
+  runningAway: 0
 --- !u!95 &232795662359166965
 Animator:
   serializedVersion: 4
@@ -3592,6 +3593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponParent: {fileID: 6852815100551390265}
+  riglayer: {fileID: 0}
 --- !u!4 &4493699732336957485
 Transform:
   m_ObjectHideFlags: 0
@@ -7484,7 +7486,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c9d93558548c7b64ebe5b63fb33b782a, type: 2}
+  - {fileID: 2100000, guid: 5195427c0d27644ed90d87ebe86d468a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

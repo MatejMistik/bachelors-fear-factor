@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 053fd5302cc35bb4eaa13a4ef2fe607d, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: d66e797ea3c5fc34db302186a886d62e, type: 2}
 --- !u!1001 &140415813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -377,7 +377,7 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243140309}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 0.5, y: 0.5, z: 0.5}
@@ -681,7 +681,7 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 500817864}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 0.6, y: 0.6, z: 0.6}
@@ -726,7 +726,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 700142221}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -67.65992, y: 3.52, z: -3.2025933}
+  m_LocalPosition: {x: -54.09, y: 3.52, z: -3.2025933}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -878,7 +878,7 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907856549}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 0.6, y: 0.6, z: 0.6}
@@ -1023,7 +1023,7 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1296067879}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 0.6, y: 0.6, z: 0.6}
@@ -1268,7 +1268,7 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1537872237}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 0.6, y: 0.6, z: 0.6}
@@ -1436,9 +1436,10 @@ MonoBehaviour:
   - {fileID: 6852815100787065572}
   - {fileID: 6852815100684195684}
   - {fileID: 6852815101107697298}
-  behaviorTreeLevelNumber: 5
+  behaviorTreeLevelNumber: 7
   weaponEquipped: 0
   walkPointRange: 10
+  runningAway: 0
 --- !u!95 &232795662359166965
 Animator:
   serializedVersion: 4
@@ -1802,7 +1803,7 @@ Transform:
   m_Children:
   - {fileID: 4281238394679645885}
   m_Father: {fileID: 6186576718692001167}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &927931848095463142
 GameObject:
@@ -1869,37 +1870,6 @@ GameObject:
   m_Layer: 0
   m_Name: Right_Eye
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1181888302267172457
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1181888302267172462}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.375, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6186576718692001167}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1181888302267172462
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1181888302267172457}
-  m_Layer: 0
-  m_Name: PlayerCameraRoot
-  m_TagString: CinemachineTarget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2861,7 +2831,7 @@ MonoBehaviour:
   captions: {fileID: 7264778840569351699}
   fear: 0
   decreaseFearTimer: 0
-  timeBetweenGainOfFear: 0
+  timeBetweenGainOfFear: 1
   observingDialogActive: 0
   SetMaxForFear: 100
   canGainFear: 0
@@ -2936,6 +2906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponParent: {fileID: 6852815100551390265}
+  riglayer: {fileID: 0}
 --- !u!4 &4493699732336957485
 Transform:
   m_ObjectHideFlags: 0
@@ -3350,7 +3321,6 @@ Transform:
   m_LocalScale: {x: 1.2678, y: 1.7643, z: 1.3401}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1181888302267172457}
   - {fileID: 923556340958896477}
   - {fileID: 6923507169922620182}
   - {fileID: 7195873477011075855}
@@ -3555,6 +3525,7 @@ GameObject:
   - component: {fileID: 4483678620869816064}
   - component: {fileID: 4483678620869816075}
   - component: {fileID: 4483678620869816115}
+  - component: {fileID: 7195873476447321039}
   m_Layer: 0
   m_Name: NewEnemy
   m_TagString: Player
@@ -6474,7 +6445,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c9d93558548c7b64ebe5b63fb33b782a, type: 2}
+  - {fileID: 2100000, guid: 5195427c0d27644ed90d87ebe86d468a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6626,7 +6597,7 @@ Transform:
   m_Children:
   - {fileID: 1026827062807588670}
   m_Father: {fileID: 6186576718692001167}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6985865672956556877
 BoxCollider:
@@ -6899,6 +6870,25 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &7195873476447321039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6814212403788971829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 099561d4a7b870247ba3a75a711b545e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elevatorStandingPosition: {fileID: 305131150}
+  doorsOpenedPosition: {fileID: 762252737}
+  doorsClosedPosition: {fileID: 1170261931}
+  doors: {fileID: 907856549}
+  doorsOpened: 0
+  moveSpeed: 10
+  doorsAreMoving: 0
 --- !u!1 &7195873476471612880
 GameObject:
   m_ObjectHideFlags: 0
@@ -7207,7 +7197,7 @@ RectTransform:
   - {fileID: 6852815100979379333}
   - {fileID: 256415490083420602}
   m_Father: {fileID: 6186576718692001167}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

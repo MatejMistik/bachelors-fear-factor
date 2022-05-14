@@ -56,6 +56,7 @@ public class AiTreeConstructor : MonoBehaviour
     public int walkPointRange;
     NavigationPathForAI navigationPathForAI;
     ElevatorCheck elevatorCheck;
+    public bool runningAway;
 
 
     private void Awake()
@@ -221,16 +222,21 @@ public class AiTreeConstructor : MonoBehaviour
         WeaponEuipped weaponEuippedNode = new(this);
         FindWeaponsAvailableNode findWeaponNode = new(agent, weaponPickup.transform, this);
 
-        Sequence findWeaponSequence = new Sequence(new List<Node> { weaponEuippedNode, findWeaponNode });
-        Sequence chaseSequence = new Sequence(new List<Node> { chasingRangeNode, chaseNode });
-        Sequence shootSequence = new(new List<Node> { shootingRangeNode, shootNode });
+        Inverter inverter = new(weaponEuippedNode);
+
+        PlayerNearbyNode playerNearby = new(sensor);
+        PlayerHasWeaponNode playerHasWeaponNode = new();
+
+        Sequence findWeaponSequence = new Sequence(new List<Node> { playerNearby, playerHasWeaponNode, weaponEuippedNode, findWeaponNode });
+        Sequence chaseSequence = new Sequence(new List<Node> {  inverter, chasingRangeNode, chaseNode });
+        Sequence shootSequence = new(new List<Node> { inverter, shootingRangeNode, shootNode });
 
         Sequence goToCoverSequence = new Sequence(new List<Node> { coverAvaliableNode, goToCoverNode });
         Selector findCoverSelector = new Selector(new List<Node> { goToCoverSequence, chaseSequence });
         Selector tryToTakeCoverSelector = new Selector(new List<Node> { isCoveredNode, findCoverSelector });
         Sequence mainCoverSequence = new Sequence(new List<Node> { healthNode, tryToTakeCoverSelector });
 
-        topNode = new Selector(new List<Node> { findWeaponSequence, mainCoverSequence, shootSequence, chaseSequence });
+        topNode = new Selector(new List<Node> { findWeaponSequence, mainCoverSequence, shootSequence, chaseSequence});
 
     }
 
@@ -298,7 +304,7 @@ public class AiTreeConstructor : MonoBehaviour
         ObserveWhatIsTheProblemNode observeWhatIsTheProblemNode = new(agent, playerTransform, fearFactorAI, this);
         RunAwayNode runAwayNode = new(this, agent, sensor, fearFactorAI, playerTransform);
 
-        IsInElevatorNode isInElevatorNode = new(agent, elevatorCheck);
+        IsInElevatorNode isInElevatorNode = new(agent, elevatorCheck,this);
         IsElelevatorOpenedNode isElelevatorOpenedNode = new(elevatorCheck);
         GetToElelevatorNode getToElelevatorNode = new(agent, elevatorCheck);
         CloseTheDoorNode closeTheDoorNode = new(elevatorCheck);
@@ -306,7 +312,7 @@ public class AiTreeConstructor : MonoBehaviour
 
         Sequence closeTheDoorSequence = new(new List<Node> { isInElevatorNode, closeTheDoorNode });
         Sequence goToElevatorSeqeunce = new(new List<Node> { isElelevatorOpenedNode, getToElelevatorNode });
-        Selector elevatorSelector = new(new List<Node> { closeTheDoorSequence, isInElevatorNode, goToElevatorSeqeunce });
+        Selector elevatorSelector = new(new List<Node> { isInElevatorNode, closeTheDoorSequence,  goToElevatorSeqeunce });
         Sequence goToCoverSequence = new(new List<Node> { coverAvaliableNode, goToCoverNode });
         Selector tryToTakeCoverSelector = new(new List<Node> { isCoveredNode, goToCoverSequence });
         Sequence mainCoverSequence = new(new List<Node> { healthNode, tryToTakeCoverSelector });

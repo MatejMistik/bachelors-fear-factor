@@ -719,7 +719,7 @@ MonoBehaviour:
   captions: {fileID: 0}
   fear: 0
   decreaseFearTimer: 0
-  timeBetweenGainOfFear: 0
+  timeBetweenGainOfFear: 1
   observingDialogActive: 0
   SetMaxForFear: 100
   canGainFear: 0
@@ -774,6 +774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponParent: {fileID: 0}
+  riglayer: {fileID: 0}
 --- !u!1 &1980081986839324570
 GameObject:
   m_ObjectHideFlags: 0

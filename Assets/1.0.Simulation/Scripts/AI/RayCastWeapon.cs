@@ -4,7 +4,17 @@ using TMPro;
 using UnityEngine;
 
 
-
+/*
+***************************************************************************************
+*	Title: Shooting with Raycasts - Unity Tutorial
+*	Author: Brackeys
+*   Date: 19. 4. 2017
+*	Code version: 1.0
+*	Availability: https://www.youtube.com/watch?v=THnivyG0Mvo&ab_channel=Brackeys
+*	
+*	Implementation is based on this tutorial
+*
+***************************************************************************************/
 
 public class RayCastWeapon : MonoBehaviour
 { 

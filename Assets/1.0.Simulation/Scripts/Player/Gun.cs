@@ -30,14 +30,22 @@ public class Gun : MonoBehaviour
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
     public TextMeshProUGUI text;
+    public static bool equippedByPlayer = true;
 
     private void Awake()
     {
         bulletsLeft = magazineSize;
         readyToShoot = true;
+        if (GetComponentInParent<LifeScript>())
+        {
+            equippedByPlayer = true;
+        }
+        
     }
     private void Update()
     {
+        
+
         MyInput();
 
         //SetText
