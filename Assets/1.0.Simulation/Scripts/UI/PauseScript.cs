@@ -79,7 +79,7 @@ public class PauseScript : MonoBehaviour
             }
         }
 
-        Debug.Log(Cursor.lockState);
+        //Debug.Log(Cursor.lockState);
 
     }
 

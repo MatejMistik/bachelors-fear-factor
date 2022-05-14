@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+
+
+
 public class RayCastWeapon : MonoBehaviour
 { 
-    [SerializeField] float range;
+    [SerializeField] float range = 30f;
     public float damage;
     [SerializeField] float fireRate;
-    [SerializeField] float impactForce;
+    //[SerializeField] float impactForce;
     [SerializeField] int magazineSize;
     [SerializeField] float projectileSpeed;
     public float reloadTime;
@@ -22,6 +25,9 @@ public class RayCastWeapon : MonoBehaviour
     public Transform playerTransform;
     public GameObject projectile;
     public Transform bulletHole;
+    Transform transformAi;
+
+
 
     public int iterations = 10;
 
@@ -32,23 +38,20 @@ public class RayCastWeapon : MonoBehaviour
         
     }
 
+   
+
     private void Start()
     {
         if (GameObject.FindWithTag("Player") != null)
         {
             playerTransform = GameObject.FindWithTag("Player").transform;
         }
+
+        transformAi = GameObject.FindWithTag("Enemy").transform;
     }
 
 
-    public void AimAtTarget(Vector3 targetPosition)
-    {
-        Vector3 aimDirection = bulletHole.forward;
-        Vector3 targetDirection = targetPosition - bulletHole.position;
-        Quaternion aimTowards = Quaternion.FromToRotation(aimDirection, targetDirection);
-
-    }
-
+    
 
     public void PrepareToShoot()
     {
@@ -64,15 +67,9 @@ public class RayCastWeapon : MonoBehaviour
     }
 
 
+
     void Shoot()
     {
-        transform.LookAt(playerTransform);
-
-        Vector3 targetPosition = playerTransform.position;
-        for (int i = 0; i < iterations; i++)
-        {
-            AimAtTarget(targetPosition);
-        }
         readyToShoot = false;
         muzzleFlash.Play();
 
@@ -84,15 +81,16 @@ public class RayCastWeapon : MonoBehaviour
         rb.AddForce(bulletHole.transform.forward * projectileSpeed, ForceMode.Impulse);
         Destroy(bullet, 20);
         */
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, range))
+        if (Physics.Raycast(bulletHole.transform.position, bulletHole.transform.forward, out RaycastHit hit, range))
         {
-            Debug.Log(hit);
+            Debug.Log(hit.collider);
             var hitBox = hit.collider.GetComponent<PlayerHitbox>();
+            Debug.Log(hitBox);
 
             if (hitBox)
             {
+                Debug.Log("hit");
                 hitBox.OnRaycasthit(this);
-                hit.rigidbody.AddForce(-hit.normal * impactForce);
             }
 
             //projectiles option

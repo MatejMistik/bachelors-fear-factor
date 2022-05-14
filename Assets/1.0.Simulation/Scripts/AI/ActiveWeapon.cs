@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 /***************************************************************************************
 *	Title: Equip weapons using Mesh Sockets and Animation Rigging in Unity [AI #04]
@@ -17,6 +18,8 @@ public class ActiveWeapon : MonoBehaviour
     RayCastWeapon weapon;
     public Transform weaponParent;
     AiTreeConstructor ai;
+    public Rig riglayer;
+        
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +39,8 @@ public class ActiveWeapon : MonoBehaviour
         weapon = newWeapon;
         weapon.transform.parent = weaponParent;
         weapon.transform.localPosition = Vector3.zero;
-        weapon.transform.localRotation = Quaternion.identity;
+        weapon.transform.localRotation = Quaternion.Euler(0,90,0);
+        riglayer.weight = 1.0f;
         Debug.Log("Active weapon script " + weapon);
         ai.EquipWeapon();
         ai.weaponEquipped = true;

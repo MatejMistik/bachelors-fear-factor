@@ -378,6 +378,7 @@ public class AiTreeConstructor : MonoBehaviour
     public void EquipWeapon()
     {
         weapon = GetComponentInChildren<RayCastWeapon>();
+        //GetComponent<weaponIK>().enabled = true;
         //Debug.Log(weapon);
     }
 
