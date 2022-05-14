@@ -9,12 +9,14 @@ using SensorToolkit;
 
 /*
 ***************************************************************************************
+*
 *	Title: AI in Unity Turorial. Behavior Trees.
 *	Author: GameDevChef
 *   Date: 22.05., 2022
 *	Code version: 1.0
 *	Availability: https://github.com/GameDevChef/BehaviourTrees
-*
+*	Functions used : ConstructBehaviorTree1(), SetBestCoverSpot(Transform bestCoverSpot), GetBestCoverSpot() 
+*	
 ***************************************************************************************/
 
 public class AiTreeConstructor : MonoBehaviour
@@ -65,8 +67,6 @@ public class AiTreeConstructor : MonoBehaviour
     ElevatorCheck elevatorCheck;
 
 
-
-    
     private void Awake()
     {
         fearFactorAI = GetComponent<FearFactorAI>();
@@ -95,7 +95,6 @@ public class AiTreeConstructor : MonoBehaviour
         topNode.Evaluate();
         if (topNode.nodeState == NodeState.FAILURE)
         {
-            DebugMessage("Failure state");
             agent.isStopped = true;
         }
         
@@ -195,7 +194,6 @@ public class AiTreeConstructor : MonoBehaviour
         Sequence CheckOnCorpse = new Sequence(new List<Node> { areDeadAlliesNearbyNode, wasCorpseCheckedNode, checkOnCorpseNode });
 
         topNode = new Selector(new List<Node> { killedNextToMeNode, CheckOnCorpse, chaseSequence });
-
 
     }
 
@@ -412,11 +410,7 @@ public class AiTreeConstructor : MonoBehaviour
         topNode = new Selector(new List<Node> { TailgatingSeqeunce, mainCoverSequence,  elevatorSelector });
     }
     
-    public void DebugMessage(string message)
-    {
-        //Debug.Log("Node" + message);
-        return;
-    }
+
     public void SetBestCoverSpot(Transform bestCoverSpot)
     {
         this.bestCoverSpot = bestCoverSpot;

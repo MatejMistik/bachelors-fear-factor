@@ -29,7 +29,6 @@ public class GoToCoverNode : Node
         Transform coverSpot = ai.GetBestCoverSpot();
         if (coverSpot == null)
             return NodeState.FAILURE;
-        ai.DebugMessage("GoToCoverNode");
         float distance = Vector3.Distance(coverSpot.position, agent.transform.position);
         if (distance > 3.5f)
         {
