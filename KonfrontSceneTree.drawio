@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-05-15T14:06:55.753Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36" etag="T_jmmi2QboJX9icH7Blt" version="18.0.3" type="github">
+<mxfile host="app.diagrams.net" modified="2022-05-15T14:13:18.196Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36" etag="NgMcgJDxZga7JNE44okm" version="18.0.3" type="github">
   <diagram id="aNkTvLlGlRAXNMfGRCiO" name="Page-1">
     <mxGraphModel dx="1550" dy="809" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -136,7 +136,7 @@
         <mxCell id="ezsD9pAWtwarLcvP3t45-3" value="Dostihnutie&lt;br style=&quot;font-size: 18px;&quot;&gt;Sekvencia" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#FFD966;" parent="1" vertex="1">
           <mxGeometry x="622.5864739884391" y="396.76478260869567" width="124.85549132947976" height="67.82608695652175" as="geometry" />
         </mxCell>
-        <mxCell id="ezsD9pAWtwarLcvP3t45-4" value="Strelba&lt;br style=&quot;font-size: 18px;&quot;&gt;Sekvencia" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#FFD966;" parent="1" vertex="1">
+        <mxCell id="ezsD9pAWtwarLcvP3t45-4" value="Liecba&lt;br style=&quot;font-size: 18px;&quot;&gt;Sekvencia" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#FFD966;" parent="1" vertex="1">
           <mxGeometry x="62.427514450866965" y="129.99652173913043" width="124.85549132947976" height="67.82608695652175" as="geometry" />
         </mxCell>
         <mxCell id="ezsD9pAWtwarLcvP3t45-5" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;fontSize=18;fontStyle=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" target="ezsD9pAWtwarLcvP3t45-6" edge="1">
@@ -175,10 +175,10 @@
         <mxCell id="k9KmUfYsGlUjubeCrhGL-5" value="Konfrontuj&lt;br style=&quot;font-size: 18px;&quot;&gt;Hraca" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#FFD966;" parent="1" vertex="1">
           <mxGeometry x="660.0022070001288" y="215.9" width="116.95476987473893" height="64.09055075213267" as="geometry" />
         </mxCell>
-        <mxCell id="ezsD9pAWtwarLcvP3t45-6" value="NaDosah" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#FFD966;" parent="1" vertex="1">
+        <mxCell id="ezsD9pAWtwarLcvP3t45-6" value="JeKryty" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#FFD966;" parent="1" vertex="1">
           <mxGeometry y="215.9094492478673" width="116.95476987473893" height="64.09055075213267" as="geometry" />
         </mxCell>
-        <mxCell id="ezsD9pAWtwarLcvP3t45-8" value="Strielaj" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#FFD966;" parent="1" vertex="1">
+        <mxCell id="ezsD9pAWtwarLcvP3t45-8" value="LiecUI" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#FFD966;" parent="1" vertex="1">
           <mxGeometry x="136.44723152052876" y="215.9094492478673" width="116.95476987473893" height="64.09055075213267" as="geometry" />
         </mxCell>
         <mxCell id="ezsD9pAWtwarLcvP3t45-10" value="Utec" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#FFD966;" parent="1" vertex="1">
