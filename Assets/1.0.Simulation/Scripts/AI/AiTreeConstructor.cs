@@ -139,20 +139,21 @@ public class AiTreeConstructor : MonoBehaviour
 
     private void ConstructBehaviorTreeTest()
     {
-        RangeNode rangeNode = new(rangeForRangeNode, playerTransform, transform);
+        RangeNode rangeNode = new(chasingRange, playerTransform, transform);
         ChaseNode chaseNode = new(playerTransform, agent);
 
         AreDeadAlliesNearby areDeadAlliesNearbyNode = new(sensor);
         WasCorpseChecked wasCorpseCheckedNode = new(alliesAround);
         CheckOnCorpseNode checkOnCorpseNode = new(agent, alliesAround);
 
-        KilledNextToMeNode killedNextToMeNode = new(alliesAround, fearFactorAI, agent, this);
+        KilledNextToMeNode killedNextToMeNode = new(alliesAround);
+        ReactToKilledCorpse reactToKilledCorpseNode = new(fearFactorAI, agent, this, alliesAround);
 
+        Sequence killedNextToMeSequence = new Sequence(new List<Node> { killedNextToMeNode, reactToKilledCorpseNode });
         Sequence chaseSequence = new Sequence(new List<Node> { rangeNode, chaseNode });
         Sequence CheckOnCorpse = new Sequence(new List<Node> { areDeadAlliesNearbyNode, wasCorpseCheckedNode, checkOnCorpseNode });
 
-
-        topNode = new Selector(new List<Node> { killedNextToMeNode, CheckOnCorpse, chaseSequence });
+        topNode = new Selector(new List<Node> { killedNextToMeSequence, CheckOnCorpse, chaseSequence });
 
     }
     // Classic tree with chasing, covering
@@ -353,20 +354,21 @@ public class AiTreeConstructor : MonoBehaviour
     private void ConstructBehaviorTreeBladeRunner()
     {
 
-        RangeNode rangeNode = new(100f, playerTransform, transform);
+        RangeNode rangeNode = new(chasingRange, playerTransform, transform);
         ChaseNode chaseNode = new(playerTransform, agent);
 
         AreDeadAlliesNearby areDeadAlliesNearbyNode = new(sensor);
         WasCorpseChecked wasCorpseCheckedNode = new(alliesAround);
         CheckOnCorpseNode checkOnCorpseNode = new(agent, alliesAround);
 
-        KilledNextToMeNode killedNextToMeNode = new(alliesAround, fearFactorAI, agent, this);
+        KilledNextToMeNode killedNextToMeNode = new(alliesAround);
+        ReactToKilledCorpse reactToKilledCorpseNode = new(fearFactorAI, agent, this, alliesAround);
 
-
+        Sequence killedNextToMeSequence = new Sequence(new List<Node> { killedNextToMeNode, reactToKilledCorpseNode});
         Sequence chaseSequence = new Sequence(new List<Node> { rangeNode, chaseNode });
         Sequence CheckOnCorpse = new Sequence(new List<Node> { areDeadAlliesNearbyNode, wasCorpseCheckedNode, checkOnCorpseNode });
 
-        topNode = new Selector(new List<Node> { killedNextToMeNode, CheckOnCorpse, chaseSequence });
+        topNode = new Selector(new List<Node> { killedNextToMeSequence, CheckOnCorpse, chaseSequence });
 
     }
 

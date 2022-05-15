@@ -21,9 +21,9 @@ public class MainMenu : MonoBehaviour {
             AiConstraintsConfig.TakeState(AiConstraintsConfig.Scene.TailGating);
             Loader.Load(Loader.Scene.AiConstraints);
         };
-        transform.Find("BombScene").GetComponent<Button_UI>().ClickFunc = () => {
+        transform.Find("BasicGameScene").GetComponent<Button_UI>().ClickFunc = () => {
             Debug.Log("Click Play");
-            AiConstraintsConfig.TakeState(AiConstraintsConfig.Scene.BombScene);
+            AiConstraintsConfig.TakeState(AiConstraintsConfig.Scene.BasicGameScene);
             Loader.Load(Loader.Scene.AiConstraints);
         };
         transform.Find("ElevatorScene").GetComponent<Button_UI>().ClickFunc = () => {
@@ -31,9 +31,9 @@ public class MainMenu : MonoBehaviour {
             AiConstraintsConfig.TakeState(AiConstraintsConfig.Scene.ElevatorScene);
             Loader.Load(Loader.Scene.AiConstraints);
         };
-        transform.Find("PhoneScene").GetComponent<Button_UI>().ClickFunc = () => {
+        transform.Find("ConfrontationScene").GetComponent<Button_UI>().ClickFunc = () => {
             Debug.Log("Click Play");
-            AiConstraintsConfig.TakeState(AiConstraintsConfig.Scene.PhoneScene);
+            AiConstraintsConfig.TakeState(AiConstraintsConfig.Scene.ConfrontationScene);
             Loader.Load(Loader.Scene.AiConstraints);
         };
         transform.Find("QuitBtn").GetComponent<Button_UI>().ClickFunc = () => {
@@ -42,7 +42,7 @@ public class MainMenu : MonoBehaviour {
         };
         transform.Find("ShotgunScene").GetComponent<Button_UI>().ClickFunc = () => {
             Debug.Log("Click Quit");
-            AiConstraintsConfig.TakeState(AiConstraintsConfig.Scene.ShotgunScene);
+            AiConstraintsConfig.TakeState(AiConstraintsConfig.Scene.DeadBodyScene);
             Loader.Load(Loader.Scene.AiConstraints);
         };
 

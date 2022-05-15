@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Animations.Rigging;
+
 public class WeaponToggle : MonoBehaviour
 {
     private Toggle toggle;

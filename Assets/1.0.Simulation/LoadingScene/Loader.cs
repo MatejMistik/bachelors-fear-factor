@@ -24,10 +24,11 @@ public static class Loader {
         BombScene,
         BushScene,
         ElevatorScene,
-        PhoneScene,
+        ConfrontationScene,
         TailGating,
         AiConstraints,
-        ShotgunScene,
+        DeadBodyScene,
+        BasicGameScene,
     }
 
     private static Action onLoaderCallback;

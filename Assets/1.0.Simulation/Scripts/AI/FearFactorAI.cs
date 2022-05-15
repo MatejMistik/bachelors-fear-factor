@@ -56,11 +56,13 @@ public class FearFactorAI : MonoBehaviour
     public bool canGainFear;
     private bool audioSourceOn = true;
     private float audioTimer;
+    private float maleMultiplier = 1f;
 
     public bool canLoseFear { get; private set; }
 
     void Start()
     {
+        if (AiConstraintsConfig.female) maleMultiplier = 1.2f;
         canGainFear = true;
         canLoseFear = true;
         ai = GetComponent<AiTreeConstructor>();
@@ -141,7 +143,7 @@ public class FearFactorAI : MonoBehaviour
     {
         if (canGainFear)
         {
-            fear += 10f * fearStateMultiplier;
+            fear += 10f * fearStateMultiplier * maleMultiplier;
             Invoke(nameof(ResetCanGainFear), timeBetweenGainOfFear);
         }
         decreaseFearTimer = 0f;

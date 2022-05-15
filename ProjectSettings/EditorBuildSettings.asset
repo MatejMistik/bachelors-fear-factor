@@ -21,17 +21,14 @@ EditorBuildSettings:
     path: Assets/1.0.Simulation/TailGating.unity
     guid: 2eceeaa8118ac0b42bf1d2d28f1aec6b
   - enabled: 1
-    path: Assets/1.0.Simulation/PhoneScene.unity
+    path: Assets/1.0.Simulation/ConfrontationScene.unity
     guid: 61fd28e77d82a24418de28e710411f52
-  - enabled: 1
-    path: Assets/1.0.Simulation/BombScene.unity
-    guid: a8011ec7e5e786344abd6a959a3f0b3a
-  - enabled: 1
-    path: Assets/1.0.Simulation/BushScene.unity
-    guid: 7a72a7cf40b54a844939f9512ba6a0c3
   - enabled: 1
     path: Assets/1.0.Simulation/ShotgunScene.unity
     guid: cf5d351b561c5c24c83b4ab0d1e365fa
+  - enabled: 1
+    path: Assets/1.0.Simulation/BasicGameScene.unity
+    guid: e52564a3765592f418947a9d8c79fa89
   - enabled: 1
     path: Assets/1.0.Simulation/ElevatorScene.unity
     guid: 8cdb90ee15e2450458fc93cd5ef4d012

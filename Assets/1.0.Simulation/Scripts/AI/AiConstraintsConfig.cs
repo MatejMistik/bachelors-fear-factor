@@ -16,10 +16,11 @@ public class AiConstraintsConfig : MonoBehaviour
         BombScene,
         BushScene,
         ElevatorScene,
-        PhoneScene,
+        ConfrontationScene,
         TailGating,
         AiConstraints,
-        ShotgunScene,
+        DeadBodyScene,
+        BasicGameScene,
     }
 
     public static void TakeState(Scene scene)
@@ -29,7 +30,6 @@ public class AiConstraintsConfig : MonoBehaviour
 
     public static string[] behaviorTreeType = {"Tree2", "Tree3" };
     public static string chosenBehaviorTree;
-
 
 
     public static float minStrenght, maxStrenght, strenght;
@@ -44,7 +44,8 @@ public class AiConstraintsConfig : MonoBehaviour
 
     // depends even if the situation is recognized by the supsect being watched
     public string[] Personality { get; set; }
-    public static string[] sex = { "male", "female" };
+    public static bool male = false;
+    public static bool female = true;
 
     public static bool weapon;
     // clothes, smell, face expression, eyes color

@@ -16,7 +16,7 @@ public class AiHealth : MonoBehaviour
     public Slider slider;
     public Transform player;
     Ragdoll ragdoll;
-    SkinnedMeshRenderer skinnedMeshRenderer;
+    SkinnedMeshRenderer[] skinnedMeshRenderer;
     private NavMeshAgent agent;
     public bool agentIsDead = false;
     
@@ -32,15 +32,19 @@ public class AiHealth : MonoBehaviour
     public float blinkIntensity;
     float blinkTimer;
     public bool healthRestored;
+    FearFactorAI fearFactorAI;
+    AiTreeConstructor aiTreeConstructor;
 
     [SerializeField] float timeToResetHealing ;
 
     void Start()
     {
+        aiTreeConstructor = GetComponent<AiTreeConstructor>();
+        fearFactorAI = GetComponent<FearFactorAI>();
         agent = GetComponent<NavMeshAgent>();
         ragdoll = GetComponent<Ragdoll>();
         newEnemycurrentHealth = maxHealth;
-        skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+        skinnedMeshRenderer = GetComponentsInChildren<SkinnedMeshRenderer>();
         aiKilled = GetComponent<AiKilled>();
 
         var rigidBodies = GetComponentsInChildren<Rigidbody>();
@@ -62,7 +66,25 @@ public class AiHealth : MonoBehaviour
         blinkTimer -= Time.deltaTime;
         float lerp = Mathf.Clamp01(blinkTimer / blinkDuration);
         float intensity = (lerp * blinkIntensity) + 1.0f;
-        skinnedMeshRenderer.material.color = Color.white * intensity;
+        foreach(SkinnedMeshRenderer partOfBody in skinnedMeshRenderer)
+        {
+            partOfBody.material.color = Color.white * intensity;
+        }
+        if (AiConstraintsConfig.male)
+        {
+            foreach (SkinnedMeshRenderer partOfBody in skinnedMeshRenderer)
+            {
+                partOfBody.material.color = Color.blue;
+            }
+        }
+        else if(AiConstraintsConfig.female)
+        {
+            foreach (SkinnedMeshRenderer partOfBody in skinnedMeshRenderer)
+            {
+                partOfBody.material.color = Color.red;
+            }
+        } 
+
 
         /*
         if (KillsInTimeManager.bonusActivated && AlliesAround.deadEnemies.Length !=0)
@@ -103,11 +125,33 @@ public class AiHealth : MonoBehaviour
         agentIsDead = true;
         firstKilled = true;
         ragdoll.ActivateRagDoll();
-        this.GetComponent<AiTreeConstructor>().enabled = false;
+        aiTreeConstructor.enabled = false;
         agent.isStopped = true;
         HealhtBarUI.SetActive(false);
-        skinnedMeshRenderer.material.color = Color.white;
-        this.GetComponent<AiHealth>().enabled = false;
+        fearFactorAI.enabled = false;
+        if (AiConstraintsConfig.male)
+        {
+            foreach (SkinnedMeshRenderer partOfBody in skinnedMeshRenderer)
+            {
+                partOfBody.material.color = Color.blue;
+            }
+        }
+        else if (AiConstraintsConfig.female)
+        {
+            foreach (SkinnedMeshRenderer partOfBody in skinnedMeshRenderer)
+            {
+                partOfBody.material.color = Color.red;
+            }
+        }
+        else
+        {
+            foreach (SkinnedMeshRenderer partOfBody in skinnedMeshRenderer)
+            {
+                partOfBody.material.color = Color.white;
+            }
+        }
+        // disable this script
+        enabled = false;
         numberOfAgentsKilled++;
         
     }
