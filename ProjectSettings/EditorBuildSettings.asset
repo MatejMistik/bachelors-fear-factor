@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/1.0.Simulation/ConfrontationScene.unity
     guid: 61fd28e77d82a24418de28e710411f52
   - enabled: 1
-    path: Assets/1.0.Simulation/ShotgunScene.unity
+    path: Assets/1.0.Simulation/DeadBodyScene.unity
     guid: cf5d351b561c5c24c83b4ab0d1e365fa
   - enabled: 1
     path: Assets/1.0.Simulation/BasicGameScene.unity

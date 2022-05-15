@@ -127,7 +127,7 @@ public class AiTreeConstructor : MonoBehaviour
                 ConstructBehaviorTreeElevator();
                 break;
             case 8:
-                ConstructBehaviorTreeShotgun();
+                ConstructBehaviorTreeDeadBody();
                 break;
             case 9:
                 ConstructBehaviorTreeBladeRunner();
@@ -223,14 +223,14 @@ public class AiTreeConstructor : MonoBehaviour
         WeaponEuipped weaponEuippedNode = new(this);
         FindWeaponsAvailableNode findWeaponNode = new(agent, weaponPickup.transform, this);
 
-        Inverter inverter = new(weaponEuippedNode);
+        Inverter inverterweaponEuippedNode = new(weaponEuippedNode);
 
         PlayerNearbyNode playerNearby = new(sensor);
         PlayerHasWeaponNode playerHasWeaponNode = new();
 
         Sequence findWeaponSequence = new Sequence(new List<Node> { playerNearby, playerHasWeaponNode, weaponEuippedNode, findWeaponNode });
-        Sequence chaseSequence = new Sequence(new List<Node> {  inverter, chasingRangeNode, chaseNode });
-        Sequence shootSequence = new(new List<Node> { inverter, shootingRangeNode, shootNode });
+        Sequence chaseSequence = new Sequence(new List<Node> { inverterweaponEuippedNode, chasingRangeNode, chaseNode });
+        Sequence shootSequence = new(new List<Node> { inverterweaponEuippedNode, shootingRangeNode, shootNode });
 
         Sequence goToCoverSequence = new Sequence(new List<Node> { coverAvaliableNode, goToCoverNode });
         Selector findCoverSelector = new Selector(new List<Node> { goToCoverSequence, chaseSequence });
@@ -322,7 +322,7 @@ public class AiTreeConstructor : MonoBehaviour
         topNode = new Selector(new List<Node> { TailgatingSeqeunce, mainCoverSequence, elevatorSelector });
     }
 
-    private void ConstructBehaviorTreeShotgun()
+    private void ConstructBehaviorTreeDeadBody()
     {
         if(weaponPickup)
         weaponPickup = GameObject.Find("WeaponPickup").GetComponent<WeaponPickup>();

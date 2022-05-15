@@ -16,7 +16,7 @@ public class PlayerNearbyNode : Node
     {
         if (sensor.GetNearestByName("FirstPersonPlayer") || agentRegistered)
         {
-            Debug.Log("registered");
+            //Debug.Log("registered");
             agentRegistered = true;
             return NodeState.SUCCESS;
         }

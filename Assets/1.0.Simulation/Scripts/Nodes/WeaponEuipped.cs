@@ -16,7 +16,7 @@ public class WeaponEuipped : Node
     {
         if (!ai.weaponEquipped)
         {
-            Debug.Log("no weapon");
+            //Debug.Log("no weapon");
             return NodeState.SUCCESS;
         }
         return NodeState.FAILURE;
