@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-05-15T14:04:02.680Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36" etag="YzQ9EM2rMnoqUtMZ0ES0" version="18.0.3" type="github">
+<mxfile host="app.diagrams.net" modified="2022-05-15T14:06:55.753Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36" etag="T_jmmi2QboJX9icH7Blt" version="18.0.3" type="github">
   <diagram id="aNkTvLlGlRAXNMfGRCiO" name="Page-1">
-    <mxGraphModel dx="1550" dy="867" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="1550" dy="809" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -115,7 +115,7 @@
         <mxCell id="xhpi5mrGCT5Js5KXu3N3-22" value="NajdiKryt&lt;br style=&quot;font-size: 18px;&quot;&gt;Selektor" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#FFD966;" parent="1" vertex="1">
           <mxGeometry x="471.89635838150275" y="306.334347826087" width="124.85549132947976" height="67.82608695652175" as="geometry" />
         </mxCell>
-        <mxCell id="k9KmUfYsGlUjubeCrhGL-1" value="AiJePrenesladovana&lt;br style=&quot;font-size: 18px;&quot;&gt;Sekvencia" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#FFD966;" parent="1" vertex="1">
+        <mxCell id="k9KmUfYsGlUjubeCrhGL-1" value="UIJePrenesladovana&lt;br style=&quot;font-size: 18px;&quot;&gt;Sekvencia" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#FFD966;" parent="1" vertex="1">
           <mxGeometry x="610.52" y="125.45" width="185.43" height="67.83" as="geometry" />
         </mxCell>
         <mxCell id="k9KmUfYsGlUjubeCrhGL-2" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;fontStyle=1" parent="1" source="k9KmUfYsGlUjubeCrhGL-1" target="k9KmUfYsGlUjubeCrhGL-3" edge="1">
