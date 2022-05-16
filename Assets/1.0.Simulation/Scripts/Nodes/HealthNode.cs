@@ -14,18 +14,20 @@ using UnityEngine;
 
 public class HealthNode : Node
 {
+    private float treshold;
     private AiHealth health;
     private FearFactorAI fear;
 
-    public HealthNode(AiHealth health, FearFactorAI fear)
+    public HealthNode(float treshold, AiHealth health, FearFactorAI fear)
     {
+        this.treshold = treshold;
         this.health = health;
         this.fear = fear;
     }
 
     public override NodeState Evaluate()
     {
-        if(health.newEnemycurrentHealth <= health.treshold || fear.slider.value >= 0.9)
+        if(health.newEnemycurrentHealth <= treshold || fear.slider.value >= 0.9)
         {
             return NodeState.SUCCESS;
         }

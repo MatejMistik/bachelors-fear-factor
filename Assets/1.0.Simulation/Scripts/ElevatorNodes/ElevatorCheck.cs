@@ -33,7 +33,7 @@ public class ElevatorCheck : MonoBehaviour
             {
                 OpenElevatorDoors();
             }
-            if (doors.transform.position == doorsClosedPosition.transform.position)
+            if (doors.transform.position == doorsOpenedPosition.transform.position)
             {
                 doorsAreMoving = false;
                 doorsOpened = true;

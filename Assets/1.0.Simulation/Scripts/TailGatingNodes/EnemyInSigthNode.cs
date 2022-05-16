@@ -22,7 +22,6 @@ public class EnemyInSigthNode : Node
         {
             return NodeState.SUCCESS;
         }
-        agent.isStopped = false;
         return NodeState.FAILURE;
     }
 }

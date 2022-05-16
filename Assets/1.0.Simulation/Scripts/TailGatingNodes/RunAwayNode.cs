@@ -28,6 +28,7 @@ public class RunAwayNode : Node
         fearFactorAI.WhichStateIsIn(FearFactorAI.FearState.Running);
         Debug.Log("RunAwayNode " + this.nodeState);
         agent.speed = 15;
+        agent.isStopped = false;
         // RunAway Function removed from AiTreeConstructor
         Vector3 dirToPlayer = ai.transform.position - playerTransform.position;
         Vector3 newPos = ai.transform.position + dirToPlayer;
@@ -38,6 +39,7 @@ public class RunAwayNode : Node
                 fearFactorAI.GainFearOverTime();
         }
         ai.nodeStateText.SetText("Running Away");
+        ai.runningAway = true;
         return NodeState.RUNNING;
     }
 }

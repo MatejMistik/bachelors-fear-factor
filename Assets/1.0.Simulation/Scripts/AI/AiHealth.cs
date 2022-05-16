@@ -37,6 +37,14 @@ public class AiHealth : MonoBehaviour
 
     [SerializeField] float timeToResetHealing ;
 
+    private float _elevatorHealthTreshold = 99f;
+
+    public float elevatorHealthTreshold
+    {
+        get { return _elevatorHealthTreshold; }
+        set { _elevatorHealthTreshold = value; }
+    }
+
     void Start()
     {
         aiTreeConstructor = GetComponent<AiTreeConstructor>();

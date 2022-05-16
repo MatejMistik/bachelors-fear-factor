@@ -83,6 +83,7 @@ public class AiTreeConstructor : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(agent.isStopped); 
         topNode.Evaluate();
         if (topNode.nodeState == NodeState.FAILURE)
         {
@@ -161,16 +162,16 @@ public class AiTreeConstructor : MonoBehaviour
     {
         IsCoverAvailable coverAvaliableNode = new IsCoverAvailable(availableCovers, playerTransform, this);
         GoToCoverNode goToCoverNode = new GoToCoverNode(agent, this);
-        HealthNode healthNode = new HealthNode(health, fearFactorAI);
+        HealthNode healthNode = new HealthNode(health.treshold, health, fearFactorAI);
         IsCoveredNode isCoveredNode = new IsCoveredNode(playerTransform, transform);
         ChaseNode chaseNode = new ChaseNode(playerTransform, agent);
         RangeNode chasingRangeNode = new RangeNode(chasingRange, playerTransform, transform);
-        WeaponEuipped weaponEuippedNode = new WeaponEuipped(this);
+        AIWeaponNotEuipped AIWeaponNotEuippedNode = new AIWeaponNotEuipped(this);
         RangeNode shootingRangeNode = new(shootingRange, playerTransform, transform);
         ShootingNode shootNode = new(agent, this, playerTransform, weapon);
 
         Sequence chaseSequence = new Sequence(new List<Node> { chasingRangeNode, chaseNode });
-        Sequence shootSequence = new(new List<Node> { weaponEuippedNode, shootingRangeNode, shootNode });
+        Sequence shootSequence = new(new List<Node> { AIWeaponNotEuippedNode, shootingRangeNode, shootNode });
 
         Sequence goToCoverSequence = new Sequence(new List<Node> { coverAvaliableNode, goToCoverNode });
         Selector findCoverSelector = new Selector(new List<Node> { goToCoverSequence, chaseSequence });
@@ -185,7 +186,7 @@ public class AiTreeConstructor : MonoBehaviour
     {
         IsCoverAvailable coverAvaliableNode = new(availableCovers, playerTransform, this);
         GoToCoverNode goToCoverNode = new(agent, this);
-        HealthNode healthNode = new(health, fearFactorAI);
+        HealthNode healthNode = new HealthNode(health.treshold, health, fearFactorAI);
         IsCoveredNode isCoveredNode = new(playerTransform, transform);
         IsCoveredNode isCoveredForHeal = new(playerTransform, transform);
         HealMeNode healMeNode = new(health, agent, fearFactorAI);
@@ -213,24 +214,23 @@ public class AiTreeConstructor : MonoBehaviour
 
         IsCoverAvailable coverAvaliableNode = new IsCoverAvailable(availableCovers, playerTransform, this);
         GoToCoverNode goToCoverNode = new GoToCoverNode(agent, this);
-        HealthNode healthNode = new HealthNode(health, fearFactorAI);
+        HealthNode healthNode = new HealthNode(health.treshold, health, fearFactorAI);
         IsCoveredNode isCoveredNode = new IsCoveredNode(playerTransform, transform);
         ChaseNode chaseNode = new ChaseNode(playerTransform, agent);
         RangeNode chasingRangeNode = new RangeNode(chasingRange, playerTransform, transform);
 
         RangeNode shootingRangeNode = new(shootingRange, playerTransform, transform);
         ShootingNode shootNode = new(agent, this, playerTransform, weapon);
-        WeaponEuipped weaponEuippedNode = new(this);
+
+        AIWeaponNotEuipped AIWeaponNotEuippedNode = new(this);
         FindWeaponsAvailableNode findWeaponNode = new(agent, weaponPickup.transform, this);
-
-        Inverter inverterweaponEuippedNode = new(weaponEuippedNode);
-
+        Inverter inverterAIWeaponNotEuippedNode = new(AIWeaponNotEuippedNode);
         PlayerNearbyNode playerNearby = new(sensor);
         PlayerHasWeaponNode playerHasWeaponNode = new();
 
-        Sequence findWeaponSequence = new Sequence(new List<Node> { playerNearby, playerHasWeaponNode, weaponEuippedNode, findWeaponNode });
-        Sequence chaseSequence = new Sequence(new List<Node> { inverterweaponEuippedNode, chasingRangeNode, chaseNode });
-        Sequence shootSequence = new(new List<Node> { inverterweaponEuippedNode, shootingRangeNode, shootNode });
+        Sequence findWeaponSequence = new Sequence(new List<Node> { playerNearby, playerHasWeaponNode, AIWeaponNotEuippedNode, findWeaponNode });
+        Sequence chaseSequence = new Sequence(new List<Node> { inverterAIWeaponNotEuippedNode, chasingRangeNode, chaseNode });
+        Sequence shootSequence = new(new List<Node> { inverterAIWeaponNotEuippedNode, shootingRangeNode, shootNode });
 
         Sequence goToCoverSequence = new Sequence(new List<Node> { coverAvaliableNode, goToCoverNode });
         Selector findCoverSelector = new Selector(new List<Node> { goToCoverSequence, chaseSequence });
@@ -246,7 +246,7 @@ public class AiTreeConstructor : MonoBehaviour
 
         IsCoverAvailable coverAvaliableNode = new(availableCovers, playerTransform, this);
         GoToCoverNode goToCoverNode = new(agent, this);
-        HealthNode healthNode = new(health, fearFactorAI);
+        HealthNode healthNode = new HealthNode(health.treshold, health, fearFactorAI);
         IsCoveredNode isCoveredNode = new(playerTransform, transform);
         IsCoveredNode isCoveredForHeal = new(playerTransform, transform);
         HealMeNode healMeNode = new(health, agent, fearFactorAI);
@@ -273,7 +273,7 @@ public class AiTreeConstructor : MonoBehaviour
     {
         IsCoverAvailable coverAvaliableNode = new(availableCovers, playerTransform, this);
         GoToCoverNode goToCoverNode = new(agent, this);
-        HealthNode healthNode = new(health, fearFactorAI);
+        HealthNode healthNode = new HealthNode(health.treshold, health, fearFactorAI);
         IsCoveredNode isCoveredNode = new(playerTransform, transform);
         IsCoveredNode isCoveredForHeal = new(playerTransform, transform);
         HealMeNode healMeNode = new(health, agent, fearFactorAI);
@@ -296,9 +296,12 @@ public class AiTreeConstructor : MonoBehaviour
 
     private void ConstructBehaviorTreeElevator()
     {
+        weaponPickup = GameObject.Find("WeaponPickup").GetComponent<WeaponPickup>();
+
         IsCoverAvailable coverAvaliableNode = new(availableCovers, playerTransform, this);
         GoToCoverNode goToCoverNode = new(agent, this);
-        HealthNode healthNode = new(health, fearFactorAI);
+        HealthNode healthNodeCover = new HealthNode(health.treshold, health, fearFactorAI);
+        HealthNode healthNodeWeapon= new HealthNode(health.elevatorHealthTreshold, health, fearFactorAI);
         IsCoveredNode isCoveredNode = new(playerTransform, transform);
 
         EnemyInSigthNode enemyInSigthNode = new(sensor, agent, fearFactorAI);
@@ -311,35 +314,40 @@ public class AiTreeConstructor : MonoBehaviour
         CloseTheDoorNode closeTheDoorNode = new(elevatorCheck);
         OpenTheDoorNode openTheDoorNode = new(elevatorCheck);
 
+        AIWeaponNotEuipped AIWeaponNotEuippedNode = new(this);
+        FindWeaponsAvailableNode findWeaponNode = new(agent, weaponPickup.transform, this);
+
+        Sequence findWeaponSequence = new Sequence(new List<Node> { healthNodeWeapon, AIWeaponNotEuippedNode, findWeaponNode });
         Sequence closeTheDoorSequence = new(new List<Node> { isInElevatorNode, closeTheDoorNode });
         Sequence goToElevatorSeqeunce = new(new List<Node> { isElelevatorOpenedNode, getToElelevatorNode });
-        Selector elevatorSelector = new(new List<Node> { isInElevatorNode, closeTheDoorSequence,  goToElevatorSeqeunce });
+        Selector elevatorSelector = new(new List<Node> {  closeTheDoorSequence,  goToElevatorSeqeunce, isInElevatorNode });
         Sequence goToCoverSequence = new(new List<Node> { coverAvaliableNode, goToCoverNode });
         Selector tryToTakeCoverSelector = new(new List<Node> { isCoveredNode, goToCoverSequence });
-        Sequence mainCoverSequence = new(new List<Node> { healthNode, tryToTakeCoverSelector });
-        Sequence TailgatingSeqeunce = new Sequence(new List<Node> { enemyInSigthNode, observeWhatIsTheProblemNode, openTheDoorNode, runAwayNode });
+        Selector DoorsOpenedForRunAway = new(new List<Node> { isElelevatorOpenedNode, openTheDoorNode });
+        Sequence mainCoverSequence = new(new List<Node> { healthNodeCover, tryToTakeCoverSelector });
+        Sequence TailgatingSeqeunce = new Sequence(new List<Node> { enemyInSigthNode, observeWhatIsTheProblemNode, DoorsOpenedForRunAway, runAwayNode });
 
-        topNode = new Selector(new List<Node> { TailgatingSeqeunce, mainCoverSequence, elevatorSelector });
+        topNode = new Selector(new List<Node> { findWeaponSequence, TailgatingSeqeunce, mainCoverSequence, elevatorSelector });
     }
 
     private void ConstructBehaviorTreeDeadBody()
     {
-        if(weaponPickup)
+
         weaponPickup = GameObject.Find("WeaponPickup").GetComponent<WeaponPickup>();
 
         IsCoverAvailable coverAvaliableNode = new IsCoverAvailable(availableCovers, playerTransform, this);
         GoToCoverNode goToCoverNode = new GoToCoverNode(agent, this);
-        HealthNode healthNode = new HealthNode(health, fearFactorAI);
+        HealthNode healthNode = new HealthNode(health.treshold, health, fearFactorAI);
         IsCoveredNode isCoveredNode = new IsCoveredNode(playerTransform, transform);
         ChaseNode chaseNode = new ChaseNode(playerTransform, agent);
         RangeNode chasingRangeNode = new RangeNode(chasingRange, playerTransform, transform);
 
         RangeNode shootingRangeNode = new(shootingRange, playerTransform, transform);
         ShootingNode shootNode = new(agent, this, playerTransform, weapon);
-        WeaponEuipped weaponEuippedNode = new(this);
+        AIWeaponNotEuipped AIWeaponNotEuippedNode = new(this);
         FindWeaponsAvailableNode findWeaponNode = new(agent, weaponPickup.transform, this);
 
-        Sequence findWeaponSequence = new Sequence(new List<Node> { weaponEuippedNode, findWeaponNode });
+        Sequence findWeaponSequence = new Sequence(new List<Node> { AIWeaponNotEuippedNode, findWeaponNode });
         Sequence chaseSequence = new Sequence(new List<Node> { chasingRangeNode, chaseNode });
         Sequence shootSequence = new(new List<Node> { shootingRangeNode, shootNode });
 

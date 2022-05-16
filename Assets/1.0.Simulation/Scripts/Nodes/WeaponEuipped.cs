@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponEuipped : Node
+public class AIWeaponNotEuipped : Node
 {
 
     private AiTreeConstructor ai;
 
-    public WeaponEuipped(AiTreeConstructor ai)
+    public AIWeaponNotEuipped(AiTreeConstructor ai)
     {
         this.ai = ai;
     }

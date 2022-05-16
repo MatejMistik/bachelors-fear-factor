@@ -24,15 +24,14 @@ public class ObserveWhatIsTheProblemNode : Node
         fearFactorAI.WhichStateIsIn(FearFactorAI.FearState.Observing);
         if(fearFactorAI.slider.value > 0.6f){
             Debug.Log("fearValue" + fearFactorAI.slider.value);
-            agent.isStopped = false;
             ai.runningAway = true;
             return NodeState.SUCCESS;
         }
-        agent.isStopped = true;
         agent.transform.LookAt(player);
         if(fearFactorAI.canGainFear)
             fearFactorAI.GainFearOverTime();
         ai.nodeStateText.SetText("Observing");
+        ai.runningAway = false;
         return NodeState.FAILURE;
 
     }
