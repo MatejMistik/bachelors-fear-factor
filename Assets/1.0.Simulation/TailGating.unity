@@ -390,6 +390,16 @@ PrefabInstance:
       propertyPath: text
       value: 
       objectReference: {fileID: 142679874}
+    - target: {fileID: 6285471957891607270, guid: 3330536880ff7274eb01ded21f982686,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -28.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6285471957891607270, guid: 3330536880ff7274eb01ded21f982686,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -34.08
+      objectReference: {fileID: 0}
     - target: {fileID: 6772093085831863521, guid: 3330536880ff7274eb01ded21f982686,
         type: 3}
       propertyPath: m_AnchorMax.y

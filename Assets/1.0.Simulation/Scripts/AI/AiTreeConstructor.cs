@@ -57,6 +57,7 @@ public class AiTreeConstructor : MonoBehaviour
     NavigationPathForAI navigationPathForAI;
     ElevatorCheck elevatorCheck;
     public bool runningAway;
+    public bool beenToElavator = false;
 
 
     private void Awake()
@@ -188,13 +189,16 @@ public class AiTreeConstructor : MonoBehaviour
         GoToCoverNode goToCoverNode = new(agent, this);
         HealthNode healthNode = new HealthNode(health.treshold, health, fearFactorAI);
         IsCoveredNode isCoveredNode = new(playerTransform, transform);
-        IsCoveredNode isCoveredForHeal = new(playerTransform, transform);
-        HealMeNode healMeNode = new(health, agent, fearFactorAI);
+
+        
+
         ChaseNode chaseNode = new(playerTransform, agent);
         RangeNode chasingRangeNode = new(chasingRange, playerTransform, transform);
         RangeNode shootingRangeNode = new(shootingRange, playerTransform, transform);
         ShootingNode shootNode = new(agent, this, playerTransform, weapon);
 
+        IsCoveredNode isCoveredForHeal = new(playerTransform, transform);
+        HealMeNode healMeNode = new(health, agent, fearFactorAI);
         Sequence healAiSequence = new(new List<Node> { isCoveredForHeal, healMeNode });
         Sequence chaseSequence = new(new List<Node> { chasingRangeNode, chaseNode });
         Sequence shootSequence = new(new List<Node> { shootingRangeNode, shootNode });
@@ -317,17 +321,33 @@ public class AiTreeConstructor : MonoBehaviour
         AIWeaponNotEuipped AIWeaponNotEuippedNode = new(this);
         FindWeaponsAvailableNode findWeaponNode = new(agent, weaponPickup.transform, this);
 
-        Sequence findWeaponSequence = new Sequence(new List<Node> { healthNodeWeapon, AIWeaponNotEuippedNode, findWeaponNode });
+        
+        IsCoveredNode isCoveredForHeal = new(playerTransform, transform);
+        HealMeNode healMeNode = new(health, agent, fearFactorAI);
+
+        ChaseNode chaseNode = new ChaseNode(playerTransform, agent);
+        RangeNode chasingRangeNode = new RangeNode(chasingRange, playerTransform, transform);
+
+        RangeNode shootingRangeNode = new(shootingRange, playerTransform, transform);
+        ShootingNode shootNode = new(agent, this, playerTransform, weapon);
+
+        BeenNotInElevatorNode beenNotInElevatorNode = new(this);
+        
+        Inverter inverterAIWeaponNotEuippedNode = new(AIWeaponNotEuippedNode);
+        Sequence healAiSequence = new(new List<Node> { isCoveredForHeal, healMeNode });
+        Sequence chaseSequence = new Sequence(new List<Node> { inverterAIWeaponNotEuippedNode, chasingRangeNode, chaseNode });
+        Sequence shootSequence = new(new List<Node> { inverterAIWeaponNotEuippedNode, shootingRangeNode, shootNode });
+        Sequence findWeaponSequence = new Sequence(new List<Node> { AIWeaponNotEuippedNode, healthNodeWeapon,  findWeaponNode });
         Sequence closeTheDoorSequence = new(new List<Node> { isInElevatorNode, closeTheDoorNode });
         Sequence goToElevatorSeqeunce = new(new List<Node> { isElelevatorOpenedNode, getToElelevatorNode });
-        Selector elevatorSelector = new(new List<Node> {  closeTheDoorSequence,  goToElevatorSeqeunce, isInElevatorNode });
-        Sequence goToCoverSequence = new(new List<Node> { coverAvaliableNode, goToCoverNode });
+        Selector elevatorSelector = new(new List<Node> {  beenNotInElevatorNode, closeTheDoorSequence,  goToElevatorSeqeunce, isInElevatorNode });
+        Sequence goToCoverSequence = new(new List<Node> { coverAvaliableNode, goToCoverNode});
         Selector tryToTakeCoverSelector = new(new List<Node> { isCoveredNode, goToCoverSequence });
         Selector DoorsOpenedForRunAway = new(new List<Node> { isElelevatorOpenedNode, openTheDoorNode });
         Sequence mainCoverSequence = new(new List<Node> { healthNodeCover, tryToTakeCoverSelector });
-        Sequence TailgatingSeqeunce = new Sequence(new List<Node> { enemyInSigthNode, observeWhatIsTheProblemNode, DoorsOpenedForRunAway, runAwayNode });
+        Sequence runAwaySequence = new Sequence(new List<Node> { enemyInSigthNode, observeWhatIsTheProblemNode, DoorsOpenedForRunAway, runAwayNode });
 
-        topNode = new Selector(new List<Node> { findWeaponSequence, TailgatingSeqeunce, mainCoverSequence, elevatorSelector });
+        topNode = new Selector(new List<Node> { healAiSequence , mainCoverSequence, chaseSequence, shootSequence, findWeaponSequence, runAwaySequence, elevatorSelector });
     }
 
     private void ConstructBehaviorTreeDeadBody()

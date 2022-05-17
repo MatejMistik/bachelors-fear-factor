@@ -58,6 +58,7 @@ public class FearFactorAI : MonoBehaviour
     private float maleMultiplier = 1f;
 
     public bool canLoseFear { get; private set; }
+    public bool needToLooseAllFear = false;
 
     void Start()
     {
@@ -83,7 +84,7 @@ public class FearFactorAI : MonoBehaviour
         if (fear > 0 && fear < 90)
             decreaseFearTimer += Time.deltaTime;
         if (decreaseFearTimer >= 5)
-            LoseFearOverTime();
+            LooseFearOverTime();
         //Debug.Log(decreaseFearTimer);
         //Debug.Log(fear);
         // activating dialog
@@ -155,7 +156,7 @@ public class FearFactorAI : MonoBehaviour
         canGainFear = true;
     }
 
-    public void LoseFearOverTime()
+    public void LooseFearOverTime()
     {
         if (canGainFear)
         {
@@ -208,7 +209,7 @@ public class FearFactorAI : MonoBehaviour
                 break;
             case FearState.SeenDeadBody:
                 actualState = SEENDEADBODY;
-                fearStateMultiplier = 2.5f;
+                fearStateMultiplier = 5f;
                 break;
 
         }

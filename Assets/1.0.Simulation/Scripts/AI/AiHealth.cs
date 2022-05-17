@@ -167,18 +167,23 @@ public class AiHealth : MonoBehaviour
     public void Restore(float amount)
     {
         newEnemycurrentHealth += amount;
-        if(newEnemycurrentHealth == maxHealth)
+        if(newEnemycurrentHealth <= maxHealth)
         {
-            healthRestored = true;
+            
             Invoke(nameof(HealthRestoredReset),timeToResetHealing);
         }
-        
+        else
+        {
+            healthRestored = true;
+        }
+
     }
 
     private void HealthRestoredReset()
     {
         healthRestored = false;
     }
+
 
 
 

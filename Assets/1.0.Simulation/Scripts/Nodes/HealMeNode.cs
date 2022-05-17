@@ -18,13 +18,22 @@ public class HealMeNode : Node
 
     public override NodeState Evaluate()
     {
+        Debug.Log(health.healthRestored);
         //Debug.Log(agent.velocity.magnitude); 
-        if((health.newEnemycurrentHealth  < health.maxHealth || fearFactorAI.slider.value >= 0.6f) && agent.velocity.magnitude == 0 && !health.healthRestored)
+        if((health.newEnemycurrentHealth  < health.maxHealth) && agent.velocity.magnitude == 0 && !health.healthRestored )
         {
-            health.Restore(50);
-            fearFactorAI.fear = 0;
+            health.Restore(10f);
+            
             return NodeState.SUCCESS;
         }
+        Debug.Log(fearFactorAI.needToLooseAllFear);
+        if (fearFactorAI.needToLooseAllFear && agent.velocity.magnitude == 0)
+        {
+            fearFactorAI.fear = 0f;
+            return NodeState.SUCCESS;
+        }
+        Debug.Log(nodeState);
+        fearFactorAI.needToLooseAllFear = false;
         return NodeState.FAILURE;
     }
 }
