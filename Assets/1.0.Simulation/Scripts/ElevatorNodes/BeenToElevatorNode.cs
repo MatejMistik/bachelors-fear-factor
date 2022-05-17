@@ -13,7 +13,7 @@ public class BeenNotInElevatorNode : Node
 
     public override NodeState Evaluate()
     {
-        if (!ai.beenToElavator)
+        if (ai.beenToElavator)
         {
             return NodeState.SUCCESS;
         }

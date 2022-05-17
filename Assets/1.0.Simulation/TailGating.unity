@@ -480,8 +480,27 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4384360055733821530, guid: 3330536880ff7274eb01ded21f982686, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3330536880ff7274eb01ded21f982686, type: 3}
+--- !u!1 &1810292191593311725 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6661294289625985116, guid: 3330536880ff7274eb01ded21f982686,
+    type: 3}
+  m_PrefabInstance: {fileID: 1810292191593311724}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1810292191593311726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810292191593311725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 789e27d76949e4c4992ba994c3ecd029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7264778840569351698
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -687,19 +706,23 @@ PrefabInstance:
         UI od vas utekat.\n3. a, Nah\xE1najte UI na\u010Falej \n\tPri maxime strachu
         sa UI pred vami skryje.\n3. b, Prestante prenasledova\u0165 UI\n\tStrach
         UI sa po case vrati do normalu. Ak je strach v normalnych hodnotach UI sa
-        vrati do rutiny patroly.\n"
+        vrati do rutiny patroly.\n\nStlacte klavesu I pre odchod z infomenu\n"
       objectReference: {fileID: 0}
     - target: {fileID: 883384307, guid: e43cee33034a29b4e90c22684c7d8314, type: 3}
       propertyPath: m_fontSize
-      value: 40
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 883384307, guid: e43cee33034a29b4e90c22684c7d8314, type: 3}
       propertyPath: m_margin.w
       value: -76.77057
       objectReference: {fileID: 0}
     - target: {fileID: 883384307, guid: e43cee33034a29b4e90c22684c7d8314, type: 3}
+      propertyPath: m_margin.x
+      value: 65.626465
+      objectReference: {fileID: 0}
+    - target: {fileID: 883384307, guid: e43cee33034a29b4e90c22684c7d8314, type: 3}
       propertyPath: m_fontSizeBase
-      value: 40
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 883384307, guid: e43cee33034a29b4e90c22684c7d8314, type: 3}
       propertyPath: m_VerticalAlignment

@@ -17,11 +17,13 @@ public class ChaseNode : Node
 {
     public Transform target;
     private NavMeshAgent agent;
+    private AiTreeConstructor ai;
 
-    public ChaseNode(Transform target, NavMeshAgent agent)
+    public ChaseNode(Transform target, NavMeshAgent agent, AiTreeConstructor ai)
     {
         this.target = target;
         this.agent = agent;
+        this.ai = ai;
     }
 
     public override NodeState Evaluate()
@@ -29,6 +31,7 @@ public class ChaseNode : Node
         float distance = Vector3.Distance(target.position, agent.transform.position);
         if(distance > 4f)
         {
+            ai.nodeStateText.SetText("Chasing");
             agent.isStopped = false;
             agent.SetDestination(target.position);
             return NodeState.RUNNING;

@@ -1911,7 +1911,7 @@ PrefabInstance:
     - target: {fileID: 883384307, guid: e43cee33034a29b4e90c22684c7d8314, type: 3}
       propertyPath: m_text
       value: "\n\n1. Eliminujte jedn\xE9ho agenta UI zo skupiny\n2. Pozorujte chovanie
-        ostatn\xFDch agentov\n"
+        ostatn\xFDch agentov\n\nStlacte klavesu I pre odchod z infomenu"
       objectReference: {fileID: 0}
     - target: {fileID: 883384307, guid: e43cee33034a29b4e90c22684c7d8314, type: 3}
       propertyPath: m_fontSize

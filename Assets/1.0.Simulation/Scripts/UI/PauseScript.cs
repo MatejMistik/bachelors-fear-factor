@@ -27,6 +27,10 @@ public class PauseScript : MonoBehaviour
         resumeButton.onClick.AddListener(delegate { TaskOnClickResume(); });
         quitButton.onClick.AddListener(delegate { TaskOnClickQuit(); });
         mainMenuButton.onClick.AddListener(delegate { TaskOnClickMenu(); });
+
+        // Activate info about level on start of the scene;
+        infoPanel.SetActive(true);
+        Pause();
     }
     void TaskOnClickResume()
     {

@@ -392,22 +392,22 @@ PrefabInstance:
     - target: {fileID: 1457152366942699199, guid: 1ceb394ff0a3ddd4289c443b2526855b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -95.41
+      value: -13.24
       objectReference: {fileID: 0}
     - target: {fileID: 1457152366942699199, guid: 1ceb394ff0a3ddd4289c443b2526855b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.07999992
+      value: 0.341
       objectReference: {fileID: 0}
     - target: {fileID: 1457152366942699199, guid: 1ceb394ff0a3ddd4289c443b2526855b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -40.58
+      value: -5.57
       objectReference: {fileID: 0}
     - target: {fileID: 1457152366942699199, guid: 1ceb394ff0a3ddd4289c443b2526855b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.88223064
+      value: 0.7968484
       objectReference: {fileID: 0}
     - target: {fileID: 1457152366942699199, guid: 1ceb394ff0a3ddd4289c443b2526855b,
         type: 3}
@@ -417,7 +417,7 @@ PrefabInstance:
     - target: {fileID: 1457152366942699199, guid: 1ceb394ff0a3ddd4289c443b2526855b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.4708175
+      value: -0.60417926
       objectReference: {fileID: 0}
     - target: {fileID: 1457152366942699199, guid: 1ceb394ff0a3ddd4289c443b2526855b,
         type: 3}
@@ -432,13 +432,18 @@ PrefabInstance:
     - target: {fileID: 1457152366942699199, guid: 1ceb394ff0a3ddd4289c443b2526855b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 56.175
+      value: -74.34
       objectReference: {fileID: 0}
     - target: {fileID: 1457152366942699199, guid: 1ceb394ff0a3ddd4289c443b2526855b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2232076648598512124, guid: 1ceb394ff0a3ddd4289c443b2526855b,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 6852815100912118809}
     - target: {fileID: 2266164898298684421, guid: 1ceb394ff0a3ddd4289c443b2526855b,
         type: 3}
       propertyPath: m_Name
@@ -453,6 +458,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4816868700688803010, guid: 1ceb394ff0a3ddd4289c443b2526855b,
+        type: 3}
+      propertyPath: chasingRange
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4816868700688803010, guid: 1ceb394ff0a3ddd4289c443b2526855b,
+        type: 3}
+      propertyPath: shootingRange
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4816868700688803010, guid: 1ceb394ff0a3ddd4289c443b2526855b,
         type: 3}
@@ -896,17 +911,17 @@ PrefabInstance:
     - target: {fileID: 4603193385347953893, guid: af71f362dd291d84e98edaa97237e05c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.04
+      value: -2.8
       objectReference: {fileID: 0}
     - target: {fileID: 4603193385347953893, guid: af71f362dd291d84e98edaa97237e05c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.73
+      value: 1.88
       objectReference: {fileID: 0}
     - target: {fileID: 4603193385347953893, guid: af71f362dd291d84e98edaa97237e05c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 30.73
+      value: 23.11
       objectReference: {fileID: 0}
     - target: {fileID: 4603193385347953893, guid: af71f362dd291d84e98edaa97237e05c,
         type: 3}
@@ -1284,8 +1299,9 @@ PrefabInstance:
       propertyPath: m_text
       value: "\n1. Nast\xFApte spolu s UI do v\xFD\u0165ahu\n2. Prist\xFApte bl\xEDzko
         k UI a pozorujte chovanie\n3. a, Pri ur\u010Ditej hranici strachu UI opust\xED
-        v\xFD\u0165ah \n\tPri maxime strachu sa UI pred vami skryje.\n3. b,  za\xFAto\u010Dte
-        na UI a z\xEDska zbra\u0148 a op\xE4tuje \xFAtok\n"
+        v\xFD\u0165ah \n\tPri maxime strachu alebo za\xFAto\u010Den\xED na UI, sa
+        UI pred vami skryje pre regener\xE1ciu, z\xEDska zbra\u0148 a op\xE4tuje
+        \xFAtok.\n  \nStlacte klavesu I pre odchod z infomenu"
       objectReference: {fileID: 0}
     - target: {fileID: 883384307, guid: e43cee33034a29b4e90c22684c7d8314, type: 3}
       propertyPath: m_fontSize
@@ -1604,6 +1620,18 @@ MonoBehaviour:
   doorsOpened: 0
   moveSpeed: 10
   doorsAreMoving: 0
+--- !u!114 &1693957105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693957092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 789e27d76949e4c4992ba994c3ecd029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3071458361646222
 Transform:
   m_ObjectHideFlags: 0
@@ -1767,6 +1795,7 @@ MonoBehaviour:
   weaponEquipped: 0
   walkPointRange: 10
   runningAway: 0
+  beenToElavator: 0
 --- !u!95 &232795662359166965
 Animator:
   serializedVersion: 4
@@ -3162,6 +3191,7 @@ MonoBehaviour:
   observingDialogActive: 0
   SetMaxForFear: 100
   canGainFear: 0
+  needToLooseAllFear: 0
 --- !u!114 &4483678620869816067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5496,7 +5526,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6852815100912118811}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14, y: -0.29, z: -33.98}
+  m_LocalPosition: {x: 2.51, y: -0.29, z: -36.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

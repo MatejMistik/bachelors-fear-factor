@@ -252,7 +252,8 @@ PrefabInstance:
       propertyPath: m_text
       value: "\n\n1. Priblizte sa k AI na  vzdialenost 10metrov\n2. Ak mate zbran
         AI sa presunie pre svoju a \nnasledne na vas AI utoci\n\n-  Zbran mozete
-        skry klavesou H, vytiahnutie zbrani je s klavesami 1 a 2"
+        skry klavesou H, vytiahnutie zbrani je s klavesami 1 a 2\n\nStlacte klavesu
+        I pre odchod z infomenu"
       objectReference: {fileID: 0}
     - target: {fileID: 883384307, guid: e43cee33034a29b4e90c22684c7d8314, type: 3}
       propertyPath: m_fontSize
@@ -933,6 +934,12 @@ PrefabInstance:
       objectReference: {fileID: 6852815101293537356}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ceb394ff0a3ddd4289c443b2526855b, type: 3}
+--- !u!1 &4747914289647164209 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2266164898298684421, guid: 1ceb394ff0a3ddd4289c443b2526855b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4747914289647164208}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5140441976164692256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -966,6 +973,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4747914289647164208}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6186576718692001168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4747914289647164209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 789e27d76949e4c4992ba994c3ecd029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &6852815099755064800
 MeshFilter:
   m_ObjectHideFlags: 0

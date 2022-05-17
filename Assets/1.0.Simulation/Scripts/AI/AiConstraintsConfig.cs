@@ -39,7 +39,7 @@ public class AiConstraintsConfig : MonoBehaviour
     public static float speed;
     public static float mass = 1.2678f;
 
-    public static string[] childhoodTrauma = { "SeenShooting", "BeenInShooting", "SeenDeadBody" };
+    public static string[] childhoodTrauma = { "None", "BeenInShooting", "SeenDeadBody", "BeenTailgated" };
     public static string chosenTrauma;
 
     // depends even if the situation is recognized by the supsect being watched
@@ -59,16 +59,5 @@ public class AiConstraintsConfig : MonoBehaviour
         heightNormalized = (heightClamped - minHeight ) / ( maxHeight - minHeight ); 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        Debug.Log("sceneString" + sceneString);
-    }
-
-    // vypoËÌta treshold od 0 po 100, ktor˝ bude rozhodovaù o tom ako sa dan· AI zachov·.
-    void CalculateTreshold()
-    {
-        
-    }
 
 }

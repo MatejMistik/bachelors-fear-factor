@@ -59,10 +59,12 @@ public class FearFactorAI : MonoBehaviour
 
     public bool canLoseFear { get; private set; }
     public bool needToLooseAllFear = false;
+    public static float traumaMultiplier = 1f;
 
     void Start()
     {
         if (AiConstraintsConfig.female) maleMultiplier = 1.2f;
+        
         canGainFear = true;
         canLoseFear = true;
         ai = GetComponent<AiTreeConstructor>();
@@ -79,6 +81,8 @@ public class FearFactorAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Debug.Log(traumaMultiplier);
         slider.value = CalculateFear();
         slider.transform.LookAt(player);
         if (fear > 0 && fear < 90)
@@ -101,6 +105,7 @@ public class FearFactorAI : MonoBehaviour
             WordResponse(stringArrRunningAway);
             wordResponseCalled = true;
         }
+
         //Debug.Log(actualState);
        // Debug.Log(fear);
        // Debug.Log(actualState == SEENDEADBODY && fear > 99);
@@ -143,7 +148,7 @@ public class FearFactorAI : MonoBehaviour
     {
         if (canGainFear)
         {
-            fear += 10f * fearStateMultiplier * maleMultiplier;
+            fear += 10f * fearStateMultiplier * maleMultiplier * traumaMultiplier;
             Invoke(nameof(ResetCanGainFear), timeBetweenGainOfFear);
         }
         decreaseFearTimer = 0f;

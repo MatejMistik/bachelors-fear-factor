@@ -117,7 +117,7 @@ public class AiTreeConstructor : MonoBehaviour
                 ConstructBehaviorTreeClassicPlusHealing();
                 break;
             case 4:
-                ConstructBehaviorTreePhone();
+                ConstructBehaviorTreeConfrontation();
                 break;
             case 5:
                 ConstructBehaviorTreeTailGating();
@@ -142,7 +142,7 @@ public class AiTreeConstructor : MonoBehaviour
     private void ConstructBehaviorTreeTest()
     {
         RangeNode rangeNode = new(chasingRange, playerTransform, transform);
-        ChaseNode chaseNode = new(playerTransform, agent);
+        ChaseNode chaseNode = new(playerTransform, agent,this);
 
         AreDeadAlliesNearby areDeadAlliesNearbyNode = new(sensor);
         WasCorpseChecked wasCorpseCheckedNode = new(alliesAround);
@@ -165,7 +165,7 @@ public class AiTreeConstructor : MonoBehaviour
         GoToCoverNode goToCoverNode = new GoToCoverNode(agent, this);
         HealthNode healthNode = new HealthNode(health.treshold, health, fearFactorAI);
         IsCoveredNode isCoveredNode = new IsCoveredNode(playerTransform, transform);
-        ChaseNode chaseNode = new ChaseNode(playerTransform, agent);
+        ChaseNode chaseNode = new(playerTransform, agent,this);
         RangeNode chasingRangeNode = new RangeNode(chasingRange, playerTransform, transform);
         AIWeaponNotEuipped AIWeaponNotEuippedNode = new AIWeaponNotEuipped(this);
         RangeNode shootingRangeNode = new(shootingRange, playerTransform, transform);
@@ -190,9 +190,9 @@ public class AiTreeConstructor : MonoBehaviour
         HealthNode healthNode = new HealthNode(health.treshold, health, fearFactorAI);
         IsCoveredNode isCoveredNode = new(playerTransform, transform);
 
-        
 
-        ChaseNode chaseNode = new(playerTransform, agent);
+
+        ChaseNode chaseNode = new(playerTransform, agent, this);
         RangeNode chasingRangeNode = new(chasingRange, playerTransform, transform);
         RangeNode shootingRangeNode = new(shootingRange, playerTransform, transform);
         ShootingNode shootNode = new(agent, this, playerTransform, weapon);
@@ -211,7 +211,7 @@ public class AiTreeConstructor : MonoBehaviour
         topNode = new Selector(new List<Node> { healAiSequence, mainCoverSequence, shootSequence, chaseSequence });
     }
 
-    private void ConstructBehaviorTreePhone()
+    private void ConstructBehaviorTreeConfrontation()
     {
 
         weaponPickup = GameObject.Find("WeaponPickup").GetComponent<WeaponPickup>();
@@ -220,7 +220,7 @@ public class AiTreeConstructor : MonoBehaviour
         GoToCoverNode goToCoverNode = new GoToCoverNode(agent, this);
         HealthNode healthNode = new HealthNode(health.treshold, health, fearFactorAI);
         IsCoveredNode isCoveredNode = new IsCoveredNode(playerTransform, transform);
-        ChaseNode chaseNode = new ChaseNode(playerTransform, agent);
+        ChaseNode chaseNode = new(playerTransform, agent,this);
         RangeNode chasingRangeNode = new RangeNode(chasingRange, playerTransform, transform);
 
         RangeNode shootingRangeNode = new(shootingRange, playerTransform, transform);
@@ -325,7 +325,7 @@ public class AiTreeConstructor : MonoBehaviour
         IsCoveredNode isCoveredForHeal = new(playerTransform, transform);
         HealMeNode healMeNode = new(health, agent, fearFactorAI);
 
-        ChaseNode chaseNode = new ChaseNode(playerTransform, agent);
+        ChaseNode chaseNode = new(playerTransform, agent,this);
         RangeNode chasingRangeNode = new RangeNode(chasingRange, playerTransform, transform);
 
         RangeNode shootingRangeNode = new(shootingRange, playerTransform, transform);
@@ -347,7 +347,7 @@ public class AiTreeConstructor : MonoBehaviour
         Sequence mainCoverSequence = new(new List<Node> { healthNodeCover, tryToTakeCoverSelector });
         Sequence runAwaySequence = new Sequence(new List<Node> { enemyInSigthNode, observeWhatIsTheProblemNode, DoorsOpenedForRunAway, runAwayNode });
 
-        topNode = new Selector(new List<Node> { healAiSequence , mainCoverSequence, chaseSequence, shootSequence, findWeaponSequence, runAwaySequence, elevatorSelector });
+        topNode = new Selector(new List<Node> { findWeaponSequence, healAiSequence , shootSequence, chaseSequence, mainCoverSequence, runAwaySequence, elevatorSelector });
     }
 
     private void ConstructBehaviorTreeDeadBody()
@@ -359,7 +359,7 @@ public class AiTreeConstructor : MonoBehaviour
         GoToCoverNode goToCoverNode = new GoToCoverNode(agent, this);
         HealthNode healthNode = new HealthNode(health.treshold, health, fearFactorAI);
         IsCoveredNode isCoveredNode = new IsCoveredNode(playerTransform, transform);
-        ChaseNode chaseNode = new ChaseNode(playerTransform, agent);
+        ChaseNode chaseNode = new(playerTransform, agent,this);
         RangeNode chasingRangeNode = new RangeNode(chasingRange, playerTransform, transform);
 
         RangeNode shootingRangeNode = new(shootingRange, playerTransform, transform);
@@ -383,7 +383,7 @@ public class AiTreeConstructor : MonoBehaviour
     {
 
         RangeNode rangeNode = new(chasingRange, playerTransform, transform);
-        ChaseNode chaseNode = new(playerTransform, agent);
+        ChaseNode chaseNode = new(playerTransform, agent, this);
 
         AreDeadAlliesNearby areDeadAlliesNearbyNode = new(sensor);
         WasCorpseChecked wasCorpseCheckedNode = new(alliesAround);

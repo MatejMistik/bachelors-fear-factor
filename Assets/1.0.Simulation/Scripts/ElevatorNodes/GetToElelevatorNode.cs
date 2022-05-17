@@ -20,6 +20,7 @@ public class GetToElelevatorNode : Node
         float distance = Vector3.Distance(agent.transform.position, standingPosition.transform.position);
         if(distance > 0.2f)
         {
+            agent.speed = 8f;
             agent.SetDestination(standingPosition.transform.position);
             return NodeState.RUNNING;
         }

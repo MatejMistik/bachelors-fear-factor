@@ -41,30 +41,17 @@ public class DropDownHandling : MonoBehaviour
         dropdown.value = 0;
         dropdown.value = 1;
         dropdown.value = 0;
+        
     }
 
     void DropDownItemSelected(Dropdown dropdown)
     {
-        if (name == "TreeDropDown")
-        {
-            AiConstraintsConfig.chosenBehaviorTree = dropdown.name;
-        }
-        else
-        {
-            AiConstraintsConfig.chosenTrauma = dropdown.name;
-        }
+       AiConstraintsConfig.chosenTrauma = dropdown.options[dropdown.value].text;
     } 
     
     private  string[] ChooseDropDown()
     {
-        if (name == "TreeDropDown")
-        {
-            return AiConstraintsConfig.behaviorTreeType;
-            
-        }else
-        {
-            return AiConstraintsConfig.childhoodTrauma;
-        }
+        return AiConstraintsConfig.childhoodTrauma;
     }
     
 }
