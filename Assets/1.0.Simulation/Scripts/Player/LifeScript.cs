@@ -18,6 +18,8 @@ public class LifeScript : MonoBehaviour
     [SerializeField] int LivesCount;
     public static int Lives = 0;
     public TextMeshProUGUI LiveText;
+    public TextMeshProUGUI DeadsText;
+    public static int deads;
 
 
     private void Start()
@@ -32,6 +34,7 @@ public class LifeScript : MonoBehaviour
     {
         
         LiveText.SetText("HP" + health +"/" + maxHealth );
+        if (DeadsText) DeadsText.SetText("Deads " + deads + "x");
         slider.value = CalculateHealth();
 
         if (slider.value <= (0.45 * maxHealth) / 100 && LowHp == false)
@@ -66,7 +69,7 @@ public class LifeScript : MonoBehaviour
         if (health < maxHealth && needHealing == false)
         {
             health += 0.1f * maxHealth;
-            Invoke(nameof(HealPlayer), 0.1f);
+            Invoke(nameof(HealPlayer), 0.15f);
             return;
         }
         else

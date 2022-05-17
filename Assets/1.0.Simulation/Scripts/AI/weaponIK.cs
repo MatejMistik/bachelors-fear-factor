@@ -8,7 +8,8 @@ using UnityEngine;
 *   Date: 24. 1. 2021   
 *	Code version: 1.0
 *	Availability: https://www.youtube.com/watch?v=Q56quIB2sOg&t=6s&ab_channel=TheKiwiCoder
-*	Functions LateUdate, AimAtTarget
+*	
+*	Evyrything except public void AssignBulletHole(RayCastWeapon weapon)
 *
 ***************************************************************************************/
 
@@ -78,6 +79,21 @@ public class weaponIK : MonoBehaviour
         bone.rotation = blendedRotation * bone.rotation;
 
     }
+
+    // Will use instead of LookAt by NavMesh
+
+    /*
+    public void LooktATTarget(Transform bone, Vector3 targetPosition, float weight)
+    {
+        Vector3 aimDirection = bulletHole.forward;
+        Vector3 targetDirection = targetPosition - bulletHole.position;
+        Quaternion aimTowards = Quaternion.FromToRotation(aimDirection, targetDirection);
+        Quaternion blendedRotation = Quaternion.Slerp(Quaternion.identity, aimTowards, weight);
+        bone.rotation = blendedRotation * bone.rotation;
+
+    }
+
+    */
 
     public void AssignBulletHole(RayCastWeapon weapon)
     {

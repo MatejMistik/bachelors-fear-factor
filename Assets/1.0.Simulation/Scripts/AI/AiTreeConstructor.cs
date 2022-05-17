@@ -188,16 +188,18 @@ public class AiTreeConstructor : MonoBehaviour
 
     private void ConstructBehaviorTreeBasicGame()
     {
+        HealthNode healthNode = new HealthNode((health.maxHealth/100f)*99.9f, health, fearFactorAI);
 
         ChaseNode chaseNode = new(playerTransform, agent, this);
         RangeNode chasingRangeNode = new (chasingRange, playerTransform, transform);
         RangeNode shootingRangeNode = new(shootingRange, playerTransform, transform);
         ShootingNode shootNode = new(agent, this, playerTransform, weapon);
 
+        Sequence AttackedSequence = new Sequence(new List<Node> { healthNode, chaseNode });
         Sequence chaseSequence = new Sequence(new List<Node> { chasingRangeNode, chaseNode });
         Sequence shootSequence = new(new List<Node> {  shootingRangeNode, shootNode });
 
-        topNode = new Selector(new List<Node> {  shootSequence, chaseSequence });
+        topNode = new Selector(new List<Node> { shootSequence, chaseSequence, AttackedSequence });
     }
 
     // Classic Tree with healing added

@@ -29,7 +29,10 @@ public class RespawnScript : MonoBehaviour
             player.transform.position = respawnPoint.transform.position;
             Physics.SyncTransforms();
             LifeScript.health = 100;
+            LifeScript.deads++;
+
            // Debug.Log(LifeScript.health);
         }
+        
     }
 }
