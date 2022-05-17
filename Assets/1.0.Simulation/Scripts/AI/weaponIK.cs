@@ -26,7 +26,7 @@ public class weaponIK : MonoBehaviour
 
     public Transform target;
     private Transform bulletHole;
-    RayCastWeapon rayCastWeapon;
+    public RayCastWeapon rayCastWeapon;
     public int iterations = 10;
     [Range(0, 1)]
     public float weight = 1.0f;
@@ -36,7 +36,8 @@ public class weaponIK : MonoBehaviour
 
     private void Start()
     {
-        
+        if(rayCastWeapon) bulletHole = rayCastWeapon.bulletHole;
+
         Animator animator = GetComponent<Animator>();
         boneTransforms = new Transform[humanBones.Length];
         for (int i = 0; i < boneTransforms.Length; i++)

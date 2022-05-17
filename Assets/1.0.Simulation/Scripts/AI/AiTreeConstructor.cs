@@ -64,7 +64,7 @@ public class AiTreeConstructor : MonoBehaviour
     private void Awake()
     {
         weaponIK = GetComponent<weaponIK>();
-        if(weaponIK) weaponIK.enabled = false;
+        if(weaponIK && !weaponEquipped) weaponIK.enabled = false;
         fearFactorAI = GetComponent<FearFactorAI>();
         agent = GetComponent<NavMeshAgent>();
         health = GetComponent<AiHealth>();
@@ -119,6 +119,9 @@ public class AiTreeConstructor : MonoBehaviour
                 break;
             case 2:
                 ConstructBehaviorTreeClassicPlusHealing();
+                break;
+            case 3:
+                ConstructBehaviorTreeBasicGame();
                 break;
             case 4:
                 ConstructBehaviorTreeConfrontation();
@@ -181,6 +184,20 @@ public class AiTreeConstructor : MonoBehaviour
         Sequence mainCoverSequence = new Sequence(new List<Node> { healthNode, tryToTakeCoverSelector });
 
         topNode = new Selector(new List<Node> { mainCoverSequence, shootSequence, chaseSequence });
+    }
+
+    private void ConstructBehaviorTreeBasicGame()
+    {
+
+        ChaseNode chaseNode = new(playerTransform, agent, this);
+        RangeNode chasingRangeNode = new (chasingRange, playerTransform, transform);
+        RangeNode shootingRangeNode = new(shootingRange, playerTransform, transform);
+        ShootingNode shootNode = new(agent, this, playerTransform, weapon);
+
+        Sequence chaseSequence = new Sequence(new List<Node> { chasingRangeNode, chaseNode });
+        Sequence shootSequence = new(new List<Node> {  shootingRangeNode, shootNode });
+
+        topNode = new Selector(new List<Node> {  shootSequence, chaseSequence });
     }
 
     // Classic Tree with healing added

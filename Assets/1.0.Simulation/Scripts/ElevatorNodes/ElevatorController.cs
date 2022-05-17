@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ElevatorController : MonoBehaviour
 {
-    public GameObject doors;
-    public GameObject closedDoors;
-    public GameObject openDoors;
+
+    public GameObject downPositon;
 
     public void OnTriggerStay()
     {
-        
+        if (transform.position != downPositon.transform.position) 
+            transform.position -= transform.up * Time.deltaTime;
     }
 
 }

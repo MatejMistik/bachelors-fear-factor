@@ -19,6 +19,7 @@ public class FindWeaponsAvailableNode : Node
     public override NodeState Evaluate()
     {
         Debug.Log("Dest set");
+        ai.nodeStateText.SetText("Getting Weapon");
         agent.isStopped = false;
         agent.SetDestination(WeaponLocation.position);
         return NodeState.RUNNING;
