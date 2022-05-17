@@ -57,13 +57,19 @@ public class PauseScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
-            if (gameIsPaused)
+            if (gameIsPaused && infoPanel.activeInHierarchy)
+            {
+                infoPanel.SetActive(false);
+                pauseMenuUI.SetActive(false);
+                Resume();
+            } else if(gameIsPaused && !infoPanel.activeInHierarchy)
             {
                 pauseMenuUI.SetActive(false);
                 Resume();
             }
             else
             {
+                infoPanel.SetActive(false);
                 pauseMenuUI.SetActive(true);
                 Pause();
             }
@@ -72,12 +78,18 @@ public class PauseScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.I))
         {
-            if (gameIsPaused)
+            if (gameIsPaused && pauseMenuUI.activeInHierarchy)
+            {
+                return;
+
+            } else if (gameIsPaused && !pauseMenuUI.activeInHierarchy)
             {
                 infoPanel.SetActive(false);
                 Resume();
-            }   else
+            }
+            else
             {
+                pauseMenuUI.SetActive(false);
                 infoPanel.SetActive(true);
                 Pause();
             }
