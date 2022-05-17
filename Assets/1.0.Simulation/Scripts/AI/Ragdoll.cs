@@ -47,5 +47,17 @@ public class Ragdoll : MonoBehaviour
         animator.enabled = false;
     }
 
+    public void ActivateRagDollOfReplicant()
+    {
+        foreach (var rigidBody in rigidBodies)
+        {
+            if(rigidBody.name == "Head")
+            rigidBody.isKinematic = false;
+
+        }
+    }
+
+
+
 
 }

@@ -35,8 +35,8 @@ public class ShootingNode : Node
             weapon = ai.weapon;
         }
         ai.nodeStateText.SetText("Shooting");
-        agent.isStopped = true;
-        agent.transform.LookAt(playerTransform);
+        agent.isStopped = false;
+        //agent.transform.LookAt(playerTransform);
         weapon.PrepareToShoot();
         return NodeState.RUNNING;
     }

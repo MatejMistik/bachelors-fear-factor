@@ -38,6 +38,7 @@ public class AiTreeConstructor : MonoBehaviour
     FearFactorAI fearFactorAI;
 
     WeaponPickup weaponPickup;
+    weaponIK weaponIK;
 
     AlliesAround alliesAround;
 
@@ -62,6 +63,8 @@ public class AiTreeConstructor : MonoBehaviour
 
     private void Awake()
     {
+        weaponIK = GetComponent<weaponIK>();
+        if(weaponIK) weaponIK.enabled = false;
         fearFactorAI = GetComponent<FearFactorAI>();
         agent = GetComponent<NavMeshAgent>();
         health = GetComponent<AiHealth>();
@@ -90,6 +93,7 @@ public class AiTreeConstructor : MonoBehaviour
         {
             agent.isStopped = true;
         }
+        Debug.Log(weaponIK);
         
 
         // Face text of node to player
@@ -141,8 +145,6 @@ public class AiTreeConstructor : MonoBehaviour
 
     private void ConstructBehaviorTreeTest()
     {
-        RangeNode rangeNode = new(chasingRange, playerTransform, transform);
-        ChaseNode chaseNode = new(playerTransform, agent,this);
 
         AreDeadAlliesNearby areDeadAlliesNearbyNode = new(sensor);
         WasCorpseChecked wasCorpseCheckedNode = new(alliesAround);
@@ -152,10 +154,9 @@ public class AiTreeConstructor : MonoBehaviour
         ReactToKilledCorpse reactToKilledCorpseNode = new(fearFactorAI, agent, this, alliesAround);
 
         Sequence killedNextToMeSequence = new Sequence(new List<Node> { killedNextToMeNode, reactToKilledCorpseNode });
-        Sequence chaseSequence = new Sequence(new List<Node> { rangeNode, chaseNode });
         Sequence CheckOnCorpse = new Sequence(new List<Node> { areDeadAlliesNearbyNode, wasCorpseCheckedNode, checkOnCorpseNode });
 
-        topNode = new Selector(new List<Node> { killedNextToMeSequence, CheckOnCorpse, chaseSequence });
+        topNode = new Selector(new List<Node> { killedNextToMeSequence, CheckOnCorpse});
 
     }
     // Classic tree with chasing, covering
@@ -382,8 +383,6 @@ public class AiTreeConstructor : MonoBehaviour
     private void ConstructBehaviorTreeBladeRunner()
     {
 
-        RangeNode rangeNode = new(chasingRange, playerTransform, transform);
-        ChaseNode chaseNode = new(playerTransform, agent, this);
 
         AreDeadAlliesNearby areDeadAlliesNearbyNode = new(sensor);
         WasCorpseChecked wasCorpseCheckedNode = new(alliesAround);
@@ -393,10 +392,9 @@ public class AiTreeConstructor : MonoBehaviour
         ReactToKilledCorpse reactToKilledCorpseNode = new(fearFactorAI, agent, this, alliesAround);
 
         Sequence killedNextToMeSequence = new Sequence(new List<Node> { killedNextToMeNode, reactToKilledCorpseNode});
-        Sequence chaseSequence = new Sequence(new List<Node> { rangeNode, chaseNode });
         Sequence CheckOnCorpse = new Sequence(new List<Node> { areDeadAlliesNearbyNode, wasCorpseCheckedNode, checkOnCorpseNode });
 
-        topNode = new Selector(new List<Node> { killedNextToMeSequence, CheckOnCorpse, chaseSequence });
+        topNode = new Selector(new List<Node> { killedNextToMeSequence, CheckOnCorpse});
 
     }
 
@@ -414,7 +412,8 @@ public class AiTreeConstructor : MonoBehaviour
     public void EquipWeapon()
     {
         weapon = GetComponentInChildren<RayCastWeapon>();
-        //GetComponent<weaponIK>().enabled = true;
+        weaponIK.enabled = true;
+        weaponIK.AssignBulletHole(weapon);
         //Debug.Log(weapon);
     }
 

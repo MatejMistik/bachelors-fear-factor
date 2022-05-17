@@ -932,6 +932,11 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[5]
       value: 
       objectReference: {fileID: 6852815101293537356}
+    - target: {fileID: 9212890491989718075, guid: 1ceb394ff0a3ddd4289c443b2526855b,
+        type: 3}
+      propertyPath: SensorRange
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ceb394ff0a3ddd4289c443b2526855b, type: 3}
 --- !u!1 &4747914289647164209 stripped
@@ -985,6 +990,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 789e27d76949e4c4992ba994c3ecd029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6186576718692001179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4747914289647164209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c81dbfc3c71c3c4faef82bce82d6ef6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 6852815100912118809}
+  iterations: 10
+  weight: 1
+  humanBones:
+  - bone: 7
+    weight: 1
+  - bone: 8
+    weight: 1
+  - bone: 54
+    weight: 1
 --- !u!33 &6852815099755064800
 MeshFilter:
   m_ObjectHideFlags: 0

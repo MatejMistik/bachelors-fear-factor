@@ -27,9 +27,9 @@ public class WeaponPickup : MonoBehaviour
         activeWeapon = other.gameObject.GetComponentInParent<ActiveWeapon>();
         if (activeWeapon && !weaponPicked)
         {
+            weaponPicked = true;
             RayCastWeapon newWeapon = Instantiate(weaponPrefab);
             activeWeapon.Equip(newWeapon);
-            weaponPicked = true;
             Invoke(nameof(ResetWeaponPicked), 1f);
            
         }

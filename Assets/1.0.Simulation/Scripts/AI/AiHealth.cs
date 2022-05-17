@@ -116,8 +116,54 @@ public class AiHealth : MonoBehaviour
         //Debug.Log("health" + NewEnemycurrentHealth);
         blinkTimer = blinkDuration;
     }
+    /*
+    public void DeadOfReplicant()
+    {
+        //colliderForSensor.enabled = false;
+        if (aiKilled)
+        {
+            aiKilled.aiKilled = true;
+        }
+        else
+        {
+            Debug.Log(aiKilled + "Not attached to Enemy GameObject");
+        }
 
+        gameObject.tag = "DeadEnemy";
+        agentIsDead = true;
+        firstKilled = true;
+        ragdoll.ActivateRagDollOfReplicant();
+        aiTreeConstructor.enabled = false;
+        agent.isStopped = true;
+        HealhtBarUI.SetActive(false);
+        fearFactorAI.enabled = false;
+        if (AiConstraintsConfig.male)
+        {
+            foreach (SkinnedMeshRenderer partOfBody in skinnedMeshRenderer)
+            {
+                partOfBody.material.color = Color.blue;
+            }
+        }
+        else if (AiConstraintsConfig.female)
+        {
+            foreach (SkinnedMeshRenderer partOfBody in skinnedMeshRenderer)
+            {
+                partOfBody.material.color = Color.red;
+            }
+        }
+        else
+        {
+            foreach (SkinnedMeshRenderer partOfBody in skinnedMeshRenderer)
+            {
+                partOfBody.material.color = Color.white;
+            }
+        }
+        // disable this script
+        enabled = false;
+        numberOfAgentsKilled++;
 
+    }
+    */
     public void Die()
     {
         //colliderForSensor.enabled = false;

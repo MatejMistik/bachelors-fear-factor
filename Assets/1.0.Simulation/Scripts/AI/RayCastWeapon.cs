@@ -59,11 +59,6 @@ public class RayCastWeapon : MonoBehaviour
 
         transformAi = GameObject.FindWithTag("Enemy").transform;
     }
-
-    public void AimAtEnemy()
-    {
-
-    }
     
 
     public void PrepareToShoot()
