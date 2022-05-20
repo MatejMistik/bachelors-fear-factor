@@ -1,8 +1,6 @@
 # AI-FearFactor-InGames Version 1.0
 Bachelor Gameplay demo with use of advanced interaction with AI
 
-Reason behind this project :
-
 Slovak easy introduction to subject of this app:
 
 Keďže práca ma byť inovatívna zamýšlal som, ktorá herná mechanika ešte nie je zobrazená. Prišiel s návrhom vyzobrazenia strachu hernej umelel inteligencii. A dôvod? Všetky hry spôsobujú strach iba hráčovi. Ostatné hry využivájú iba minimálne vyjadrenie strachu nepriateľov, ktoré je väčšinou iba riadené skriptom.
@@ -15,7 +13,7 @@ The goal of this thesis is to present the fear factor by gaming artificial intel
 
 Thesis: https://wis.fit.vutbr.cz/FIT/st/rp.php/rp/2021/BP/24601.pdf
 
-Version 1.0 >
+# Version 1.0 >
 
 Offers 4 scenes displaying fear of AI and the simulation part. And one scene focused on gameplay module of the game it self.
 
