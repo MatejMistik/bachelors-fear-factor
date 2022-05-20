@@ -27,11 +27,8 @@ Scripts avaible in Assets/1.0.Simulation/Scripts
 
 # Future Plans >
 
-1.
-RayCast pointing will trigger AI reaction, which concludes of pointing it's arms up, as it illustrates giving up.
-
+1. RayCast pointing will trigger AI reaction, which concludes of pointing it's arms up, as it illustrates giving up.
 2. AI will be equipped with hearing sense, which creates room for reacting to gunshots or any sound, that can make AI "feel" fear.
-
 3. Showcasing physical response of hormnones as cortisol and adreanaline, which make your heart go a lot faster, your muscles are prepared for a lot of stress and many others. More in chapter 2 section 4 reaction of body to fear. 
   3.1. - Shaking - Aim accuracy of the AI would be decreased by the amount of the fear
   3.2. - AI FOV - After implenting senzor based on view, the angle range can differ based to the fear amount.
