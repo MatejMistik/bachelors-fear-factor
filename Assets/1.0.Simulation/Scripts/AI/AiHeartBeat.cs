@@ -7,7 +7,7 @@ public class AiHeartBeat : MonoBehaviour
     FearFactorAI fearFactorAi;
 
 
-    [SerializeField] private float startingHeartBeat = 80f;
+    [SerializeField] private float heartBeatOnStart = 80f;
     [SerializeField] private float heartBeatCap = 180f;
     private float _heartBeat;
     private float deltaHeartBeatStartCap;
@@ -21,15 +21,15 @@ public class AiHeartBeat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        deltaHeartBeatStartCap = heartBeatCap - startingHeartBeat;
-        _heartBeat = startingHeartBeat;
+        deltaHeartBeatStartCap = heartBeatCap - heartBeatOnStart;
+        _heartBeat = heartBeatOnStart;
         fearFactorAi = GetComponent<FearFactorAI>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        _heartBeat = startingHeartBeat + fearFactorAi.slider.value * deltaHeartBeatStartCap;
+        _heartBeat = heartBeatOnStart + fearFactorAi.slider.value * deltaHeartBeatStartCap;
         Debug.Log(_heartBeat);
     }
 }
