@@ -6,8 +6,8 @@ public class AiFOV : MonoBehaviour
 {
     FearFactorAI fearFactorAi;
 
-    [SerializeField] private float FovOnStart = 80f;
-    [SerializeField] private float FovCap = 180f;
+    [SerializeField] private float FovOnStart = 50f;
+    [SerializeField] private float FovCap = 100f;
     private float _valueFOV;
     private float deltaFOVStartCap;
 
