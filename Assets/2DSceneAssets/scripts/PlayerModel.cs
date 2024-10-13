@@ -41,7 +41,7 @@ public class PlayerModel : MonoBehaviour
     private void FixedUpdate()
     {
         //need to actualise velocity of y because it is slowing down gravity
-        rigidbodyComponent.velocity = new Vector3(horizontalInput * 8, rigidbodyComponent.velocity.y, 0);
+        rigidbodyComponent.linearVelocity = new Vector3(horizontalInput * 8, rigidbodyComponent.linearVelocity.y, 0);
 
         if (!isGrounded && jumpCounter == jumpMax)
         {

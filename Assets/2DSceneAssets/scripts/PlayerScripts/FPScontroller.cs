@@ -32,7 +32,7 @@ public class FPScontroller : MonoBehaviour
     private void FixedUpdate()
     {
         //need to actualise velocity of y because it is slowing down gravity
-        rigidbodyComponent.velocity = new Vector3(horizontalInput * speed, rigidbodyComponent.velocity.y, verticalInput * speed);
+        rigidbodyComponent.linearVelocity = new Vector3(horizontalInput * speed, rigidbodyComponent.linearVelocity.y, verticalInput * speed);
 
         if (jumpKeyWasPressed)
         {
