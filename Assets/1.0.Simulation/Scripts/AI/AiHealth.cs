@@ -19,7 +19,7 @@ public class AiHealth : MonoBehaviour
     SkinnedMeshRenderer[] skinnedMeshRenderer;
     private NavMeshAgent agent;
     public bool agentIsDead = false;
-    
+
 
     // Start is called before the first frame update
     public float maxHealth;
@@ -35,11 +35,11 @@ public class AiHealth : MonoBehaviour
     FearFactorAI fearFactorAI;
     AiTreeConstructor aiTreeConstructor;
 
-    [SerializeField] float timeToResetHealing ;
+    [SerializeField] float timeToResetHealing;
 
     private float _elevatorHealthTreshold = 99f;
 
-    public float elevatorHealthTreshold
+    public float ElevatorHealthTreshold
     {
         get { return _elevatorHealthTreshold; }
         set { _elevatorHealthTreshold = value; }
@@ -68,13 +68,13 @@ public class AiHealth : MonoBehaviour
 
         slider.value = newEnemycurrentHealth / maxHealth;
         slider.transform.LookAt(player);
-        
+
 
         // blinking
         blinkTimer -= Time.deltaTime;
         float lerp = Mathf.Clamp01(blinkTimer / blinkDuration);
         float intensity = (lerp * blinkIntensity) + 1.0f;
-        foreach(SkinnedMeshRenderer partOfBody in skinnedMeshRenderer)
+        foreach (SkinnedMeshRenderer partOfBody in skinnedMeshRenderer)
         {
             partOfBody.material.color = Color.white * intensity;
         }
@@ -85,13 +85,13 @@ public class AiHealth : MonoBehaviour
                 partOfBody.material.color = Color.blue;
             }
         }
-        else if(AiConstraintsConfig.female)
+        else if (AiConstraintsConfig.female)
         {
             foreach (SkinnedMeshRenderer partOfBody in skinnedMeshRenderer)
             {
                 partOfBody.material.color = Color.red;
             }
-        } 
+        }
 
 
         /*
@@ -171,8 +171,9 @@ public class AiHealth : MonoBehaviour
         {
             aiKilled.aiKilled = true;
         }
-        else { 
-            Debug.Log(aiKilled + "Not attached to Enemy GameObject"); 
+        else
+        {
+            Debug.Log(aiKilled + "Not attached to Enemy GameObject");
         }
 
         gameObject.tag = "DeadEnemy";
@@ -207,16 +208,16 @@ public class AiHealth : MonoBehaviour
         // disable this script
         enabled = false;
         numberOfAgentsKilled++;
-        
+
     }
 
     public void Restore(float amount)
     {
         newEnemycurrentHealth += amount;
-        if(newEnemycurrentHealth <= maxHealth)
+        if (newEnemycurrentHealth <= maxHealth)
         {
-            
-            Invoke(nameof(HealthRestoredReset),timeToResetHealing);
+
+            Invoke(nameof(HealthRestoredReset), timeToResetHealing);
         }
         else
         {

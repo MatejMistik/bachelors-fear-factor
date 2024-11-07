@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad29a8e5c3055934da14329a3054ad3f, type: 3}
+  m_Name: SpiderAppearanceSettings
+  m_EditorClassIdentifier: 
+  cephalothorax:
+    Size: 1.255238
+    Color: {r: 0, g: 0, b: 0, a: 1}
+    Texture: {fileID: 0}
+  abdomen:
+    Size: 1.0274198
+    Color: {r: 0.36171287, g: 0.139781, b: 0.6721957, a: 1}
+    Texture: {fileID: 0}
+    HasPattern: 0
+    PatternTexture: {fileID: 0}
+    PatternColor: {r: 1, g: 0, b: 0, a: 1}
+  legs:
+    LegCount: 8
+    LegLength: 1
+    Thickness: 35.8
+    Color: {r: 0, g: 0, b: 0, a: 1}
+    Texture: {fileID: 0}
+  pedipalps:
+    Size: 0.5
+    Color: {r: 0, g: 0, b: 0, a: 1}
+    HasHair: 1
+    HairDensity: 0.5
+    HairColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  spinnerets:
+    Count: 2
+    Size: 0.3
+    Color: {r: 0, g: 0, b: 0, a: 1}
+    Texture: {fileID: 0}
+  eyes:
+    EyeCount: 8
+    EyeSize: -0.49
+    EyeColor: {r: 0, g: 0, b: 0, a: 1}
+    EyePositions: []
+  chelicerae:
+    Size: 0.4
+    Color: {r: 0, g: 0, b: 0, a: 1}
+    Texture: {fileID: 0}
+    FangLength: 0.2
+    HasVenom: 1
+    VenomPotency: 0.5
