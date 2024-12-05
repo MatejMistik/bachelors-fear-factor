@@ -325,7 +325,7 @@ public class AiTreeConstructor : MonoBehaviour
         IsCoverAvailable coverAvaliableNode = new(availableCovers, playerTransform, this);
         GoToCoverNode goToCoverNode = new(agent, this);
         HealthNode healthNodeCover = new HealthNode(health.treshold, health, fearFactorAI);
-        HealthNode healthNodeWeapon= new HealthNode(health.elevatorHealthTreshold, health, fearFactorAI);
+        HealthNode healthNodeWeapon= new HealthNode(health.ElevatorHealthTreshold, health, fearFactorAI);
         IsCoveredNode isCoveredNode = new(playerTransform, transform);
 
         EnemyInSigthNode enemyInSigthNode = new(sensor, agent, fearFactorAI);

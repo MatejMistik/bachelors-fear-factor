@@ -4,17 +4,9 @@ using UnityEngine;
 
 public class AiKilled : MonoBehaviour
 {
-    AiHealth aiHealth;
 
     public bool aiKilled = false;
     public float killedTimer;
-    private bool disableScript;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-         
-    }
 
     // Update is called once per frame
     void Update()
