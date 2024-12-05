@@ -1,0 +1,3 @@
+datetime,Event
+241013151203.637,New App Execution
+241013151222.181,ExciteOMeter >> No incoming data RRInterval was found to calculate feature SDNN
